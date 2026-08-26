@@ -1038,7 +1038,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .contact-grid { gap:12px; }
 .contact {
   display:grid !important;
-  grid-template-columns:34px minmax(155px,220px) minmax(0,1fr) 12px;
+  grid-template-columns:34px minmax(145px,205px) minmax(0,1fr) 12px;
   column-gap:14px;
   align-items:center;
   padding:14px 16px;
@@ -1063,10 +1063,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   display:block;
   margin:0;
   text-align:right;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  font-size:13px;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  font-size:12.6px;
+  line-height:1.35;
 }
 .contact::after { grid-column:4; margin:0 !important; font-size:20px !important; }
 
@@ -1375,8 +1378,8 @@ footer {
         <span><strong>Atualização do RMA</strong><small>Prazo regulamentar de atualização anual.</small></span>
       </div>
       <div class="deadline-item">
-        <span class="deadline-date neutral"><strong>A DIV.</strong><small>2026</small></span>
-        <span><strong>Apoio Anual — Desporto</strong><small>Período concreto a divulgar por aviso municipal.</small></span>
+        <span class="deadline-date neutral"><strong>POR AVISO</strong><small>municipal</small></span>
+        <span><strong>Apoio Anual — Desporto</strong><small>Calendário definido por aviso municipal.</small></span>
       </div>
     </div>
   </div>
