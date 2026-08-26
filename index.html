@@ -1095,6 +1095,192 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .resource .icon svg { width:18px !important; height:18px !important; }
 }
 
+
+
+/* =========================================================
+   Polimento final v1.2.3 — identidade institucional, cartões e rodapé
+   ========================================================= */
+
+/* 1) Topo mais institucional e estável */
+.topbar {
+  background:rgba(7,54,83,.975) !important;
+  border-bottom:1px solid rgba(255,255,255,.10) !important;
+  box-shadow:0 5px 20px rgba(5,38,58,.14) !important;
+}
+.topbar::after {
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height:2px;
+  background:linear-gradient(90deg,var(--brand-red),var(--brand-orange),var(--brand-yellow),var(--brand-green),var(--brand-blue));
+  opacity:.72;
+  pointer-events:none;
+}
+.topbar-inner {
+  min-height:64px !important;
+  max-width:1480px !important;
+  margin:0 auto !important;
+  padding:0 30px !important;
+}
+.brand { min-width:250px; }
+.brand-thumb { width:42px !important; height:42px !important; }
+.brand-title { font-size:15.5px !important; letter-spacing:-.01em; }
+.brand-sub { font-size:11px !important; color:rgba(255,255,255,.68) !important; letter-spacing:.01em; }
+.nav { gap:4px !important; }
+.nav a {
+  color:rgba(255,255,255,.84) !important;
+  background:transparent !important;
+  border:1px solid transparent;
+  border-radius:8px !important;
+  padding:8px 10px !important;
+  font-weight:700;
+}
+.nav a:hover {
+  color:#fff !important;
+  background:rgba(255,255,255,.08) !important;
+  border-color:rgba(255,255,255,.06);
+}
+.nav a.active {
+  color:#fff !important;
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(255,255,255,.08);
+}
+.nav a.active::after { display:none !important; }
+
+/* 2) Cartões mais uniformes e menos “soltos” */
+.grid, .report-grid { align-items:stretch; }
+.card, .report-card {
+  border-radius:18px !important;
+  border:1px solid #e9e5df !important;
+  box-shadow:0 8px 24px rgba(55,48,42,.055) !important;
+}
+.card:hover, .report-card:hover {
+  box-shadow:0 13px 30px rgba(55,48,42,.085) !important;
+  transform:translateY(-2px);
+}
+.card::before { height:3px !important; opacity:.66 !important; }
+.card-image {
+  aspect-ratio:3.65 / 1 !important;
+  border-bottom:1px solid #eee9e4;
+}
+.card-body {
+  padding:18px 18px 17px !important;
+}
+.card-body h3, .report-card h3 {
+  font-size:19px !important;
+  line-height:1.25 !important;
+  letter-spacing:-.012em;
+}
+.card-body > p, .report-card > p {
+  font-size:13.5px !important;
+  line-height:1.52 !important;
+}
+.card .status, .report-card .status {
+  font-size:11px !important;
+  padding:5px 9px !important;
+  margin-bottom:11px !important;
+  letter-spacing:.01em;
+}
+.note {
+  border:1px solid #eee8e2;
+  border-radius:9px !important;
+  background:#fbf8f5 !important;
+  padding:10px 11px !important;
+}
+.card .btn, .report-card .btn {
+  margin-top:13px !important;
+  min-height:42px !important;
+  border-radius:9px !important;
+  font-size:13.5px !important;
+}
+.card .btn.active {
+  background:linear-gradient(135deg,#d95536,var(--brand-orange)) !important;
+  box-shadow:0 7px 16px rgba(213,85,54,.16) !important;
+}
+.card .btn.disabled, .report-card .btn.disabled {
+  background:#f1efed !important;
+  color:#797671 !important;
+  border:1px solid #e6e2de;
+}
+.report-card {
+  padding:19px !important;
+  display:flex;
+  flex-direction:column;
+}
+.report-card .btn { margin-top:auto !important; }
+
+/* 3) Rodapé mais fechado e institucional */
+footer {
+  max-width:1180px !important;
+  margin:30px auto 0 !important;
+  padding:0 22px 34px !important;
+  border-top:0 !important;
+}
+.footer-row {
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  color:inherit !important;
+}
+.footer-main {
+  padding:17px 18px !important;
+  border:1px solid #e8e3de !important;
+  border-radius:15px 15px 0 0 !important;
+  background:#faf8f5 !important;
+  gap:18px;
+}
+.footer-main > span:first-child {
+  color:#353942;
+  font-size:12.5px;
+  line-height:1.45;
+}
+.footer-links { gap:5px !important; }
+.footer-links a {
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  padding:6px 9px;
+  border-radius:8px;
+  color:#5d626b !important;
+  font-size:12px;
+}
+.footer-links a:hover { background:#fff; color:#9e5111 !important; }
+.footer-meta {
+  padding:12px 18px !important;
+  border:1px solid #e8e3de !important;
+  border-top:0 !important;
+  border-radius:0 0 15px 15px !important;
+  background:#fff !important;
+  color:#858188 !important;
+  font-size:11px !important;
+  gap:20px;
+}
+.footer-meta span:last-child { text-align:right; max-width:650px; }
+
+@media(max-width:920px) {
+  .topbar-inner { padding:0 20px !important; }
+  .brand { min-width:220px; }
+  .nav a { padding:8px 7px !important; font-size:11.8px !important; }
+}
+
+@media(max-width:680px) {
+  .topbar-inner { min-height:58px !important; padding:0 14px !important; }
+  .brand { min-width:0; }
+  .brand-thumb { width:38px !important; height:38px !important; }
+  .brand-title { font-size:13.5px !important; }
+  .brand-sub { font-size:10px !important; }
+  .card-image { aspect-ratio:3.15 / 1 !important; }
+  .card-body { padding:16px !important; }
+  .footer-main, .footer-meta {
+    flex-direction:column;
+    align-items:flex-start !important;
+  }
+  .footer-main { border-radius:14px 14px 0 0 !important; }
+  .footer-meta { border-radius:0 0 14px 14px !important; }
+  .footer-meta span:last-child { text-align:left; max-width:none; }
+}
+
 </style>
 </head>
 
@@ -1493,16 +1679,17 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 
 <footer>
   <div class="footer-row footer-main">
-    <span><strong>© 2026 Município de Gouveia</strong> · Plataforma do Associativismo · Versão Beta</span>
+    <span><strong>Município de Gouveia</strong> · Plataforma do Associativismo <span aria-hidden="true">·</span> Versão Beta</span>
     <span class="footer-links">
+      <a href="https://www.cm-gouveia.pt/" target="_blank" rel="noopener">Município ↗</a>
       <a href="https://www.cm-gouveia.pt/wp-content/uploads/2026/06/Regulamento-Municipal-de-Apoio-ao-Associativismo.pdf" target="_blank" rel="noopener">Regulamento ↗</a>
       <a href="#faq">FAQ</a>
       <a href="#contactos">Contactos</a>
     </span>
   </div>
   <div class="footer-row footer-meta">
-    <span>Informação atualizada em <strong>26 de agosto de 2026</strong>.</span>
-    <span>Os pedidos e candidaturas apenas produzem os efeitos previstos no Regulamento e nos respetivos avisos municipais.</span>
+    <span>© 2026 · Informação atualizada em <strong>26 de agosto de 2026</strong>.</span>
+    <span>Os pedidos e candidaturas apenas produzem os efeitos previstos no Regulamento Municipal e nos respetivos avisos.</span>
   </div>
 </footer>
 
