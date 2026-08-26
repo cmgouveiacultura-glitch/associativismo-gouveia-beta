@@ -232,10 +232,11 @@ a { color:inherit; }
 .card:hover { transform:translateY(-3px); box-shadow:0 18px 40px rgba(18,68,100,.11); }
 .card-image {
   width:100%;
-  aspect-ratio:4 / 1;
-  object-fit:cover;
+  height:112px;
+  object-fit:contain;
+  object-position:center top;
   display:block;
-  background:white;
+  background:#f7f7f5;
 }
 .card-body {
   padding:18px;
@@ -425,7 +426,7 @@ footer {
   .section { padding:24px 16px; }
   .section h2 { font-size:26px; }
   .grid, .report-grid, .link-list { grid-template-columns:1fr; }
-  .card-image { aspect-ratio:3.7 / 1; }
+  .card-image { height:102px; }
 }
 
 /* Tema cromático inspirado na identidade visual do Município de Gouveia */
@@ -1163,7 +1164,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 .card::before { height:3px !important; opacity:.66 !important; }
 .card-image {
-  aspect-ratio:3.65 / 1 !important;
+  height:112px !important;
+  object-fit:contain !important;
+  object-position:center top !important;
   border-bottom:1px solid #eee9e4;
 }
 .card-body {
@@ -1273,7 +1276,7 @@ footer {
   .brand-thumb { width:38px !important; height:38px !important; }
   .brand-title { font-size:13.5px !important; }
   .brand-sub { font-size:10px !important; }
-  .card-image { aspect-ratio:3.15 / 1 !important; }
+  .card-image { height:96px !important; }
   .card-body { padding:16px !important; }
   .footer-main, .footer-meta {
     flex-direction:column;
