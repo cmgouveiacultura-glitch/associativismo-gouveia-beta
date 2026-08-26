@@ -1,0 +1,16 @@
+VERSÃO DE TESTE — PLATAFORMA MUNICIPAL DO ASSOCIATIVISMO
+
+Esta versão funciona sem Google Drive, Google Sheets ou Apps Script.
+
+Pode colocá-la diretamente no GitHub Pages para testar:
+- navegação;
+- formulários nativos;
+- campos condicionais;
+- múltiplas deslocações/projetos/atividades;
+- versão desktop/responsiva (index.html);
+- versão mobile dedicada (mobile.html);
+- guardar rascunhos no próprio navegador.
+
+Ao carregar em "Submeter", a plataforma apenas simula uma submissão e mostra uma mensagem de sucesso de teste. Nenhum dado é enviado para fora do navegador.
+
+Quando a versão visual estiver aprovada, basta passar para o pacote FINAL e configurar o endpoint do Google Apps Script em config.js.
