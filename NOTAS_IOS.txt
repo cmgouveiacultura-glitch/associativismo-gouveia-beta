@@ -1,0 +1,3 @@
+Esta versão inclui otimizações específicas para Safari no iPhone/iPad.
+A versão principal index.html é responsiva e inclui as mesmas correções.
+mobile.html mantém uma apresentação mobile-first para testes e utilização direta.

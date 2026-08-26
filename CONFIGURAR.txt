@@ -1,0 +1,38 @@
+PLATAFORMA MUNICIPAL DO ASSOCIATIVISMO — CONFIGURAÇÃO FINAL
+
+A versão HTML já contém os 6 formulários nativos:
+- RMA
+- Apoio Técnico e/ou Material
+- Transporte Municipal (até 10 deslocações)
+- Apoio Anual — Cultura
+- Apoio Anual — Desporto
+- Programa de Impulso Associativo (até 2 projetos)
+
+Para os pedidos passarem efetivamente a ser gravados e enviados, falta apenas ligar o site ao Apps Script:
+
+1. Entre em script.google.com com a conta municipal.
+2. Crie um novo projeto e cole o conteúdo de apps-script/Code.gs.
+3. No topo do Code.gs, substitua:
+   COLOCAR_EMAIL_VEREADORA
+   COLOCAR_EMAIL_VICE_PRESIDENTE
+   COLOCAR_O_SEU_EMAIL
+   pelos três emails que devem receber os resumos.
+4. Implementar > Nova implementação > Aplicação Web.
+5. Executar como: Eu.
+6. Acesso: Qualquer pessoa.
+7. Autorize Drive, Sheets e envio de email.
+8. Copie o endereço que termina em /exec.
+9. Abra config.js e cole esse endereço entre as aspas:
+   window.ASSOCIATIVISMO_ENDPOINT = 'COLE_AQUI_O_URL_EXEC';
+10. Envie index.html, mobile.html e config.js para o GitHub Pages.
+
+O Apps Script cria automaticamente, na conta municipal que o publicar:
+- uma Google Sheet “Plataforma Municipal do Associativismo — Pedidos”, com uma aba por procedimento;
+- uma pasta Drive “Plataforma Municipal do Associativismo — Anexos”, organizada por procedimento/ano/pedido;
+- email-resumo para Vereadora + Vice-Presidente + técnico responsável;
+- email de confirmação para a associação.
+
+ATENÇÃO
+Cultura e Desporto estão construídos mas mantêm-se fechados no site enquanto o respetivo procedimento não estiver aberto. No Code.gs também estão bloqueados por segurança em ACTIVE_FORMS. Quando abrir o aviso, altere o respetivo valor para true e ative o cartão no HTML.
+
+O Programa de Impulso abre/fecha automaticamente nos períodos já programados no site e no backend.
