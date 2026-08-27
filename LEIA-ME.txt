@@ -1,16 +1,30 @@
-VERSÃO DE TESTE — PLATAFORMA MUNICIPAL DO ASSOCIATIVISMO
+ALTERAÇÃO DO FLUXO — RELATÓRIO DE EXECUÇÃO / PROGRAMA IMPULSO
 
-Esta versão funciona sem Google Drive, Google Sheets ou Apps Script.
+O preenchimento online foi retirado.
 
-Pode colocá-la diretamente no GitHub Pages para testar:
-- navegação;
-- formulários nativos;
-- campos condicionais;
-- múltiplas deslocações/projetos/atividades;
-- versão desktop/responsiva (index.html);
-- versão mobile dedicada (mobile.html);
-- guardar rascunhos no próprio navegador.
+NOVO FLUXO
+1. A associação descarrega o modelo PDF.
+2. Preenche o relatório.
+3. Assina o relatório.
+4. Regressa à plataforma.
+5. Carrega o PDF final.
+6. O PDF é enviado automaticamente para:
+   apoios.associativismo@cm-gouveia.pt
+7. A entidade recebe uma confirmação no email que indicar.
 
-Ao carregar em "Submeter", a plataforma apenas simula uma submissão e mostra uma mensagem de sucesso de teste. Nenhum dado é enviado para fora do navegador.
+FICHEIROS A SUBSTITUIR NO GITHUB
+- index.html
+- relatorio-impulso-online.html
 
-Quando a versão visual estiver aprovada, basta passar para o pacote FINAL e configurar o endpoint do Google Apps Script em config.js.
+NÃO ALTERAR
+- relatorio-execucao-impulso-2026.pdf
+- config.js, desde que já contenha o URL /exec correto do Apps Script.
+
+GOOGLE APPS SCRIPT
+- Substituir o conteúdo do Code.gs pelo Code.gs deste pacote.
+- Guardar.
+- Atualizar a implementação da Aplicação Web para uma nova versão.
+
+IMPORTANTE
+O nome relatorio-impulso-online.html foi mantido para não partir ligações já existentes,
+mas a página deixou de permitir preenchimento online: serve agora apenas para entrega do PDF.

@@ -7,6 +7,8 @@
  * 3) Copie o URL /exec para config.js no site.
  */
 
+const RELATORIO_IMPULSO_EMAIL = 'apoios.associativismo@cm-gouveia.pt';
+
 const INTERNAL_EMAILS = [
   'COLOCAR_EMAIL_VEREADORA',
   'COLOCAR_EMAIL_VICE_PRESIDENTE',
@@ -21,7 +23,8 @@ const ACTIVE_FORMS = {
   transporte: true,
   cultura: false,
   desporto: false,
-  impulso: 'auto'
+  impulso: 'auto',
+  relatorio_impulso: true
 };
 
 const FORM_NAMES = {
@@ -30,7 +33,8 @@ const FORM_NAMES = {
   transporte: 'Transporte Municipal',
   cultura: 'Apoio Anual - Cultura',
   desporto: 'Apoio Anual - Desporto',
-  impulso: 'Programa de Impulso Associativo'
+  impulso: 'Programa de Impulso Associativo',
+  relatorio_impulso: 'Relatório de Execução - Programa Impulso 2026'
 };
 
 function doGet() {
@@ -38,15 +42,17 @@ function doGet() {
 }
 
 function doPost(e) {
+  let requestId = '';
   try {
     if (!e || !e.parameter || !e.parameter.payload) {
-      return resposta_('Pedido sem dados.', false);
+      return resposta_('Pedido sem dados.', false, requestId);
     }
 
     const payload = JSON.parse(e.parameter.payload);
+    requestId = String(payload.requestId || '');
     const tipo = String(payload.formType || '').trim();
-    if (!FORM_NAMES[tipo]) return resposta_('Tipo de formulário inválido.', false);
-    if (!formularioAberto_(tipo)) return resposta_('Este procedimento não se encontra aberto.', false);
+    if (!FORM_NAMES[tipo]) return resposta_('Tipo de formulário inválido.', false, requestId);
+    if (!formularioAberto_(tipo)) return resposta_('Este procedimento não se encontra aberto.', false, requestId);
 
     const dados = payload.data || {};
     const ficheiros = Array.isArray(payload.files) ? payload.files : [];
@@ -59,13 +65,19 @@ function doPost(e) {
     const links = guardarFicheiros_(pastaPedido, ficheiros);
 
     registarNaFolha_(store.sheet, tipo, payload.formTitle || FORM_NAMES[tipo], associacao, email, dados, links, agora);
+
+    if (tipo === 'relatorio_impulso') {
+      enviarRelatorioImpulso_(associacao, dados, ficheiros, agora);
+      return resposta_('Relatório de execução enviado com sucesso.', true, requestId);
+    }
+
     enviarResumoInterno_(tipo, associacao, email, dados, links, agora);
     enviarConfirmacao_(tipo, associacao, email, dados);
 
-    return resposta_('Pedido registado com sucesso.', true);
+    return resposta_('Pedido registado com sucesso.', true, requestId);
   } catch (err) {
     console.error(err);
-    return resposta_('Não foi possível registar o pedido: ' + err.message, false);
+    return resposta_('Não foi possível registar o pedido: ' + err.message, false, requestId);
   }
 }
 
@@ -157,6 +169,74 @@ function registarNaFolha_(book, tipo, titulo, associacao, email, dados, links, a
   sh.autoResizeColumn(1);
 }
 
+function enviarRelatorioImpulso_(associacao, dados, ficheiros, agora) {
+  const ficheiro = ficheiros.find(f => f && f.field === 'relatorio_pdf' && f.data);
+  if (!ficheiro) throw new Error('O PDF do relatório não foi recebido pelo servidor.');
+
+  if (!/\.pdf$/i.test(String(ficheiro.name || '')) &&
+      String(ficheiro.mime || '') !== 'application/pdf') {
+    throw new Error('O ficheiro recebido não é um PDF válido.');
+  }
+
+  const bytes = Utilities.base64Decode(ficheiro.data);
+  const blob = Utilities.newBlob(
+    bytes,
+    'application/pdf',
+    limparNome_(ficheiro.name || 'Relatorio_Execucao_Impulso_2026.pdf')
+  );
+
+  const emailEntidade = valor_(dados.email || dados.email_associacao || '').trim();
+  const assunto = `[Relatório de Execução] Programa Impulso 2026 — ${associacao}`;
+  const dataEnvio = Utilities.formatDate(
+    agora,
+    Session.getScriptTimeZone() || 'Europe/Lisbon',
+    'dd/MM/yyyy HH:mm'
+  );
+
+  const corpo =
+    `Foi entregue através da Plataforma Municipal do Associativismo um Relatório de Execução do Programa de Impulso Associativo 2026.\n\n` +
+    `DOCUMENTO\nRelatório de Execução — Programa de Impulso Associativo 2026\n` +
+    `Estado indicado pela entidade: preenchido e assinado\n\n` +
+    `ENTIDADE\n${associacao}\n` +
+    `NIPC: ${valor_(dados.nipc) || 'Não indicado'}\n` +
+    `Projeto: ${valor_(dados.projeto) || 'Não indicado'}\n` +
+    `${emailEntidade ? 'Email: ' + emailEntidade + '\n' : ''}` +
+    `${valor_(dados.observacoes) ? '\nOBSERVAÇÕES\n' + valor_(dados.observacoes) + '\n' : ''}` +
+    `\nData de submissão: ${dataEnvio}\n\n` +
+    `O relatório preenchido e assinado segue em anexo em formato PDF.`;
+
+  MailApp.sendEmail({
+    to: RELATORIO_IMPULSO_EMAIL,
+    subject: assunto,
+    body: corpo,
+    attachments: [blob],
+    replyTo: emailEntidade || undefined,
+    name: 'Plataforma Municipal do Associativismo'
+  });
+
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEntidade)) {
+    const assuntoConfirmacao = 'Confirmação de receção — Relatório de Execução Programa Impulso 2026';
+    const corpoConfirmacao =
+      `Exmos. Senhores,\n\n` +
+      `Confirmamos a receção do Relatório de Execução do Programa de Impulso Associativo 2026 submetido através da Plataforma Municipal do Associativismo.\n\n` +
+      `Entidade: ${associacao}\n` +
+      `NIPC: ${valor_(dados.nipc) || 'Não indicado'}\n` +
+      `Projeto: ${valor_(dados.projeto) || 'Não indicado'}\n` +
+      `Ficheiro: ${limparNome_(ficheiro.name || 'Relatório.pdf')}\n` +
+      `Data de submissão: ${dataEnvio}\n\n` +
+      `A receção do documento não corresponde à validação da prestação de contas, que será efetuada pelos serviços municipais competentes.\n\n` +
+      `Com os melhores cumprimentos,\nMunicípio de Gouveia`;
+
+    MailApp.sendEmail({
+      to: emailEntidade,
+      subject: assuntoConfirmacao,
+      body: corpoConfirmacao,
+      replyTo: RELATORIO_IMPULSO_EMAIL,
+      name: 'Município de Gouveia'
+    });
+  }
+}
+
 function enviarResumoInterno_(tipo, associacao, email, dados, links, agora) {
   const configurados = INTERNAL_EMAILS
     .map(x => String(x || '').trim())
@@ -200,6 +280,8 @@ function resumoTexto_(tipo, d) {
     }
   } else if (tipo === 'impulso') {
     for (let i=1;i<=2;i++) if (d[`p${i}_titulo`]) linhas.push(`Projeto ${i}: ${d[`p${i}_titulo`]} | Custo: ${d[`p${i}_custo`] || '—'} € | Solicitado: ${d[`p${i}_pedido`] || '—'} € | ${d[`p${i}_periodo`] || ''}`);
+  } else if (tipo === 'relatorio_impulso') {
+    add_(linhas, 'NIPC', d.nipc); add_(linhas, 'Projeto', d.projeto); add_(linhas, 'Email', d.email); add_(linhas, 'Observações', d.observacoes);
   } else if (tipo === 'cultura' || tipo === 'desporto') {
     add_(linhas, 'Enquadramento', d.objetivos || d.modalidade);
     const prefixo = tipo === 'desporto' ? 's' : 'a';
@@ -220,4 +302,19 @@ function resumoCurto_(tipo, d) {
 function add_(arr, rotulo, valor) { if (valor !== undefined && valor !== null && String(valor).trim() !== '') arr.push(rotulo + ': ' + valor_(valor)); }
 function valor_(v) { return Array.isArray(v) ? v.join(', ') : String(v == null ? '' : v); }
 function limparNome_(s) { return String(s || 'Sem nome').replace(/[\\/:*?"<>|#%{}~&]/g, '-').replace(/\s+/g, ' ').trim(); }
-function resposta_(mensagem, ok) { return HtmlService.createHtmlOutput(`<meta charset="utf-8"><body style="font-family:Arial;padding:20px"><strong>${ok ? 'OK' : 'ERRO'}</strong><p>${mensagem}</p></body>`); }
+function resposta_(mensagem, ok, requestId) {
+  const payload = JSON.stringify({
+    type: 'associativismo-backend',
+    ok: !!ok,
+    message: String(mensagem || ''),
+    requestId: String(requestId || '')
+  }).replace(/</g, '\\u003c');
+
+  return HtmlService.createHtmlOutput(
+    `<meta charset="utf-8">` +
+    `<body style="font-family:Arial;padding:20px">` +
+    `<strong>${ok ? 'OK' : 'ERRO'}</strong><p>${mensagem}</p>` +
+    `<script>try{parent.postMessage(${payload},'*')}catch(e){}<\/script>` +
+    `</body>`
+  );
+}
