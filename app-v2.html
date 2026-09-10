@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Plataforma do Associativismo | Município de Gouveia</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f5f7f8;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#1f2933}
+#legacy{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
+.form-layer{position:fixed;inset:0;z-index:9999;background:#f6f8f9;display:none;flex-direction:column}.form-layer.open{display:flex}
+.form-top{height:72px;min-height:72px;display:flex;align-items:center;gap:14px;padding:0 22px;background:rgba(255,255,255,.96);border-bottom:1px solid #e5e9ec;box-shadow:0 8px 24px rgba(31,41,51,.06);backdrop-filter:blur(12px)}
+.form-back{appearance:none;border:1px solid #dce2e6;background:#fff;color:#263d4e;border-radius:12px;padding:11px 14px;font-weight:800;font-size:14px;cursor:pointer}.form-back:hover{background:#f7f9fa}.form-title{min-width:0}.form-title strong{display:block;font-size:15px;line-height:1.2}.form-title small{display:block;margin-top:3px;color:#74808a;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.form-actions{margin-left:auto}.form-external{color:#52616c;text-decoration:none;font-size:12px;font-weight:750;border:1px solid #e1e6e9;border-radius:10px;padding:9px 11px;background:#fff}
+.form-frame{flex:1;width:100%;border:0;background:#f6f8f9}.loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#687680;font-size:13px;z-index:-1}
+@media(max-width:680px){.form-top{height:64px;min-height:64px;padding:0 12px;gap:10px}.form-back{padding:10px 11px}.form-title strong{font-size:14px}.form-title small{font-size:11px}.form-external{display:none}}
+</style>
+</head>
+<body>
+<iframe id="legacy" title="Plataforma do Associativismo" src="index_sem_botao_download_relatorio%20(1).html"></iframe>
+<div class="form-layer" id="formLayer" role="dialog" aria-modal="true" aria-label="Formulário integrado">
+  <div class="form-top">
+    <button class="form-back" id="formBack" type="button">← Voltar</button>
+    <div class="form-title"><strong id="formTitle">Formulário</strong><small>Preenchimento dentro da Plataforma do Associativismo</small></div>
+    <div class="form-actions"><a class="form-external" id="formExternal" href="#" target="_blank" rel="noopener">Abrir separadamente ↗</a></div>
+  </div>
+  <div class="loading">A carregar formulário…</div>
+  <iframe class="form-frame" id="formFrame" title="Formulário"></iframe>
+</div>
+<script>
+(function(){
+  const legacy=document.getElementById('legacy');
+  const layer=document.getElementById('formLayer');
+  const frame=document.getElementById('formFrame');
+  const title=document.getElementById('formTitle');
+  const ext=document.getElementById('formExternal');
+  const back=document.getElementById('formBack');
+
+  function embedUrl(url){
+    if(!url) return url;
+    try{
+      const u=new URL(url,location.href);
+      if(u.hostname==='docs.google.com' && u.pathname.includes('/forms/')){
+        if(u.pathname.endsWith('/edit')) u.pathname=u.pathname.replace(/\/edit$/,'/viewform');
+        if(!u.searchParams.has('embedded')) u.searchParams.set('embedded','true');
+      }
+      return u.href;
+    }catch(e){return url;}
+  }
+  function openForm(url,label){
+    if(!url)return;
+    title.textContent=label||'Formulário';
+    ext.href=url;
+    frame.src=embedUrl(url);
+    layer.classList.add('open');
+    document.body.style.overflow='hidden';
+    history.pushState({form:true},'', '#formulario');
+  }
+  function closeForm(fromPop){
+    layer.classList.remove('open');
+    frame.src='about:blank';
+    document.body.style.overflow='hidden';
+    if(!fromPop && location.hash==='#formulario') history.back();
+  }
+  back.addEventListener('click',()=>closeForm(false));
+  window.addEventListener('popstate',()=>{if(layer.classList.contains('open'))closeForm(true)});
+
+  const latest={
+    'registo municipal das associações':'https://forms.gle/55GqdEBhtPJYa4K36',
+    'registo municipal de associações':'https://forms.gle/55GqdEBhtPJYa4K36',
+    'apoio técnico e/ou material':'https://forms.gle/DxUdUMWRPSMtngoY8',
+    'apoio técnico':'https://forms.gle/DxUdUMWRPSMtngoY8',
+    'transporte municipal':'https://forms.gle/9DunoDnuiE4spsrXA',
+    'transporte em viaturas municipais':'https://forms.gle/9DunoDnuiE4spsrXA',
+    'apoio anual — desporto':'https://docs.google.com/forms/d/1hfsow7imRYdcYtD5RDmz5xDqaQjCK5Qr7GzYbRokhdU/viewform?embedded=true',
+    'apoio anual - desporto':'https://docs.google.com/forms/d/1hfsow7imRYdcYtD5RDmz5xDqaQjCK5Qr7GzYbRokhdU/viewform?embedded=true'
+  };
+
+  function normalize(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim()}
+
+  function patch(){
+    let d;
+    try{d=legacy.contentDocument||legacy.contentWindow.document}catch(e){return}
+    if(!d)return;
+
+    const style=d.createElement('style');
+    style.textContent=`
+      :root{--app-ink:#1f2933;--app-blue:#234d6d;--app-orange:#e86f1f;--app-green:#2f7d5a}
+      body{background:linear-gradient(180deg,#f7fafb 0,#fff 32%,#faf9f7 100%)!important}
+      .topbar{background:rgba(255,255,255,.95)!important;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(31,41,51,.045)!important}
+      .hero{border-radius:24px!important;box-shadow:0 18px 50px rgba(23,42,58,.075)!important;border:1px solid rgba(35,77,109,.08)!important}
+      .card{border-radius:20px!important;border:1px solid #e4e9ec!important;box-shadow:0 10px 34px rgba(31,41,51,.055)!important;overflow:hidden!important}
+      .card:hover{transform:translateY(-2px);box-shadow:0 17px 42px rgba(31,41,51,.085)!important}
+      .card-body{padding:20px!important}.note{border-radius:12px!important;background:#f7f9fa!important;border:1px solid #edf0f2!important}
+      .btn.active,.btn[data-integrated]{background:linear-gradient(135deg,#d95e17,#f47b12)!important;color:#fff!important;border:0!important;border-radius:12px!important;min-height:45px!important;font-weight:850!important;box-shadow:0 10px 24px rgba(232,111,31,.18)!important;text-decoration:none!important;cursor:pointer!important}
+      .btn[data-integrated]::after{content:' →'}
+      .status.open{background:#eaf5ef!important;color:#256647!important;border-color:#d4eadc!important}
+      .integrated-hint-app{display:flex;align-items:center;gap:7px;margin-top:10px;color:#426177;font-size:12px;font-weight:750}.integrated-hint-app:before{content:'✓';display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#e8f4ee;color:#2e7a59}
+      @media(max-width:680px){.card{border-radius:17px!important}.hero{border-radius:20px!important}.card-body{padding:17px!important}}
+    `;
+    d.head.appendChild(style);
+
+    const cards=[...d.querySelectorAll('.card')];
+    cards.forEach(card=>{
+      const h=card.querySelector('h3'); if(!h)return;
+      const raw=h.textContent.trim(); const key=normalize(raw);
+      let known=null;
+      Object.keys(latest).some(k=>{if(key.includes(normalize(k))){known=latest[k];return true}return false});
+      const btn=card.querySelector('a.btn,button.btn');
+      if(known && btn){
+        if(btn.tagName==='A'){btn.removeAttribute('href');btn.removeAttribute('target');btn.removeAttribute('rel')}
+        btn.setAttribute('data-integrated','1');btn.classList.remove('disabled');btn.classList.add('active');btn.removeAttribute('aria-disabled');
+        btn.textContent=key.includes('registo municipal')?'Aceder ao RMA':key.includes('desporto')?'Apresentar candidatura':'Preencher na plataforma';
+        btn.onclick=function(ev){ev.preventDefault();ev.stopPropagation();openForm(known,raw);return false};
+        if(!card.querySelector('.integrated-hint-app')){const hint=d.createElement('div');hint.className='integrated-hint-app';hint.textContent='Preenchimento sem sair da plataforma';btn.insertAdjacentElement('afterend',hint)}
+      }
+      if(key.includes('apoio anual') && key.includes('desporto')){
+        const st=card.querySelector('.status');if(st){st.className='status open';st.textContent='Aberto'}
+        const note=card.querySelector('.note');if(note)note.innerHTML='<strong>Candidaturas 2026/2027:</strong> abertas até <strong>10 de novembro de 2026</strong>.';
+      }
+    });
+
+    [...d.querySelectorAll('a[href*="forms.gle"],a[href*="docs.google.com/forms"]')].forEach(a=>{
+      if(a.dataset.integrated)return;
+      const url=a.href;const label=(a.closest('.card')?.querySelector('h3')?.textContent||a.textContent||'Formulário').trim();
+      a.removeAttribute('target');a.onclick=function(ev){ev.preventDefault();openForm(url,label);return false};
+    });
+
+    [...d.querySelectorAll('.deadline-item')].forEach(item=>{
+      const t=normalize(item.textContent);
+      if(t.includes('desporto')){
+        const date=item.querySelector('.deadline-date');if(date)date.innerHTML='<strong>10 NOV</strong><small>2026</small>';
+        const last=item.querySelector('span:last-child');if(last)last.innerHTML='<strong>Apoio Anual — Desporto</strong><small>Candidaturas abertas até 10 de novembro.</small>';
+      }
+    });
+  }
+  legacy.addEventListener('load',()=>{patch();setTimeout(patch,500)});
+})();
+</script>
+</body>
+</html>
