@@ -32,6 +32,123 @@ textarea{min-height:95px;resize:vertical}input:focus,select:focus,textarea:focus
 @media(max-width:430px){.progress{grid-template-columns:repeat(2,minmax(0,1fr))}.progress span{justify-content:flex-start;text-align:left;padding-left:10px}}
 </style>
 <script src="config.js"></script>
+
+<style id="modern-refresh">
+:root{
+  --navy:#17384b;--navy-2:#24566f;--orange:#e96f1d;--ink:#17242d;
+  --muted:#667782;--line:#dce4e8;--surface:#ffffff;--soft:#f3f7f8;
+  --success:#2d7352;--shadow:0 18px 50px rgba(23,56,75,.08);
+}
+.rma-head{
+  min-height:76px;padding:14px 24px;padding-top:max(14px,env(safe-area-inset-top));
+  background:linear-gradient(135deg,rgba(255,255,255,.99),rgba(247,250,251,.98));
+  border-bottom:1px solid #e4eaed;box-shadow:0 10px 30px rgba(23,56,75,.055)
+}
+.rma-back{
+  min-height:42px;padding:10px 15px;border-color:#d8e1e5;border-radius:13px;
+  color:var(--navy);box-shadow:0 3px 10px rgba(23,56,75,.035);transition:.2s ease
+}
+.rma-back:hover{transform:translateY(-1px);border-color:#bdcbd2}
+.rma-title strong{font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+.rma-title small{font-size:12px;color:#75858e}
+.rma-shell{
+  padding:28px 20px 44px;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(47,112,143,.075),transparent 24%),
+    radial-gradient(circle at 96% 10%,rgba(233,111,29,.06),transparent 22%),
+    linear-gradient(180deg,#f6f9fa 0%,#f8fafb 55%,#f5f7f8 100%)
+}
+.rma-form{max-width:1000px}
+.intro,.section{
+  border:1px solid rgba(215,226,231,.95);border-radius:22px;
+  box-shadow:0 14px 38px rgba(23,56,75,.055);background:rgba(255,255,255,.985)
+}
+.intro{
+  position:relative;overflow:hidden;padding:28px 30px;margin-bottom:18px
+}
+.intro:before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+  background:linear-gradient(180deg,var(--navy-2),var(--orange))
+}
+.intro:after{
+  content:"RMA";position:absolute;right:24px;top:12px;font-size:64px;font-weight:900;
+  letter-spacing:-.06em;color:rgba(34,86,111,.045);pointer-events:none
+}
+.intro h1{font-size:28px;letter-spacing:-.025em;color:var(--ink);margin-bottom:8px}
+.intro p{font-size:15px;color:#60717b;max-width:680px}
+.notice{
+  margin-top:17px;padding:14px 16px 14px 44px;position:relative;
+  border:1px solid #dce9ee;background:#f0f7f9;border-radius:14px;color:#35586b;line-height:1.5
+}
+.notice:before{
+  content:"i";position:absolute;left:15px;top:14px;width:20px;height:20px;display:grid;place-items:center;
+  border-radius:50%;background:#d9ebf1;color:var(--navy-2);font-weight:900;font-family:Georgia,serif
+}
+.journey-progress{
+  position:sticky;top:0;z-index:8;margin:0 0 18px;padding:13px 15px 12px;
+  background:rgba(247,250,251,.92);backdrop-filter:blur(14px);
+  border:1px solid rgba(219,228,232,.9);border-radius:16px;
+  box-shadow:0 9px 26px rgba(23,56,75,.06)
+}
+.journey-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:9px}
+.journey-kicker{font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:#7b8992}
+.journey-current{font-size:13px;font-weight:850;color:var(--navy);text-align:right}
+.journey-track{height:7px;background:#e6ecef;border-radius:99px;overflow:hidden}
+.journey-fill{
+  display:block;height:100%;width:14.285%;border-radius:99px;
+  background:linear-gradient(90deg,var(--navy-2),#3a7592 58%,var(--orange));
+  box-shadow:0 0 12px rgba(36,86,111,.18);transition:width .32s ease
+}
+.section{padding:25px 26px;margin-bottom:16px;scroll-margin-top:94px}
+.section-head{gap:13px;margin-bottom:21px;align-items:flex-start}
+.num{
+  width:36px;height:36px;flex-basis:36px;border-radius:12px;
+  background:linear-gradient(135deg,var(--navy),var(--navy-2));
+  box-shadow:0 7px 16px rgba(23,56,75,.16);font-size:13px
+}
+.section h2{font-size:20px;letter-spacing:-.015em;color:var(--ink);margin-top:1px}
+.section-sub{font-size:13px;line-height:1.45;color:#78868e;margin-top:4px}
+.grid{gap:17px 18px}
+.field{gap:8px}.field label{font-size:13px;color:#33424b}
+.hint{font-size:12px;color:#7a8991}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],select,textarea{
+  min-height:48px;border:1px solid #cfd9de;border-radius:13px;background:#fbfcfc;
+  padding:12px 13px;font-size:15px;transition:border-color .18s,box-shadow .18s,background .18s
+}
+textarea{min-height:108px}
+input:focus,select:focus,textarea:focus{
+  background:#fff;border-color:#48778f;box-shadow:0 0 0 4px rgba(72,119,143,.11)
+}
+.choice{
+  min-height:45px;border:1px solid #d6dfe3;border-radius:13px;padding:10px 13px;background:#fbfcfc;
+  transition:.18s ease
+}
+.choice:hover{border-color:#bfcdd4;background:#fff}
+.choice:has(input:checked){border-color:#7aa0b2;background:#f0f7fa;box-shadow:0 0 0 3px rgba(72,119,143,.07)}
+.filebox{
+  padding:15px;border:1.5px dashed #b9c9d0;border-radius:14px;background:#f8fbfc;
+  transition:.18s ease
+}
+.filebox:hover{border-color:#7fa2b2;background:#f4f9fb}
+.filemeta{font-size:11.5px;margin-top:7px}
+.actions{
+  border-radius:0 0 20px 20px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
+  border-top:1px solid #e2e8eb;box-shadow:0 -10px 28px rgba(23,56,75,.045)
+}
+.draft,.submit{min-height:46px;border-radius:13px;padding:12px 18px}
+.submit{background:linear-gradient(135deg,#d85e18,#f07b18);box-shadow:0 10px 24px rgba(222,102,26,.2)}
+.msg{border-radius:14px;padding:14px 16px}
+@media(max-width:720px){
+  .rma-head{min-height:68px;padding-left:12px;padding-right:12px}
+  .rma-shell{padding:14px 11px 30px}
+  .intro{padding:21px 18px 20px}.intro:after{font-size:48px;right:13px}.intro h1{font-size:23px}
+  .journey-progress{top:0;margin-bottom:13px;padding:11px 12px;border-radius:13px}
+  .journey-row{margin-bottom:8px}.journey-kicker{font-size:10px}.journey-current{font-size:11.5px}
+  .section{padding:19px 16px;border-radius:17px;scroll-margin-top:82px}
+  .section h2{font-size:18px}.section-head{margin-bottom:18px}
+  input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],select,textarea{font-size:16px}
+}
+</style>
 </head>
 <body>
 <iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Plataforma do Associativismo"></iframe>
@@ -43,7 +160,13 @@ textarea{min-height:95px;resize:vertical}input:focus,select:focus,textarea:focus
   </div>
   <div class="rma-shell">
     <form class="rma-form" id="rmaForm">
-      <div class="progress"><span>1 · Pedido</span><span>2 · Identificação</span><span>3 · Contactos</span><span>4 · Administração</span><span>5 · Caracterização</span><span>6 · Documentos</span><span>7 · Confirmar</span></div>
+      <div class="journey-progress" aria-live="polite">
+  <div class="journey-row">
+    <span class="journey-kicker">Progresso do formulário</span>
+    <span class="journey-current" id="journeyCurrent">Secção 1 de 7 · Tipo de pedido</span>
+  </div>
+  <div class="journey-track"><span class="journey-fill" id="journeyFill"></span></div>
+</div>
       <div class="intro">
         <h1>Registo Municipal das Associações</h1>
         <p>Inscrição ou atualização da informação no RMA do Município de Gouveia.</p>
@@ -147,6 +270,26 @@ function patch(){
  });
 }
 portal.addEventListener('load',()=>{patch();setTimeout(patch,600)});
+
+// Progresso simples e responsivo: mostra apenas a secção atual, sem ocupar espaço com 7 passos.
+const sectionNames=['Tipo de pedido','Identificação','Contactos','Administração','Caracterização','Documentos','Confirmar'];
+const rmaSections=[...form.querySelectorAll('.section')];
+rmaSections.forEach((s,i)=>{s.dataset.step=String(i+1);s.dataset.stepName=sectionNames[i]||('Secção '+(i+1));});
+const journeyCurrent=document.getElementById('journeyCurrent');
+const journeyFill=document.getElementById('journeyFill');
+function setJourney(i){
+  const idx=Math.max(0,Math.min(rmaSections.length-1,i));
+  journeyCurrent.textContent='Secção '+(idx+1)+' de '+rmaSections.length+' · '+(sectionNames[idx]||'');
+  journeyFill.style.width=(((idx+1)/rmaSections.length)*100)+'%';
+}
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{
+    const visible=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+    if(visible){const i=rmaSections.indexOf(visible.target);if(i>=0)setJourney(i);}
+  },{root:document.querySelector('.rma-shell'),rootMargin:'-22% 0px -58% 0px',threshold:[0,.12,.35]});
+  rmaSections.forEach(s=>obs.observe(s));
+}
+setJourney(0);
 form.addEventListener('change',e=>{
  if(e.target.name==='procedimento'){const box=document.getElementById('rmaExisting');const isUp=e.target.value.includes('Atualização');box.classList.toggle('show',isUp);box.querySelector('input').required=isUp}
 });
