@@ -149,9 +149,37 @@ input:focus,select:focus,textarea:focus{
   input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],select,textarea{font-size:16px}
 }
 </style>
+
+<style id="unified-forms-v1">
+#serviceLayer{position:fixed;inset:0;z-index:10020;display:none;background:#f5f7f8;flex-direction:column}
+#serviceLayer.open{display:flex}
+.service-form{max-width:1000px;margin:0 auto}
+.service-intro,.service-section{background:rgba(255,255,255,.985);border:1px solid rgba(215,226,231,.95);border-radius:22px;box-shadow:0 14px 38px rgba(23,56,75,.055)}
+.service-intro{position:relative;overflow:hidden;padding:28px 30px;margin-bottom:18px}
+.service-intro:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#24566f,#e96f1d)}
+.service-intro h1{font-size:28px;letter-spacing:-.025em;color:#17242d;margin:0 0 8px}.service-intro p{font-size:15px;color:#60717b;max-width:760px;line-height:1.55;margin:5px 0}
+.service-note{margin-top:17px;padding:14px 16px;border:1px solid #dce9ee;background:#f0f7f9;border-radius:14px;color:#35586b;line-height:1.5;font-size:13px}
+.service-section{padding:25px 26px;margin-bottom:16px;scroll-margin-top:94px}.service-section .section-head{margin-bottom:21px}
+.service-progress{position:sticky;top:0;z-index:8;margin:0 0 18px;padding:13px 15px 12px;background:rgba(247,250,251,.92);backdrop-filter:blur(14px);border:1px solid rgba(219,228,232,.9);border-radius:16px;box-shadow:0 9px 26px rgba(23,56,75,.06)}
+.service-progress-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:9px}.service-progress-label{font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:#7b8992}.service-progress-current{font-size:13px;font-weight:850;color:#17384b;text-align:right}.service-progress-track{height:7px;background:#e6ecef;border-radius:99px;overflow:hidden}.service-progress-fill{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#24566f,#3a7592 58%,#e96f1d);transition:width .3s ease}
+.dynamic-card{border:1px solid #dce4e8;background:#fbfcfc;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 7px 20px rgba(23,56,75,.035)}.dynamic-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.dynamic-head strong{font-size:15px}.remove-row,.add-row{border-radius:11px;padding:9px 12px;font-weight:750;cursor:pointer}.remove-row{border:0;background:#f8eeee;color:#8a463b}.add-row{border:1px solid #bfd0d8;background:#f3f8fa;color:#28586f;margin-top:8px}
+.compact-note{padding:11px 13px;border-left:3px solid #d4a238;background:#fff8e9;border-radius:8px;font-size:12px;color:#755b2b;margin:10px 0}
+@media(max-width:720px){.service-intro{padding:21px 18px 20px}.service-intro h1{font-size:23px}.service-section{padding:19px 16px;border-radius:17px}.service-progress{padding:11px 12px;margin-bottom:13px}.service-progress-label{font-size:10px}.service-progress-current{font-size:11.5px}}
+</style>
 </head>
 <body>
 <iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Plataforma do Associativismo"></iframe>
+
+
+<div id="serviceLayer" role="dialog" aria-modal="true" aria-label="Formulário municipal">
+  <div class="rma-head">
+    <button class="rma-back" id="serviceBack" type="button">← Voltar</button>
+    <div class="rma-title"><strong id="serviceTitle">Formulário</strong><small>Preenchimento dentro da Plataforma do Associativismo</small></div>
+  </div>
+  <div class="rma-shell" id="serviceShell">
+    <form class="service-form" id="serviceForm"></form>
+  </div>
+</div>
 
 <div id="rmaLayer" role="dialog" aria-modal="true" aria-label="Registo Municipal das Associações">
   <div class="rma-head">
@@ -309,6 +337,87 @@ form.addEventListener('submit',async e=>{
    localStorage.removeItem('rma_native_draft');show('Submissão enviada. Aguarde a confirmação por email do sistema RMA.','ok');setTimeout(()=>{post.remove();iframe.remove()},120000);
  }catch(err){show(err.message||'Não foi possível preparar a submissão.','err')}finally{btn.disabled=false;btn.textContent='Submeter RMA'}
 });
+})();
+</script>
+
+<script id="unified-service-forms">
+(function(){
+const endpoint=window.ASSOCIATIVISMO_ENDPOINT||'';
+const layer=document.getElementById('serviceLayer'),shell=document.getElementById('serviceShell'),form=document.getElementById('serviceForm'),titleEl=document.getElementById('serviceTitle');
+if(!layer||!form)return;
+let current=null,observer=null;
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function field(name,label,type='text',o={}){
+ const req=o.required!==false, full=o.full?' full':'', hint=o.hint?'<div class="hint">'+esc(o.hint)+'</div>':'';
+ let ctl='';
+ if(type==='textarea')ctl='<textarea name="'+name+'" '+(req?'required':'')+'></textarea>';
+ else if(type==='select')ctl='<select name="'+name+'" '+(req?'required':'')+'><option value="">Selecionar…</option>'+(o.options||[]).map(x=>'<option>'+esc(x)+'</option>').join('')+'</select>';
+ else if(type==='radio'||type==='checkbox')ctl='<div class="options">'+(o.options||[]).map((x,i)=>'<label class="choice"><input type="'+type+'" name="'+name+'" value="'+esc(x)+'" '+(req&&i===0?'required':'')+'>'+esc(x)+'</label>').join('')+'</div>';
+ else if(type==='file')ctl='<div class="filebox"><input type="file" name="'+name+'" '+(o.multiple?'multiple':'')+' '+(req?'required':'')+' accept=".pdf,.jpg,.jpeg,.png"><div class="filemeta">PDF, JPG ou PNG.</div></div>';
+ else ctl='<input type="'+type+'" name="'+name+'" '+(req?'required':'')+(o.min!=null?' min="'+o.min+'"':'')+(o.placeholder?' placeholder="'+esc(o.placeholder)+'"':'')+'>';
+ return '<div class="field'+full+'"><label>'+esc(label)+(req?' <span class="req">*</span>':'')+'</label>'+hint+ctl+'</div>';
+}
+function section(n,t,sub,body){return '<section class="service-section" data-step="'+n+'"><div class="section-head"><span class="num">'+n+'</span><div><h2>'+esc(t)+'</h2><div class="section-sub">'+esc(sub||'')+'</div></div></div>'+body+'</section>'}
+function intro(t,p,n){return '<div class="service-intro"><h1>'+esc(t)+'</h1><p>'+esc(p)+'</p>'+(n?'<div class="service-note">'+n+'</div>':'')+'</div>'}
+function common(){return '<div class="grid">'+field('numero_rma','Número RMA','text',{placeholder:'RMA-XXX',hint:'Pode indicar o número atribuído pelo Município, mesmo que a validação administrativa ainda esteja pendente.'})+field('associacao','Nome da associação / coletividade')+field('nif','NIF / NIPC','text',{placeholder:'9 dígitos'})+field('email_associacao','Email institucional / geral','email')+field('telefone','Telefone / telemóvel','tel')+field('representante','Representante legal')+'</div>'}
+function support(){return intro('Apoio Técnico, Material e Logístico','Pedido de apoio para atividades promovidas pela associação.','Antecedência mínima de <strong>45 dias úteis</strong>. A submissão não confere aprovação automática.')+
+ section(1,'Entidade','Identificação da associação.',common())+
+ section(2,'Atividade','Informação sobre a iniciativa.','<div class="grid">'+field('atividade','Designação da atividade / evento')+field('data','Data','date')+field('local','Local')+field('tipo_atividade','Tipo de atividade','select',{options:['Cultural','Desportiva','Recreativa','Ambiental','Formativa','Representação do concelho','Outra']})+field('plano_anual','Atividade prevista no plano anual?','radio',{options:['Sim','Não'],full:true})+'</div>')+
+ section(3,'Apoio solicitado','Recursos e necessidades a analisar.','<div class="grid">'+field('tipo_apoio','Tipo de apoio','checkbox',{options:['Apoio técnico / recursos humanos','Equipamentos — som, luz, palco','Infraestruturas — tendas, grades, outros','Cedência de espaço','Outro'],full:true})+field('montagem','Data de montagem','date')+field('desmontagem','Data de desmontagem','date')+field('publico','Público estimado','select',{options:['Menos de 50','50–200','200–500','Mais de 500']})+field('descricao','Descrição detalhada do apoio solicitado','textarea',{full:true})+field('ficheiros','Ficheiros de apoio','file',{required:false,multiple:true,full:true})+'</div>')+
+ section(4,'Confirmar','Formalização do pedido.','<div class="grid">'+field('declaracao','Confirmo que as informações prestadas são verdadeiras e que tomei conhecimento das condições aplicáveis.','checkbox',{options:['Confirmo'],full:true})+'</div>')}
+
+function journey(i){return '<div class="dynamic-card"><div class="dynamic-head"><strong>Deslocação '+i+'</strong>'+(i>1?'<button type="button" class="remove-row">Remover</button>':'')+'</div><div class="grid">'+field('d'+i+'_tipo','Tipo de atividade','select',{options:['Cultural','Desportiva','Recreativa','Formativa','Ambiental','Representação do concelho','Outra']})+field('d'+i+'_plano','Prevista no plano anual?','radio',{options:['Sim','Não']})+field('d'+i+'_atividade','Designação da atividade / evento')+field('d'+i+'_data','Data','date')+field('d'+i+'_destino','Destino')+field('d'+i+'_passageiros','N.º previsto de passageiros','number',{min:1})+field('d'+i+'_partida','Hora de partida','time')+field('d'+i+'_regresso','Hora prevista de regresso','time')+field('d'+i+'_itinerario','Itinerário previsto','textarea',{full:true})+field('d'+i+'_criancas','Transporte de crianças?','radio',{options:['Sim','Não'],full:true})+'</div></div>'}
+function transport(){return intro('Transporte em Viaturas Municipais','Pedido de cedência de viatura municipal com condutor.','Submeter até ao <strong>dia 20 do mês anterior</strong>, garantindo um mínimo de <strong>10 dias úteis</strong>. Período máximo de utilização: 6 horas.')+
+ section(1,'Entidade','Identificação da associação.',common())+
+ section(2,'Deslocações','Pode incluir até 10 deslocações no mesmo pedido.','<div id="journeys">'+journey(1)+'</div><button type="button" class="add-row" data-add="journey">+ Adicionar deslocação</button><div class="compact-note">No transporte de menores, a associação deve assegurar vigilância adequada e identificar previamente os acompanhantes junto do motorista.</div>')+
+ section(3,'Confirmar','Formalização do pedido.','<div class="grid">'+field('declaracao','Solicito formalmente a cedência de viatura(s) municipal(is) com condutor e confirmo o conhecimento das condições regulamentares.','checkbox',{options:['Confirmo'],full:true})+'</div>')}
+
+function activity(i,p='a'){return '<div class="dynamic-card"><div class="dynamic-head"><strong>Atividade '+i+'</strong>'+(i>1?'<button type="button" class="remove-row">Remover</button>':'')+'</div><div class="grid">'+field(p+i+'_nome','Designação da atividade')+field(p+i+'_tipo','Tipologia','select',{options:['Competição / prova','Evento / torneio','Formação','Captação / promoção','Outra']})+field(p+i+'_data','Data / período')+field(p+i+'_local','Local')+field(p+i+'_participantes','Participantes previstos','number',{min:0})+field(p+i+'_descricao','Descrição / objetivos','textarea',{full:true})+'</div></div>'}
+function sport(){return intro('Apoio Anual — Desporto 2026/2027','Candidatura ao Programa de Apoio Anual ao Associativismo Desportivo.','Candidaturas abertas até <strong>10 de novembro de 2026</strong>.')+
+ section(1,'Entidade','Identificação da associação desportiva.',common())+
+ section(2,'Enquadramento desportivo','Caracterização da atividade federada.','<div class="grid">'+field('modalidade','Modalidade principal')+field('tipo_modalidade','Tipo de modalidade','select',{options:['Coletiva','Individual','Outra']})+field('ambito','Âmbito competitivo principal','select',{options:['Nacional','Regional','Distrital','Outro']})+field('atletas','N.º total de atletas federados','number',{min:0})+field('equipas_escaloes','Equipas / escalões inscritos','textarea',{full:true})+field('certificacao','Certificação de entidade formadora','select',{options:['Sim','Não','Não aplicável']})+field('infraestruturas','Infraestruturas utilizadas','textarea',{full:true})+field('docs_desporto','Comprovativos federativos / outros documentos','file',{required:false,multiple:true,full:true})+'</div>')+
+ section(3,'Plano de atividades','Atividades organizativas e formativas.','<div id="sportActivities">'+activity(1,'s')+'</div><button type="button" class="add-row" data-add="sport">+ Adicionar atividade</button>')+
+ section(4,'Confirmar','Declaração da candidatura.','<div class="grid">'+field('declaracao','Confirmo a veracidade dos dados e o conhecimento das regras do Programa de Apoio Anual ao Associativismo Desportivo.','checkbox',{options:['Confirmo'],full:true})+'</div>')}
+
+function project(i){return '<div class="dynamic-card"><div class="dynamic-head"><strong>Projeto '+i+'</strong>'+(i>1?'<button type="button" class="remove-row">Remover</button>':'')+'</div><div class="grid">'+field('p'+i+'_titulo','Designação do projeto')+field('p'+i+'_periodo','Período de realização')+field('p'+i+'_objetivos','Descrição, objetivos e resultados esperados','textarea',{full:true})+field('p'+i+'_impacto','Impacto comunitário previsto','textarea',{full:true})+field('p'+i+'_custo','Custo total estimado (€)','number',{min:0})+field('p'+i+'_proprio','Financiamento próprio (€)','number',{min:0})+field('p'+i+'_pedido','Valor do apoio municipal solicitado (€)','number',{min:0})+field('p'+i+'_documentos','Documentos de suporte','file',{required:false,multiple:true,full:true})+'</div></div>'}
+function impulse(){return intro('Programa de Impulso Associativo','Candidatura a apoio para projetos, atividades, aquisições ou pequenas intervenções.','A disponibilidade do formulário acompanha os períodos definidos pelo Município.')+
+ section(1,'Entidade','Identificação e RMA.',common())+
+ section(2,'Projetos','Pode incluir até dois projetos.','<div id="projects">'+project(1)+'</div><button type="button" class="add-row" data-add="project">+ Adicionar segundo projeto</button>')+
+ section(3,'Confirmar','Declaração da candidatura.','<div class="grid">'+field('declaracao','Declaro que os dados e documentos apresentados são verdadeiros e correspondem à candidatura submetida.','checkbox',{options:['Confirmo'],full:true})+'</div>')}
+
+function culture(){return intro('Apoio Anual — Cultura','Plano anual para associações culturais, recreativas, ambientais, de conservação e cinegéticas.','O procedimento deve ser utilizado apenas durante o período de candidatura definido pelo Município.')+
+ section(1,'Entidade','Identificação da associação.',common())+
+ section(2,'Plano anual','Principais atividades previstas.','<div id="cultureActivities">'+activity(1,'c')+'</div><button type="button" class="add-row" data-add="culture">+ Adicionar atividade</button>')+
+ section(3,'Confirmar','Declaração da candidatura.','<div class="grid">'+field('declaracao','Confirmo que as informações prestadas são verdadeiras e que tomei conhecimento das regras aplicáveis.','checkbox',{options:['Confirmo'],full:true})+'</div>')}
+
+const renders={apoio:support,transporte:transport,desporto:sport,impulso:impulse,cultura:culture};
+const titles={apoio:'Apoio Técnico, Material e Logístico',transporte:'Transporte em Viaturas Municipais',desporto:'Apoio Anual — Desporto 2026/2027',impulso:'Programa de Impulso Associativo',cultura:'Apoio Anual — Cultura'};
+function actions(){return '<div id="serviceMsg" class="msg"></div><div class="actions"><button class="draft" type="button" id="serviceDraft">Guardar rascunho</button><button class="submit" type="submit">Submeter</button></div>'}
+function setProgress(i){const sections=[...form.querySelectorAll('.service-section')],idx=Math.max(0,Math.min(sections.length-1,i)),name=sections[idx]?.querySelector('h2')?.textContent||'';const el=form.querySelector('.service-progress-current'),fill=form.querySelector('.service-progress-fill');if(el)el.textContent='Secção '+(idx+1)+' de '+sections.length+' · '+name;if(fill)fill.style.width=(((idx+1)/sections.length)*100)+'%'}
+function initProgress(){if(observer)observer.disconnect();const sections=[...form.querySelectorAll('.service-section')];if('IntersectionObserver'in window){observer=new IntersectionObserver(es=>{const v=es.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(v){const i=sections.indexOf(v.target);if(i>=0)setProgress(i)}},{root:shell,rootMargin:'-22% 0px -58% 0px',threshold:[0,.12,.35]});sections.forEach(s=>observer.observe(s))}setProgress(0)}
+function show(text,type='warn'){const m=form.querySelector('#serviceMsg');if(!m)return;m.textContent=text;m.className='msg show '+type;m.scrollIntoView({behavior:'smooth',block:'center'})}
+function serializable(){const d={};new FormData(form).forEach((v,k)=>{if(v instanceof File)return;if(d[k])d[k]=Array.isArray(d[k])?[...d[k],v]:[d[k],v];else d[k]=v});return d}
+async function filesPayload(){let total=0,out=[];for(const inp of form.querySelectorAll('input[type=file]'))for(const file of inp.files){total+=file.size;if(total>7*1024*1024)throw new Error('O total dos anexos excede 7 MB.');const data=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(file)});out.push({field:inp.name,name:file.name,mime:file.type||'application/octet-stream',data})}return out}
+function open(key){if(!renders[key])return;current=key;titleEl.textContent=titles[key];form.innerHTML='<div class="service-progress"><div class="service-progress-row"><span class="service-progress-label">Progresso do formulário</span><span class="service-progress-current"></span></div><div class="service-progress-track"><span class="service-progress-fill"></span></div></div>'+renders[key]()+actions();layer.classList.add('open');shell.scrollTop=0;initProgress();restore()}
+function close(){layer.classList.remove('open');form.innerHTML='';current=null}
+document.getElementById('serviceBack').onclick=close;
+function save(){localStorage.setItem('assoc_draft_'+current,JSON.stringify(serializable()));show('Rascunho guardado neste dispositivo.','ok')}
+function restore(){const raw=localStorage.getItem('assoc_draft_'+current);if(!raw)return;try{const d=JSON.parse(raw);Object.entries(d).forEach(([k,v])=>{const vals=Array.isArray(v)?v:[v];form.querySelectorAll('[name="'+CSS.escape(k)+'"]').forEach(el=>{if(el.type==='radio'||el.type==='checkbox')el.checked=vals.includes(el.value);else el.value=vals[0]||''})})}catch(e){}}
+form.addEventListener('click',e=>{if(e.target.id==='serviceDraft')save();const rm=e.target.closest('.remove-row');if(rm)rm.closest('.dynamic-card')?.remove();const add=e.target.closest('[data-add]');if(!add)return;const t=add.dataset.add;if(t==='journey'){const box=form.querySelector('#journeys'),i=box.children.length+1;if(i<=10)box.insertAdjacentHTML('beforeend',journey(i));if(i>=10)add.disabled=true}else if(t==='sport'){const box=form.querySelector('#sportActivities'),i=box.children.length+1;if(i<=10)box.insertAdjacentHTML('beforeend',activity(i,'s'))}else if(t==='culture'){const box=form.querySelector('#cultureActivities'),i=box.children.length+1;if(i<=15)box.insertAdjacentHTML('beforeend',activity(i,'c'))}else if(t==='project'){const box=form.querySelector('#projects'),i=box.children.length+1;if(i<=2)box.insertAdjacentHTML('beforeend',project(i));if(i>=2)add.disabled=true}});
+form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;const btn=form.querySelector('.submit');btn.disabled=true;btn.textContent='A preparar…';try{const payload={formType:current,formTitle:titles[current],submittedAt:new Date().toISOString(),data:serializable(),files:await filesPayload(),source:location.href};if(!endpoint){show('O formulário está pronto, mas falta ligar o Apps Script municipal. O pedido ainda NÃO foi enviado.','warn');return}const iframe=document.createElement('iframe');iframe.name='service_submit_'+Date.now();iframe.style.display='none';document.body.appendChild(iframe);const post=document.createElement('form');post.method='POST';post.action=endpoint;post.target=iframe.name;post.style.display='none';const input=document.createElement('input');input.name='payload';input.value=JSON.stringify(payload);post.appendChild(input);document.body.appendChild(post);post.submit();localStorage.removeItem('assoc_draft_'+current);show('Pedido enviado para análise municipal.','ok');setTimeout(()=>{post.remove();iframe.remove()},120000)}catch(err){show(err.message||'Não foi possível preparar a submissão.','err')}finally{btn.disabled=false;btn.textContent='Submeter'}});
+
+function patchPortal(){
+ let d;try{d=document.getElementById('portal').contentDocument}catch(e){return}if(!d)return;
+ d.querySelectorAll('.card').forEach(card=>{
+   const h=(card.querySelector('h3')?.textContent||'').toLowerCase(),btn=card.querySelector('a.btn,button.btn');if(!btn)return;
+   let key='';if(h.includes('apoio técnico'))key='apoio';else if(h.includes('transporte'))key='transporte';else if(h.includes('desporto'))key='desporto';else if(h.includes('cultura'))key='cultura';else if(h.includes('impulso'))key='impulso';
+   if(!key)return;
+   if(key==='desporto'){const st=card.querySelector('.status');if(st){st.className='status open';st.textContent='Aberto'}btn.classList.remove('disabled');btn.classList.add('active');btn.removeAttribute('aria-disabled');btn.textContent='Apresentar candidatura';}
+   if(key==='apoio'||key==='transporte'||key==='desporto'){btn.removeAttribute('href');btn.removeAttribute('target');btn.style.cursor='pointer';btn.onclick=e=>{e.preventDefault();open(key);return false};}
+   else if(!btn.classList.contains('disabled')&&btn.getAttribute('aria-disabled')!=='true'){btn.removeAttribute('href');btn.onclick=e=>{e.preventDefault();open(key);return false};}
+ });
+}
+const portal=document.getElementById('portal');portal.addEventListener('load',()=>{patchPortal();setTimeout(patchPortal,700)});setTimeout(patchPortal,1000);
 })();
 </script>
 </body>
