@@ -17,8 +17,8 @@
 .rma-form{max-width:920px;margin:0 auto}
 .intro,.section{background:#fff;border:1px solid #e2e7e9;border-radius:18px;box-shadow:0 12px 30px rgba(34,54,68,.05)}
 .intro{padding:21px;margin-bottom:16px}.intro h1{font-size:23px;margin:0 0 8px;color:#233746}.intro p{margin:6px 0;line-height:1.55;color:#606b73}.notice{margin-top:13px;padding:12px 14px;border-radius:12px;background:#eef5f7;color:#35576b;font-size:13px}
-.progress{position:sticky;top:0;z-index:3;display:flex;gap:7px;overflow:auto;padding:10px 0 14px;background:linear-gradient(#f5f8f9 75%,rgba(245,248,249,0))}
-.progress span{white-space:nowrap;background:#fff;border:1px solid #dfe5e8;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:750;color:#64717a}
+.progress{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:0 0 16px;padding:0;background:transparent}
+.progress span{display:flex;align-items:center;justify-content:center;min-height:38px;text-align:center;background:#fff;border:1px solid #dfe5e8;border-radius:11px;padding:7px 6px;font-size:10.5px;font-weight:780;color:#64717a;line-height:1.2;box-shadow:0 4px 12px rgba(34,54,68,.035)}
 .section{padding:20px;margin-bottom:14px}.section-head{display:flex;gap:11px;margin-bottom:17px}.num{width:31px;height:31px;border-radius:10px;background:#27465a;color:#fff;display:grid;place-items:center;font-weight:850;flex:0 0 31px}.section h2{margin:2px 0 3px;font-size:18px}.section-sub{font-size:12.5px;color:#76818a}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px;min-width:0}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:750;color:#343f46}.req{color:#b44343}.hint{font-size:11.5px;color:#7a858d;line-height:1.4}
 input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],select,textarea{width:100%;border:1px solid #d5dadd;border-radius:11px;background:#fff;padding:11px 12px;font:inherit;color:#26323a;outline:none}
@@ -28,7 +28,8 @@ textarea{min-height:95px;resize:vertical}input:focus,select:focus,textarea:focus
 .conditional{display:none}.conditional.show{display:block}.actions{position:sticky;bottom:0;z-index:4;margin:20px -18px -18px;padding:13px 18px max(13px,env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid #e0e5e7;display:flex;justify-content:space-between;gap:10px;align-items:center}
 .draft,.submit{border-radius:11px;padding:12px 16px;font-weight:800;cursor:pointer}.draft{border:1px solid #d7dde1;background:#fff;color:#4c5962}.submit{border:0;background:linear-gradient(135deg,#d95e17,#f07a17);color:#fff;box-shadow:0 9px 22px rgba(217,94,23,.18)}.submit:disabled{opacity:.55}
 .msg{display:none;margin:14px 0;padding:13px 15px;border-radius:12px;font-size:13px;line-height:1.45}.msg.show{display:block}.msg.ok{background:#eaf6ee;color:#2b6442}.msg.warn{background:#fff4df;color:#76551e}.msg.err{background:#fdecec;color:#8a3f3f}
-@media(max-width:720px){.rma-head{padding-left:11px;padding-right:11px}.rma-shell{padding:12px}.intro,.section{border-radius:15px;padding:16px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.options{display:grid;grid-template-columns:1fr}.actions{margin-left:-12px;margin-right:-12px;margin-bottom:-12px;padding-left:12px;padding-right:12px}.draft,.submit{flex:1}.rma-title small{font-size:11px}}
+@media(max-width:720px){.rma-head{padding-left:11px;padding-right:11px}.rma-shell{padding:12px}.intro,.section{border-radius:15px;padding:16px}.progress{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:12px}.progress span{min-height:34px;padding:6px 4px;font-size:10px;border-radius:9px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.options{display:grid;grid-template-columns:1fr}.actions{margin-left:-12px;margin-right:-12px;margin-bottom:-12px;padding-left:12px;padding-right:12px}.draft,.submit{flex:1}.rma-title small{font-size:11px}}
+@media(max-width:430px){.progress{grid-template-columns:repeat(2,minmax(0,1fr))}.progress span{justify-content:flex-start;text-align:left;padding-left:10px}}
 </style>
 <script src="config.js"></script>
 </head>
