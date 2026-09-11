@@ -1,104 +1,45 @@
-/* Visual institucional — aproximação fiel à preview aprovada */
+/* Homepage institucional — versão afinada à preview aprovada */
 html,body{background:#fff!important}
-#portalHome{background:#fff!important;color:#153f5a!important;overflow-x:hidden}
+#portalHome{background:#fff!important;color:#143e5c!important;overflow-x:hidden;font-family:Arial,Helvetica,sans-serif}
 
-/* Cabeçalho */
+/* Cabeçalho fino e premium */
 .inst-top{position:relative!important;background:#fff!important;border-bottom:1px solid #e8eef2!important;box-shadow:none!important}
-.inst-top .in{max-width:1280px!important;min-height:72px!important;padding:8px 22px!important;gap:16px!important}
+.inst-top .in{max-width:1320px!important;min-height:72px!important;padding:7px 24px!important;gap:17px!important}
 .inst-logo{gap:15px!important}
-.inst-logo img{width:74px!important;height:54px!important;object-fit:contain!important}
-.inst-logo .words{border-left:1px solid #cbdbe4!important;padding-left:17px!important}
-.inst-logo .words strong{font-size:19px!important;line-height:1.05!important;color:#0c466e!important;letter-spacing:-.02em!important}
-.inst-logo .words small{font-size:11.5px!important;color:#2f7198!important;margin-top:4px!important;font-weight:700!important}
-.inst-nav{gap:2px!important}
-.inst-nav a{font-size:12px!important;color:#194b6b!important;padding:8px 10px!important}
+.inst-logo img{width:78px!important;height:54px!important;object-fit:contain!important}
+.inst-logo .words{border-left:1px solid #cad9e3!important;padding-left:16px!important}
+.inst-logo .words strong{font-size:18px!important;line-height:1.05!important;color:#0d456d!important;letter-spacing:-.02em!important}
+.inst-logo .words small{font-size:11px!important;color:#2a719b!important;margin-top:3px!important;font-weight:700!important}
+.inst-nav{gap:4px!important}.inst-nav a{font-size:11.5px!important;color:#174c6d!important;padding:8px 10px!important}.inst-nav a:hover{background:#eef6fa!important}
 
-/* Hero: uma faixa horizontal, como na preview */
-.inst-hero{max-width:none!important;margin:0!important;padding:0!important;background:linear-gradient(90deg,#f8fbfd 0%,#fff 55%,#eef6fb 100%)!important;border-bottom:1px solid #e8eef2!important}
-.inst-hero-grid{max-width:1280px!important;margin:auto!important;padding:0 22px!important;display:grid!important;grid-template-columns:55% 45%!important;gap:0!important;align-items:stretch!important}
-.inst-copy,.inst-photo{border:0!important;border-radius:0!important;box-shadow:none!important;min-height:335px!important}
-.inst-copy{position:relative!important;padding:34px 300px 26px 0!important;background:transparent!important;overflow:visible!important}
-.inst-copy:after{display:none!important}
-.inst-chip{display:none!important}
-.inst-copy h1{font-size:clamp(34px,4vw,51px)!important;line-height:1.02!important;letter-spacing:-.045em!important;margin:0 0 10px!important;color:#0b456e!important;max-width:650px!important}
-.inst-copy h1 em{color:#e66d22!important}
-.inst-copy>p{font-size:16.5px!important;line-height:1.45!important;color:#627887!important;max-width:570px!important;margin:0!important}
-.inst-actions{margin-top:17px!important;gap:10px!important}
-.inst-btn{border-radius:999px!important;padding:11px 18px!important;font-size:12px!important}
-.inst-btn.primary{background:#0c4d78!important;box-shadow:0 9px 22px rgba(12,77,120,.18)!important}
-.inst-btn.secondary{background:#fff!important;border:1px solid #9fc5dc!important;color:#176a98!important}
+/* Hero igual à lógica da preview: compacto, horizontal e sem cartões pesados */
+.inst-hero{max-width:none!important;margin:0!important;padding:0!important;background:linear-gradient(90deg,#f7fbfd 0%,#fff 53%,#edf6fb 100%)!important;border-bottom:1px solid #e8eef2!important}
+.inst-hero-grid{max-width:1320px!important;margin:auto!important;padding:0 24px!important;display:grid!important;grid-template-columns:54% 46%!important;gap:0!important;align-items:stretch!important}
+.inst-copy,.inst-photo{border:0!important;border-radius:0!important;box-shadow:none!important;min-height:315px!important}
+.inst-copy{position:relative!important;padding:31px 292px 23px 0!important;background:transparent!important;overflow:visible!important}.inst-copy:after{display:none!important}.inst-chip{display:none!important}
+.inst-copy h1{font-size:clamp(33px,3.75vw,49px)!important;line-height:1.01!important;letter-spacing:-.045em!important;margin:0 0 10px!important;color:#0b456e!important;max-width:630px!important}.inst-copy h1 em{color:#e66d22!important}
+.inst-copy>p{font-size:15.5px!important;line-height:1.45!important;color:#607786!important;max-width:545px!important;margin:0!important}
+.inst-actions{margin-top:17px!important;gap:10px!important}.inst-btn{border-radius:999px!important;padding:11px 18px!important;font-size:11.5px!important}.inst-btn.primary{background:#0c4d78!important;box-shadow:0 9px 22px rgba(12,77,120,.17)!important}.inst-btn.secondary{background:#fff!important;border:1px solid #9fc5dc!important;color:#176a98!important}
 
-/* Caixa do regulamento fica no centro da faixa */
-.inst-reg{position:absolute!important;right:18px!important;top:32px!important;width:260px!important;margin:0!important;padding:14px 14px 13px 52px!important;background:#f2f8fc!important;border:1px solid #dceaf2!important;border-radius:13px!important;box-shadow:0 8px 22px rgba(13,75,116,.05)!important}
-.inst-reg:before{content:'▣';position:absolute;left:15px;top:15px;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#dcedf7;color:#1472a5;font-size:16px;font-weight:900}
-.inst-reg b{display:block!important;font-size:11.5px!important;line-height:1.38!important;color:#325b72!important}
-.inst-reg p{display:none!important}
-.inst-reg a{display:inline-block!important;margin-top:7px!important;font-size:10.5px!important;color:#1473a5!important;text-decoration:none!important;font-weight:850!important}
+/* Regulamento ao centro, discreto */
+.inst-reg{position:absolute!important;right:14px!important;top:30px!important;width:252px!important;margin:0!important;padding:13px 13px 12px 49px!important;background:#f3f8fb!important;border:1px solid #dceaf2!important;border-radius:12px!important;box-shadow:0 7px 18px rgba(13,75,116,.04)!important}.inst-reg:before{content:'▣';position:absolute;left:14px;top:14px;width:27px;height:27px;border-radius:8px;display:grid;place-items:center;background:#dcedf7;color:#1472a5;font-size:15px;font-weight:900}.inst-reg b{display:block!important;font-size:11px!important;line-height:1.35!important;color:#315b73!important}.inst-reg p{display:none!important}.inst-reg a{display:inline-block!important;margin-top:6px!important;font-size:10px!important;color:#1473a5!important;text-decoration:none!important;font-weight:850!important}
 
-/* Fotografia municipal */
-.inst-photo{position:relative!important;min-height:335px!important;background-position:center center!important;background-size:cover!important}
-.inst-photo:before{background:linear-gradient(90deg,rgba(255,255,255,.02),rgba(11,60,91,.03) 45%,rgba(9,47,73,.25))!important}
-.inst-photo:after{content:''!important;display:block!important;position:absolute!important;width:305px!important;height:430px!important;right:65px!important;top:-90px!important;border:40px solid transparent!important;border-top-color:rgba(236,91,47,.84)!important;border-left-color:rgba(249,156,35,.88)!important;border-bottom-color:rgba(35,105,159,.72)!important;border-right-color:rgba(42,114,157,.42)!important;border-radius:52% 45% 55% 47%!important;transform:rotate(26deg)!important;z-index:1!important;pointer-events:none!important}
-.inst-photo-copy{right:20px!important;top:31px!important;z-index:2!important}
-.inst-photo-copy strong{font-size:18px!important;letter-spacing:.07em!important}
-.inst-photo-copy span{font-size:11.5px!important;line-height:1.45!important}
-.inst-photo-claim{left:auto!important;right:18px!important;bottom:18px!important;font-size:12px!important;text-align:right!important;z-index:2!important}
+/* Fotografia e grafismo */
+.inst-photo{position:relative!important;min-height:315px!important;background-position:center 46%!important;background-size:cover!important}.inst-photo:before{background:linear-gradient(90deg,rgba(255,255,255,.01),rgba(10,51,81,.03) 45%,rgba(8,42,65,.24))!important}.inst-photo:after{content:''!important;display:block!important;position:absolute!important;width:295px!important;height:405px!important;right:66px!important;top:-88px!important;border:38px solid transparent!important;border-top-color:rgba(235,88,46,.85)!important;border-left-color:rgba(249,155,35,.9)!important;border-bottom-color:rgba(31,101,154,.76)!important;border-right-color:rgba(46,121,165,.46)!important;border-radius:52% 45% 55% 47%!important;transform:rotate(26deg)!important;z-index:1!important;pointer-events:none!important}.inst-photo-copy{right:19px!important;top:27px!important;z-index:2!important}.inst-photo-copy strong{font-size:17px!important;letter-spacing:.08em!important}.inst-photo-copy span{font-size:10.8px!important;line-height:1.45!important}.inst-photo-claim{left:auto!important;right:17px!important;bottom:16px!important;font-size:11.5px!important;text-align:right!important;z-index:2!important}
 
-/* Mensagem institucional — baixa e horizontal */
-.inst-message{max-width:none!important;margin:0!important;padding:0!important;background:linear-gradient(90deg,#fff 0%,#fbfdfe 60%,#f3f8fb 100%)!important}
-.inst-message-card{max-width:1280px!important;margin:auto!important;padding:12px 22px!important;border:0!important;border-bottom:1px solid #e9eff2!important;border-radius:0!important;box-shadow:none!important;grid-template-columns:126px 1fr 265px!important;gap:18px!important;min-height:150px!important}
-.inst-portrait{width:126px!important;height:126px!important;border-radius:10px!important;box-shadow:none!important}
-.inst-message-copy small{display:none!important}
-.inst-message-copy h2{font-size:17px!important;margin:0 0 5px!important;color:#0d486f!important}
-.inst-message-copy p{font-size:11.7px!important;line-height:1.43!important;color:#536b7b!important;max-width:680px!important}
-.inst-sign{margin-top:7px!important;gap:10px!important}
-.inst-sign img{width:138px!important}
-.inst-sign strong{font-size:11px!important}
-.inst-sign span{font-size:9.5px!important;margin-top:2px!important}
-.inst-quote{padding:6px 0 6px 18px!important;border-left:0!important}
-.inst-quote .q{font-size:58px!important;line-height:34px!important;color:#dceaf2!important}
-.inst-quote p{font-size:15px!important;line-height:1.28!important;color:#216789!important}
+/* Mensagem institucional */
+.inst-message{max-width:none!important;margin:0!important;padding:0!important;background:linear-gradient(90deg,#fff 0%,#fbfdfe 58%,#f2f8fb 100%)!important}
+.inst-message-card{max-width:1320px!important;margin:auto!important;padding:11px 24px!important;border:0!important;border-bottom:1px solid #e8eef2!important;border-radius:0!important;box-shadow:none!important;grid-template-columns:118px 1fr 245px!important;gap:17px!important;min-height:138px!important}.inst-portrait{width:118px!important;height:118px!important;border-radius:9px!important;box-shadow:none!important;object-fit:cover!important}.inst-message-copy small{display:none!important}.inst-message-copy h2{font-size:16.5px!important;margin:0 0 4px!important;color:#0d486f!important}.inst-message-copy p{font-size:11.4px!important;line-height:1.42!important;color:#536b7b!important;max-width:690px!important}.inst-sign{margin-top:6px!important;gap:10px!important;align-items:center!important}.inst-sign img{width:150px!important;max-height:48px!important;object-fit:contain!important;object-position:left center!important;filter:none!important}.inst-sign strong{font-size:10.8px!important}.inst-sign span{font-size:9.4px!important;margin-top:1px!important}.inst-quote{padding:5px 0 5px 16px!important;border-left:0!important}.inst-quote .q{font-size:54px!important;line-height:32px!important;color:#dceaf2!important}.inst-quote p{font-size:14.5px!important;line-height:1.28!important;color:#216789!important}
 
-/* Procedimentos */
-.inst-main{max-width:1280px!important;margin:auto!important;padding:14px 22px 30px!important}
-.inst-section-head{margin-bottom:9px!important;align-items:center!important}
-.inst-section-head h2{font-size:21px!important;color:#0c486f!important}
-.inst-section-head p{display:none!important}
-.inst-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:8px!important}
-.inst-card{min-height:166px!important;border-radius:12px!important;padding:12px!important;box-shadow:0 4px 12px rgba(12,61,99,.035)!important;border:1px solid #e2eaf0!important;overflow:hidden!important}
-.inst-card:before{height:0!important}
-.inst-ico{width:36px!important;height:36px!important;border-radius:50%!important;font-size:14px!important}
-.inst-card h3{font-size:11.7px!important;line-height:1.23!important;margin:8px 0 0!important;color:#154c6e!important}
-.inst-card p{font-size:9.8px!important;line-height:1.38!important;margin:6px 0 7px!important;color:#71808a!important}
-.inst-meta{font-size:9px!important;padding:5px 7px!important;margin:0 0 7px!important;border-radius:999px!important;width:max-content!important;max-width:100%!important;background:#eef6fa!important;color:#21678e!important}
-.inst-card:nth-child(1) .inst-meta,.inst-card:nth-child(2) .inst-meta,.inst-card:nth-child(3) .inst-meta,.inst-card:nth-child(6) .inst-meta{background:#e9f7ef!important;color:#238153!important}
-.inst-card:nth-child(4) .inst-meta{background:#fff0e7!important;color:#d75d18!important}
-.inst-card button{padding:7px 8px!important;font-size:9.8px!important;border-radius:9px!important;margin-top:auto!important}
+/* Procedimentos: seis cartões na mesma linha, leves como na preview */
+.inst-main{max-width:1320px!important;margin:auto!important;padding:13px 24px 27px!important}.inst-section-head{margin-bottom:8px!important;align-items:center!important}.inst-section-head h2{font-size:20px!important;color:#0c486f!important}.inst-section-head p{display:none!important}.inst-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:8px!important}.inst-card{min-height:158px!important;border-radius:12px!important;padding:11px!important;box-shadow:0 4px 12px rgba(12,61,99,.035)!important;border:1px solid #e1eaf0!important;overflow:hidden!important}.inst-card:before{height:0!important}.inst-ico{width:34px!important;height:34px!important;border-radius:50%!important;font-size:13px!important}.inst-card h3{font-size:11.1px!important;line-height:1.22!important;margin:8px 0 0!important;color:#154c6e!important}.inst-card p{font-size:9.5px!important;line-height:1.37!important;margin:5px 0 7px!important;color:#71808a!important}.inst-meta{font-size:8.7px!important;padding:5px 7px!important;margin:0 0 7px!important;border-radius:999px!important;width:max-content!important;max-width:100%!important;background:#eef6fa!important;color:#21678e!important}.inst-card:nth-child(1) .inst-meta,.inst-card:nth-child(2) .inst-meta,.inst-card:nth-child(3) .inst-meta,.inst-card:nth-child(6) .inst-meta{background:#e9f7ef!important;color:#238153!important}.inst-card:nth-child(4) .inst-meta{background:#fff0e7!important;color:#d75d18!important}.inst-card button{padding:7px 8px!important;font-size:9.5px!important;border-radius:8px!important;margin-top:auto!important}
 
-/* Como funciona — linha compacta */
-.inst-how{margin-top:12px!important;padding:14px 0 0!important;border:0!important;border-top:1px solid #e8eef2!important;border-radius:0!important;box-shadow:none!important;background:#fff!important}
-.inst-how .inst-section-head{display:block!important;margin-bottom:6px!important}
-.inst-how .inst-section-head h2{font-size:19px!important}
-.inst-steps{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:6px!important;margin-top:7px!important}
-.inst-step{min-height:70px!important;border:0!important;border-radius:0!important;padding:5px 8px!important;display:grid!important;grid-template-columns:28px 1fr!important;gap:8px!important;align-items:start!important;background:#fff!important}
-.inst-n{width:28px!important;height:28px!important;border-radius:50%!important;font-size:10px!important;margin:0!important;background:#eaf4fb!important;color:#126b9d!important}
-.inst-step:nth-child(even) .inst-n{background:#fff0e6!important;color:#dd671d!important}
-.inst-step b{font-size:10.5px!important;color:#154e71!important;line-height:1.25!important}
-.inst-step span{font-size:9px!important;line-height:1.32!important;margin-top:3px!important;color:#73818a!important}
+/* Como funciona: uma linha clara */
+.inst-how{margin-top:11px!important;padding:13px 0 0!important;border:0!important;border-top:1px solid #e8eef2!important;border-radius:0!important;box-shadow:none!important;background:#fff!important}.inst-how .inst-section-head{display:block!important;margin-bottom:5px!important}.inst-how .inst-section-head h2{font-size:18px!important}.inst-steps{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:5px!important;margin-top:6px!important}.inst-step{min-height:66px!important;border:0!important;border-radius:0!important;padding:4px 7px!important;display:grid!important;grid-template-columns:27px 1fr!important;gap:7px!important;align-items:start!important;background:#fff!important}.inst-n{width:27px!important;height:27px!important;border-radius:50%!important;font-size:10px!important;margin:0!important;background:#eaf4fb!important;color:#126b9d!important}.inst-step:nth-child(even) .inst-n{background:#fff0e6!important;color:#dd671d!important}.inst-step b{font-size:10.2px!important;color:#154e71!important;line-height:1.23!important}.inst-step span{font-size:8.8px!important;line-height:1.3!important;margin-top:2px!important;color:#73818a!important}
 
 /* Rodapé */
-.inst-footer{margin-top:0!important;background:linear-gradient(135deg,#0a3f68,#0f5a87)!important}
-.inst-footer .in{max-width:1280px!important;padding:14px 22px!important;min-height:70px!important}
-.inst-footer-brand img{width:44px!important}
-.inst-footer-brand strong{font-size:11.5px!important}.inst-footer-brand span{font-size:9.5px!important}
-.inst-footer-info{font-size:9.8px!important;line-height:1.55!important}
+.inst-footer{margin-top:0!important;background:linear-gradient(135deg,#0a3f68,#0f5a87)!important}.inst-footer .in{max-width:1320px!important;padding:13px 24px!important;min-height:66px!important}.inst-footer-brand img{width:42px!important}.inst-footer-brand strong{font-size:11px!important}.inst-footer-brand span{font-size:9px!important}.inst-footer-info{font-size:9.5px!important;line-height:1.5!important}
 
-@media(max-width:1100px){
- .inst-copy{padding-right:28px!important}.inst-reg{position:relative!important;right:auto!important;top:auto!important;width:auto!important;margin-top:16px!important}.inst-grid{grid-template-columns:repeat(3,1fr)!important}
-}
-@media(max-width:900px){
- .inst-hero-grid{grid-template-columns:1fr!important}.inst-photo{min-height:315px!important}.inst-message-card{grid-template-columns:105px 1fr!important}.inst-portrait{width:105px!important;height:105px!important}.inst-quote{grid-column:1/-1!important}.inst-grid{grid-template-columns:repeat(2,1fr)!important}.inst-steps{grid-template-columns:repeat(2,1fr)!important}
-}
-@media(max-width:650px){
- .inst-top .in{min-height:62px!important;padding:8px 12px!important}.inst-logo img{width:46px!important;height:42px!important}.inst-logo .words strong{font-size:14px!important}.inst-logo .words small{font-size:9.5px!important}.inst-nav{display:none!important}.inst-hero-grid{padding:0 12px!important}.inst-copy{padding:24px 4px 20px!important}.inst-copy h1{font-size:35px!important}.inst-copy>p{font-size:15px!important}.inst-photo{margin:0 -12px!important}.inst-message-card{padding:12px!important;grid-template-columns:82px 1fr!important}.inst-portrait{width:82px!important;height:82px!important}.inst-message-copy h2{font-size:15px!important}.inst-message-copy p{font-size:10.7px!important}.inst-main{padding:18px 12px 28px!important}.inst-grid,.inst-steps{grid-template-columns:1fr!important}.inst-footer .in{padding:16px 12px!important;flex-direction:column!important;align-items:flex-start!important}.inst-footer-info{text-align:left!important}
-}
+@media(max-width:1100px){.inst-copy{padding-right:25px!important}.inst-reg{position:relative!important;right:auto!important;top:auto!important;width:auto!important;margin-top:15px!important}.inst-grid{grid-template-columns:repeat(3,1fr)!important}}
+@media(max-width:900px){.inst-hero-grid{grid-template-columns:1fr!important}.inst-photo{min-height:300px!important}.inst-message-card{grid-template-columns:100px 1fr!important}.inst-portrait{width:100px!important;height:100px!important}.inst-quote{grid-column:1/-1!important}.inst-grid{grid-template-columns:repeat(2,1fr)!important}.inst-steps{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:650px){.inst-top .in{min-height:62px!important;padding:8px 12px!important}.inst-logo img{width:45px!important;height:40px!important}.inst-logo .words strong{font-size:14px!important}.inst-logo .words small{font-size:9.5px!important}.inst-nav{display:none!important}.inst-hero-grid{padding:0 12px!important}.inst-copy{padding:23px 4px 20px!important}.inst-copy h1{font-size:34px!important}.inst-copy>p{font-size:14.5px!important}.inst-photo{margin:0 -12px!important}.inst-message-card{padding:12px!important;grid-template-columns:78px 1fr!important}.inst-portrait{width:78px!important;height:78px!important}.inst-message-copy h2{font-size:14.5px!important}.inst-message-copy p{font-size:10.4px!important}.inst-sign img{width:118px!important}.inst-main{padding:17px 12px 27px!important}.inst-grid,.inst-steps{grid-template-columns:1fr!important}.inst-footer .in{padding:15px 12px!important;flex-direction:column!important;align-items:flex-start!important}.inst-footer-info{text-align:left!important}}
