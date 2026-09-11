@@ -3,88 +3,168 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f7f9fa">
 <title>Plataforma do Associativismo | Município de Gouveia</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f5f7f8;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#1f2933}
-#legacy{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
-.form-layer{position:fixed;inset:0;z-index:9999;background:#f6f8f9;display:none;flex-direction:column}.form-layer.open{display:flex}
-.form-top{height:72px;min-height:72px;display:flex;align-items:center;gap:14px;padding:0 22px;background:rgba(255,255,255,.97);border-bottom:1px solid #e5e9ec;box-shadow:0 8px 24px rgba(31,41,51,.06);backdrop-filter:blur(12px)}
-.form-back{appearance:none;border:1px solid #dce2e6;background:#fff;color:#263d4e;border-radius:12px;padding:11px 14px;font-weight:800;font-size:14px;cursor:pointer}.form-back:hover{background:#f7f9fa}
-.form-title{min-width:0}.form-title strong{display:block;font-size:15px;line-height:1.2}.form-title small{display:block;margin-top:3px;color:#74808a;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.form-actions{margin-left:auto}.form-external{color:#52616c;text-decoration:none;font-size:12px;font-weight:750;border:1px solid #e1e6e9;border-radius:10px;padding:9px 11px;background:#fff}
-.form-frame{flex:1;width:100%;border:0;background:#f6f8f9}.loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#687680;font-size:13px;z-index:-1}
-@media(max-width:680px){.form-top{height:64px;min-height:64px;padding:0 12px;gap:10px}.form-back{padding:10px 11px}.form-title strong{font-size:14px}.form-title small{font-size:11px}.form-external{display:none}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f4f6f7;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202b33}
+#portal{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
+#rmaLayer{position:fixed;inset:0;z-index:10000;display:none;background:#f5f7f8;flex-direction:column}
+#rmaLayer.open{display:flex}
+.rma-head{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:12px 18px;background:rgba(255,255,255,.97);border-bottom:1px solid #e1e6e9;box-shadow:0 8px 24px rgba(26,42,54,.06);padding-top:max(12px,env(safe-area-inset-top))}
+.rma-back{border:1px solid #d7dde1;background:#fff;border-radius:12px;padding:10px 13px;font-weight:800;color:#29475b;cursor:pointer}
+.rma-title{min-width:0}.rma-title strong{display:block;font-size:15px}.rma-title small{display:block;color:#71808a;font-size:12px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rma-shell{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;padding:18px;background:linear-gradient(180deg,#f5f8f9,#faf9f7)}
+.rma-form{max-width:920px;margin:0 auto}
+.intro,.section{background:#fff;border:1px solid #e2e7e9;border-radius:18px;box-shadow:0 12px 30px rgba(34,54,68,.05)}
+.intro{padding:21px;margin-bottom:16px}.intro h1{font-size:23px;margin:0 0 8px;color:#233746}.intro p{margin:6px 0;line-height:1.55;color:#606b73}.notice{margin-top:13px;padding:12px 14px;border-radius:12px;background:#eef5f7;color:#35576b;font-size:13px}
+.progress{position:sticky;top:0;z-index:3;display:flex;gap:7px;overflow:auto;padding:10px 0 14px;background:linear-gradient(#f5f8f9 75%,rgba(245,248,249,0))}
+.progress span{white-space:nowrap;background:#fff;border:1px solid #dfe5e8;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:750;color:#64717a}
+.section{padding:20px;margin-bottom:14px}.section-head{display:flex;gap:11px;margin-bottom:17px}.num{width:31px;height:31px;border-radius:10px;background:#27465a;color:#fff;display:grid;place-items:center;font-weight:850;flex:0 0 31px}.section h2{margin:2px 0 3px;font-size:18px}.section-sub{font-size:12.5px;color:#76818a}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px;min-width:0}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:750;color:#343f46}.req{color:#b44343}.hint{font-size:11.5px;color:#7a858d;line-height:1.4}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],select,textarea{width:100%;border:1px solid #d5dadd;border-radius:11px;background:#fff;padding:11px 12px;font:inherit;color:#26323a;outline:none}
+textarea{min-height:95px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#60859a;box-shadow:0 0 0 3px rgba(96,133,154,.12)}
+.options{display:flex;flex-wrap:wrap;gap:8px}.choice{display:flex;align-items:center;gap:7px;border:1px solid #d9dee1;border-radius:10px;padding:9px 11px;background:#fafbfb;font-size:13px}.choice input{accent-color:#315d74}
+.filebox{border:1.5px dashed #bac4c9;border-radius:12px;padding:12px;background:#fafcfc}.filebox input{max-width:100%}.filemeta{font-size:11px;color:#77828a;margin-top:5px}
+.conditional{display:none}.conditional.show{display:block}.actions{position:sticky;bottom:0;z-index:4;margin:20px -18px -18px;padding:13px 18px max(13px,env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid #e0e5e7;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.draft,.submit{border-radius:11px;padding:12px 16px;font-weight:800;cursor:pointer}.draft{border:1px solid #d7dde1;background:#fff;color:#4c5962}.submit{border:0;background:linear-gradient(135deg,#d95e17,#f07a17);color:#fff;box-shadow:0 9px 22px rgba(217,94,23,.18)}.submit:disabled{opacity:.55}
+.msg{display:none;margin:14px 0;padding:13px 15px;border-radius:12px;font-size:13px;line-height:1.45}.msg.show{display:block}.msg.ok{background:#eaf6ee;color:#2b6442}.msg.warn{background:#fff4df;color:#76551e}.msg.err{background:#fdecec;color:#8a3f3f}
+@media(max-width:720px){.rma-head{padding-left:11px;padding-right:11px}.rma-shell{padding:12px}.intro,.section{border-radius:15px;padding:16px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.options{display:grid;grid-template-columns:1fr}.actions{margin-left:-12px;margin-right:-12px;margin-bottom:-12px;padding-left:12px;padding-right:12px}.draft,.submit{flex:1}.rma-title small{font-size:11px}}
 </style>
+<script src="config.js"></script>
 </head>
 <body>
-<iframe id="legacy" title="Plataforma do Associativismo" src="index_sem_botao_download_relatorio%20(1).html"></iframe>
-<div class="form-layer" id="formLayer" role="dialog" aria-modal="true" aria-label="Formulário integrado">
-  <div class="form-top">
-    <button class="form-back" id="formBack" type="button">← Voltar</button>
-    <div class="form-title"><strong id="formTitle">Formulário</strong><small>Preenchimento dentro da Plataforma do Associativismo</small></div>
-    <div class="form-actions"><a class="form-external" id="formExternal" href="#" target="_blank" rel="noopener">Abrir separadamente ↗</a></div>
+<iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Plataforma do Associativismo"></iframe>
+
+<div id="rmaLayer" role="dialog" aria-modal="true" aria-label="Registo Municipal das Associações">
+  <div class="rma-head">
+    <button class="rma-back" id="rmaBack" type="button">← Voltar</button>
+    <div class="rma-title"><strong>Registo Municipal das Associações — RMA</strong><small>Formulário integrado na Plataforma do Associativismo</small></div>
   </div>
-  <div class="loading">A carregar formulário…</div>
-  <iframe class="form-frame" id="formFrame" title="Formulário" allow="clipboard-write"></iframe>
+  <div class="rma-shell">
+    <form class="rma-form" id="rmaForm">
+      <div class="progress"><span>1 · Pedido</span><span>2 · Identificação</span><span>3 · Contactos</span><span>4 · Administração</span><span>5 · Caracterização</span><span>6 · Documentos</span><span>7 · Confirmar</span></div>
+      <div class="intro">
+        <h1>Registo Municipal das Associações</h1>
+        <p>Inscrição ou atualização da informação no RMA do Município de Gouveia.</p>
+        <div class="notice">A atualização deve ser efetuada anualmente até <strong>31 de março</strong>. Nas novas inscrições válidas, o número RMA é atribuído após a submissão e fica sujeito a validação administrativa pelos serviços municipais.</div>
+      </div>
+      <div id="msg" class="msg"></div>
+
+      <section class="section">
+        <div class="section-head"><span class="num">1</span><div><h2>Tipo de pedido</h2><div class="section-sub">Nova inscrição ou atualização de um registo existente.</div></div></div>
+        <div class="grid">
+          <div class="field"><label>Email utilizado na submissão <span class="req">*</span></label><input name="email" type="email" required></div>
+          <div class="field"><label>Tipo de pedido <span class="req">*</span></label><div class="options"><label class="choice"><input type="radio" name="procedimento" value="Nova inscrição no RMA" required>Nova inscrição</label><label class="choice"><input type="radio" name="procedimento" value="Atualização de registo existente" required>Atualização</label></div></div>
+          <div class="field conditional" id="rmaExisting"><label>Número RMA</label><div class="hint">Formato RMA-XXX. O número existente nunca é alterado numa atualização.</div><input name="numero_rma" type="text" placeholder="RMA-057" pattern="RMA-[0-9]{3,}"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="num">2</span><div><h2>Identificação da entidade</h2><div class="section-sub">Dados institucionais e enquadramento territorial.</div></div></div>
+        <div class="grid">
+          <div class="field"><label>Nome da associação / coletividade <span class="req">*</span></label><input name="associacao" required></div>
+          <div class="field"><label>NIF / NIPC <span class="req">*</span></label><input name="nif" inputmode="numeric" pattern="[0-9]{9}" maxlength="9" placeholder="9 dígitos" required></div>
+          <div class="field"><label>Data de constituição legal <span class="req">*</span></label><input name="data_constituicao" type="date" required></div>
+          <div class="field"><label>Enquadramento territorial <span class="req">*</span></label><select name="enquadramento" required><option value="">Selecionar…</option><option>Sede no concelho de Gouveia</option><option>Delegação no concelho de Gouveia</option><option>Atividade regular no concelho de Gouveia</option></select></div>
+          <div class="field"><label>Morada / Sede <span class="req">*</span></label><input name="morada" required></div>
+          <div class="field"><label>Código postal e localidade <span class="req">*</span></label><input name="codigo_postal" required></div>
+          <div class="field"><label>Área de atuação principal <span class="req">*</span></label><select name="area" required><option value="">Selecionar…</option><option>Cultural</option><option>Recreativa</option><option>Desportiva</option><option>Ambiental / Conservação</option><option>Cinegética</option><option>Social / Solidária</option><option>Juvenil</option><option>Outra</option></select></div>
+          <div class="field"><label>Data de emissão do comprovativo RCBE <span class="req">*</span></label><div class="hint">Comprovativo emitido há menos de 12 meses.</div><input name="data_rcbe" type="date" required></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="num">3</span><div><h2>Contactos institucionais</h2><div class="section-sub">Contactos oficiais da associação.</div></div></div>
+        <div class="grid">
+          <div class="field"><label>Email institucional / geral <span class="req">*</span></label><input name="email_associacao" type="email" required></div>
+          <div class="field"><label>Telefone / telemóvel <span class="req">*</span></label><input name="telefone" type="tel" required></div>
+          <div class="field full"><label>Redes sociais / páginas oficiais</label><textarea name="redes"></textarea></div>
+          <div class="field full"><label>Autoriza a divulgação dos contactos institucionais? <span class="req">*</span></label><div class="options"><label class="choice"><input type="radio" name="autorizacao" value="Sim" required>Sim</label><label class="choice"><input type="radio" name="autorizacao" value="Não" required>Não</label></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="num">4</span><div><h2>Órgãos sociais e administração</h2><div class="section-sub">Direção, mandato, sede e elementos administrativos.</div></div></div>
+        <div class="grid">
+          <div class="field"><label>Presidente da Direção / Representante legal <span class="req">*</span></label><input name="representante" required></div>
+          <div class="field"><label>Data de início do mandato <span class="req">*</span></label><input name="inicio_mandato" type="date" required></div>
+          <div class="field"><label>Data prevista de fim do mandato <span class="req">*</span></label><input name="fim_mandato" type="date" required></div>
+          <div class="field"><label>N.º aproximado de sócios / membros ativos <span class="req">*</span></label><input name="socios" type="number" min="0" required></div>
+          <div class="field"><label>Regime de utilização da sede / instalação <span class="req">*</span></label><select name="instalacao" required><option value="">Selecionar…</option><option>Instalações próprias</option><option>Instalações arrendadas</option><option>Instalações cedidas</option><option>Sem instalações permanentes</option><option>Outro</option></select></div>
+          <div class="field"><label>IBAN <span class="req">*</span></label><input name="iban_texto" placeholder="PT50…" required></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="num">5</span><div><h2>Caracterização da associação</h2><div class="section-sub">Atividade regular, público e parcerias.</div></div></div>
+        <div class="grid">
+          <div class="field full"><label>Principal atividade desenvolvida <span class="req">*</span></label><textarea name="atividade" required></textarea></div>
+          <div class="field full"><label>Público-alvo principal <span class="req">*</span></label><textarea name="publico" required></textarea></div>
+          <div class="field full"><label>Parcerias / entidades com as quais colabora regularmente</label><textarea name="parcerias"></textarea></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="num">6</span><div><h2>Documentação obrigatória</h2><div class="section-sub">Ficheiros válidos, atualizados e legíveis.</div></div></div>
+        <div class="grid" id="docs"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><span class="num">7</span><div><h2>Declaração final e RGPD</h2><div class="section-sub">Confirmação antes da submissão.</div></div></div>
+        <div class="grid">
+          <div class="field full"><label class="choice"><input type="checkbox" name="confirmacao_documental" value="Confirmo" required>Confirmo que anexei a documentação obrigatória aplicável e que os documentos apresentados se encontram válidos e atualizados.</label></div>
+          <div class="field full"><label class="choice"><input type="checkbox" name="declaracao" value="Concordo" required>Declaro que as informações são verdadeiras, completas e atualizadas, que tenho legitimidade para as prestar em nome da associação e que li a informação relativa ao tratamento de dados pessoais.</label></div>
+        </div>
+        <div class="actions"><button class="draft" type="button" id="saveDraft">Guardar rascunho</button><button class="submit" id="submitBtn" type="submit">Submeter RMA</button></div>
+      </section>
+    </form>
+  </div>
 </div>
+
 <script>
 (function(){
-  const legacy=document.getElementById('legacy'), layer=document.getElementById('formLayer'), frame=document.getElementById('formFrame'), title=document.getElementById('formTitle'), ext=document.getElementById('formExternal'), back=document.getElementById('formBack');
-  const FULL={
-    rma:'https://docs.google.com/forms/d/13lRnTvN5xNR7-OGMz9pEzso5YeNmuV8a-lxBbJVrMvM/viewform?embedded=true',
-    apoio:'https://docs.google.com/forms/d/1XOi1zDl_YLn0ttC5pp-ny5jD7OPT27PokIYTtzxeXyw/viewform?embedded=true',
-    transporte:'https://docs.google.com/forms/d/1fWjcZcNjLpi-5UkRoaltbUc3fp2eVJZHL1GC5i87C0s/viewform?embedded=true',
-    desporto:'https://docs.google.com/forms/d/1hfsow7imRYdcYtD5RDmz5xDqaQjCK5Qr7GzYbRokhdU/viewform?embedded=true'
-  };
-  const SHORT={
-    '55gqdebhtpjya4k36':FULL.rma,'k7emhapwsyhdrvjf6':FULL.rma,
-    'dxudumwrpsmtngoy8':FULL.apoio,'f3jbwx3glnkzqgst9':FULL.apoio,'vcrmrrekrrfcteuw9':FULL.apoio,
-    '9dunodnuie4spsrxa':FULL.transporte,'oxae2jrrhubwo6vs5':FULL.transporte,'6359vejgduqyecwh8':FULL.transporte,'sct1enjxtpothr3h6':FULL.transporte,
-    '7maysg8bhv6gcstw6':FULL.desporto
-  };
-  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
-  function canonical(url){
-    if(!url)return url;
-    const low=String(url).toLowerCase();
-    for(const k in SHORT)if(low.includes(k))return SHORT[k];
-    try{const u=new URL(url,location.href);if(u.hostname==='docs.google.com'&&u.pathname.includes('/forms/')){if(u.pathname.endsWith('/edit'))u.pathname=u.pathname.replace(/\/edit$/,'/viewform');u.searchParams.set('embedded','true');return u.href}}catch(e){}
-    return url;
-  }
-  function openForm(url,label){
-    const src=canonical(url); if(!src)return;
-    title.textContent=label||'Formulário'; ext.href=src.replace(/[?&]embedded=true/,''); frame.src=src; layer.classList.add('open');
-    if(location.hash!=='#formulario')history.pushState({form:true},'', '#formulario');
-  }
-  function closeForm(fromPop){layer.classList.remove('open');frame.src='about:blank';if(!fromPop&&location.hash==='#formulario')history.back()}
-  back.addEventListener('click',()=>closeForm(false));window.addEventListener('popstate',()=>{if(layer.classList.contains('open'))closeForm(true)});
-  function patch(){
-    let d;try{d=legacy.contentDocument||legacy.contentWindow.document}catch(e){return}if(!d)return;
-    if(d.getElementById('app-live-patch'))return;
-    const style=d.createElement('style');style.id='app-live-patch';style.textContent=`
-      :root{--app-ink:#1f2933;--app-blue:#234d6d;--app-orange:#e86f1f;--app-green:#2f7d5a}
-      body{background:linear-gradient(180deg,#f7fafb 0,#fff 32%,#faf9f7 100%)!important}
-      .topbar{background:rgba(255,255,255,.95)!important;backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(31,41,51,.045)!important}
-      .hero{border-radius:24px!important;box-shadow:0 18px 50px rgba(23,42,58,.075)!important;border:1px solid rgba(35,77,109,.08)!important}
-      .card{border-radius:20px!important;border:1px solid #e4e9ec!important;box-shadow:0 10px 34px rgba(31,41,51,.055)!important;overflow:hidden!important;transition:.18s ease!important}
-      .card:hover{transform:translateY(-2px);box-shadow:0 17px 42px rgba(31,41,51,.085)!important}.card-body{padding:20px!important}
-      .note{border-radius:12px!important;background:#f7f9fa!important;border:1px solid #edf0f2!important}
-      .btn.active,.btn[data-integrated]{background:linear-gradient(135deg,#d95e17,#f47b12)!important;color:#fff!important;border:0!important;border-radius:12px!important;min-height:45px!important;font-weight:850!important;box-shadow:0 10px 24px rgba(232,111,31,.18)!important;text-decoration:none!important;cursor:pointer!important}
-      .status.open{background:#eaf5ef!important;color:#256647!important;border-color:#d4eadc!important}
-      .integrated-hint-app{display:flex;align-items:center;gap:7px;margin-top:10px;color:#426177;font-size:12px;font-weight:750}.integrated-hint-app:before{content:'✓';display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#e8f4ee;color:#2e7a59}
-      @media(max-width:680px){.card{border-radius:17px!important}.hero{border-radius:20px!important}.card-body{padding:17px!important}}
-    `;d.head.appendChild(style);
-    [...d.querySelectorAll('.card')].forEach(card=>{
-      const h=card.querySelector('h3');if(!h)return;const raw=h.textContent.trim(),key=norm(raw);let url='';
-      if(key.includes('registo municipal'))url=FULL.rma;else if(key.includes('apoio tecnico'))url=FULL.apoio;else if(key.includes('transporte'))url=FULL.transporte;else if(key.includes('apoio anual')&&key.includes('desporto'))url=FULL.desporto;
-      const btn=card.querySelector('a.btn,button.btn');
-      if(url&&btn){if(btn.tagName==='A'){btn.removeAttribute('href');btn.removeAttribute('target');btn.removeAttribute('rel')}btn.dataset.integrated='1';btn.classList.remove('disabled');btn.classList.add('active');btn.removeAttribute('aria-disabled');btn.textContent=key.includes('registo municipal')?'Aceder ao RMA':key.includes('desporto')?'Apresentar candidatura':'Preencher na plataforma';btn.onclick=e=>{e.preventDefault();e.stopPropagation();openForm(url,raw);return false};if(!card.querySelector('.integrated-hint-app')){const hint=d.createElement('div');hint.className='integrated-hint-app';hint.textContent='Preenchimento sem sair da plataforma';btn.insertAdjacentElement('afterend',hint)}}
-      if(key.includes('apoio anual')&&key.includes('desporto')){const st=card.querySelector('.status');if(st){st.className='status open';st.textContent='Aberto'}const note=card.querySelector('.note');if(note)note.innerHTML='<strong>Candidaturas 2026/2027:</strong> abertas até <strong>10 de novembro de 2026</strong>.'}
-    });
-    [...d.querySelectorAll('a[href*="forms.gle"],a[href*="docs.google.com/forms"]')].forEach(a=>{if(a.dataset.integrated)return;const url=canonical(a.href),label=(a.closest('.card')?.querySelector('h3')?.textContent||a.textContent||'Formulário').trim();a.removeAttribute('target');a.onclick=e=>{e.preventDefault();e.stopPropagation();openForm(url,label);return false}});
-    [...d.querySelectorAll('.deadline-item')].forEach(item=>{if(norm(item.textContent).includes('desporto')){const date=item.querySelector('.deadline-date');if(date)date.innerHTML='<strong>10 NOV</strong><small>2026</small>';const last=item.querySelector('span:last-child');if(last)last.innerHTML='<strong>Apoio Anual — Desporto</strong><small>Candidaturas abertas até 10 de novembro.</small>'}});
-  }
-  legacy.addEventListener('load',()=>{patch();setTimeout(patch,350)});
+const ENDPOINT=window.ASSOCIATIVISMO_ENDPOINT||'';
+const portal=document.getElementById('portal'),layer=document.getElementById('rmaLayer'),form=document.getElementById('rmaForm'),msg=document.getElementById('msg');
+const docDefs=[
+['estatutos','Estatutos da associação'],['ata','Ata de eleição dos órgãos sociais em vigor'],['relatorio_contas','Relatório de Atividades e Contas do último exercício'],['plano_orcamento','Plano de Atividades e Orçamento do ano em curso'],['at','Regularidade tributária / comprovativo de isenção'],['ss','Regularidade contributiva / comprovativo de isenção'],['sede','Comprovativo de sede, delegação ou atividade regular no concelho'],['rcbe','Comprovativo atualizado do RCBE'],['iban','Comprovativo de IBAN da conta titulada pela associação']
+];
+document.getElementById('docs').innerHTML=docDefs.map(([n,l])=>'<div class="field"><label>'+l+' <span class="req">*</span></label><div class="filebox"><input type="file" name="'+n+'" accept=".pdf,.jpg,.jpeg,.png" required><div class="filemeta">PDF, JPG ou PNG.</div></div></div>').join('')+'<div class="field full"><label>Outros documentos</label><div class="filebox"><input type="file" name="outros" accept=".pdf,.jpg,.jpeg,.png" multiple><div class="filemeta">Opcional.</div></div></div>';
+function show(t,type='warn'){msg.textContent=t;msg.className='msg show '+type;msg.scrollIntoView({behavior:'smooth',block:'center'})}
+function open(){layer.classList.add('open');document.body.style.overflow='hidden';restore(false)}
+function close(){layer.classList.remove('open')}
+document.getElementById('rmaBack').onclick=close;
+function patch(){
+ let d;try{d=portal.contentDocument||portal.contentWindow.document}catch(e){return}if(!d)return;
+ const links=[...d.querySelectorAll('a[href]')];
+ links.forEach(a=>{
+   const href=(a.getAttribute('href')||'').toLowerCase();
+   const card=a.closest('.card');
+   const title=(card?.querySelector('h3')?.textContent||'').toLowerCase();
+   if(href.includes('55gqdebhtpjya4k36')||href.includes('13lrntvn5xnr7-ogmz9pezso5yenmuv8a-lxbbjvrmvm')||title.includes('registo municipal')){
+     a.removeAttribute('href');a.removeAttribute('target');a.style.cursor='pointer';a.textContent='Preencher RMA na plataforma';a.onclick=e=>{e.preventDefault();open();return false};
+   }
+ });
+}
+portal.addEventListener('load',()=>{patch();setTimeout(patch,600)});
+form.addEventListener('change',e=>{
+ if(e.target.name==='procedimento'){const box=document.getElementById('rmaExisting');const isUp=e.target.value.includes('Atualização');box.classList.toggle('show',isUp);box.querySelector('input').required=isUp}
+});
+function serializable(){const o={};new FormData(form).forEach((v,k)=>{if(v instanceof File)return;if(o[k])o[k]=Array.isArray(o[k])?[...o[k],v]:[o[k],v];else o[k]=v});return o}
+document.getElementById('saveDraft').onclick=()=>{localStorage.setItem('rma_native_draft',JSON.stringify(serializable()));show('Rascunho guardado neste dispositivo.','ok')};
+function restore(notify=true){const raw=localStorage.getItem('rma_native_draft');if(!raw)return;try{const d=JSON.parse(raw);Object.entries(d).forEach(([k,v])=>{const vals=Array.isArray(v)?v:[v];form.querySelectorAll('[name="'+CSS.escape(k)+'"]').forEach(el=>{if(el.type==='radio'||el.type==='checkbox')el.checked=vals.includes(el.value);else el.value=vals[0]||''})});const p=form.querySelector('input[name=procedimento]:checked');if(p)p.dispatchEvent(new Event('change',{bubbles:true}));if(notify)show('Rascunho recuperado.','ok')}catch(e){}}
+async function filesPayload(){let total=0,out=[];for(const inp of form.querySelectorAll('input[type=file]'))for(const f of inp.files){total+=f.size;if(total>7*1024*1024)throw new Error('O total dos anexos excede 7 MB.');const data=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)});out.push({field:inp.name,name:f.name,mime:f.type||'application/octet-stream',data})}return out}
+form.addEventListener('submit',async e=>{
+ e.preventDefault();if(!form.reportValidity())return;
+ const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='A preparar…';
+ try{
+   const payload={formType:'rma',formTitle:'Registo Municipal das Associações — Inscrição / Atualização',submittedAt:new Date().toISOString(),data:serializable(),files:await filesPayload(),source:location.href};
+   if(!ENDPOINT){show('O formulário nativo está pronto. Falta apenas ligar o Apps Script municipal para a submissão entrar no sistema RMA. O pedido ainda NÃO foi enviado.','warn');return}
+   const iframe=document.createElement('iframe');iframe.name='rma_submit_'+Date.now();iframe.style.display='none';document.body.appendChild(iframe);
+   const post=document.createElement('form');post.method='POST';post.action=ENDPOINT;post.target=iframe.name;post.style.display='none';
+   const input=document.createElement('input');input.name='payload';input.value=JSON.stringify(payload);post.appendChild(input);document.body.appendChild(post);post.submit();
+   localStorage.removeItem('rma_native_draft');show('Submissão enviada. Aguarde a confirmação por email do sistema RMA.','ok');setTimeout(()=>{post.remove();iframe.remove()},120000);
+ }catch(err){show(err.message||'Não foi possível preparar a submissão.','err')}finally{btn.disabled=false;btn.textContent='Submeter RMA'}
+});
 })();
 </script>
 </body>
