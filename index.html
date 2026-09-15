@@ -687,19 +687,74 @@ html,body{background:#fff!important}
   .cv-footer-help{grid-template-columns:1fr!important}
 }
 </style>
+
+<style id="cv-header-identity-v5">
+.cv-header{background:rgba(251,247,240,.98)!important}
+.cv-headin{
+  max-width:1500px!important;
+  height:94px!important;
+  padding:0 30px!important;
+  gap:18px!important;
+}
+.cv-brand-v5{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  max-width:860px!important;
+  gap:14px!important;
+}
+.cv-brand-v5 .cv-municipal-lockup{
+  flex:0 0 auto!important;
+  min-width:158px!important;
+}
+.cv-header-identity{
+  display:block!important;
+  flex:1 1 auto!important;
+  min-width:320px!important;
+  max-width:620px!important;
+  height:72px!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+  box-shadow:0 5px 16px rgba(70,50,30,.06)!important;
+  border:1px solid rgba(218,202,184,.7)!important;
+  background:#fbf5eb!important;
+}
+.cv-header-identity img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  display:block!important;
+}
+.cv-nav{
+  margin-left:auto!important;
+  flex:0 0 auto!important;
+}
+@media(max-width:1180px){
+  .cv-headin{height:auto!important;min-height:94px!important;flex-wrap:wrap!important;padding-top:9px!important;padding-bottom:9px!important}
+  .cv-brand-v5{max-width:none!important;width:100%!important}
+  .cv-header-identity{max-width:none!important}
+  .cv-nav{width:100%!important;margin-left:0!important;justify-content:flex-start!important;overflow-x:auto!important}
+}
+@media(max-width:620px){
+  .cv-brand-v5{align-items:center!important}
+  .cv-brand-v5 .cv-municipal-lockup{min-width:120px!important}
+  .cv-header-identity{min-width:0!important;height:60px!important;border-radius:12px!important}
+}
+</style>
 </head>
 <body>
 <iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Plataforma do Associativismo"></iframe>
 <main id="portalHome" class="cv-home">
 <header class="cv-header">
   <div class="cv-headin">
-    <a class="cv-brand" href="#cv-topo" aria-label="Plataforma do Associativismo">
+    <a class="cv-brand cv-brand-v5" href="#cv-topo" aria-label="Plataforma do Associativismo - Município de Gouveia">
       <span class="cv-municipal-lockup">
-  <img src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/images/star.svg" alt="">
-  <span class="cv-municipal-text"><small>MUNICÍPIO DE</small><strong>GOUVEIA</strong></span>
-</span>
-      <span class="cv-divider"></span>
-      <span class="cv-platform"><strong>Plataforma do Associativismo</strong><small>Município de Gouveia</small></span>
+        <img src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/images/star.svg" alt="">
+        <span class="cv-municipal-text"><small>MUNICÍPIO DE</small><strong>GOUVEIA</strong></span>
+      </span>
+      <span class="cv-header-identity" aria-hidden="true">
+        <img src="assets/header-associativismo.webp" alt="">
+      </span>
     </a>
     <nav class="cv-nav" aria-label="Navegação principal">
   <a class="cv-nav-link" href="https://www.cm-gouveia.pt/wp-content/uploads/2026/06/Regulamento-Municipal-de-Apoio-ao-Associativismo.pdf" target="_blank" rel="noopener">Regulamento</a>
