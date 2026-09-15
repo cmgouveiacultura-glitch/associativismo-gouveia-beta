@@ -124,24 +124,19 @@ button{font:inherit}
 .person-copy strong{font-size:10.4px;margin-top:7px}
 .person-copy small{font-size:8.1px;color:#74818a;margin-top:2px}
 
-/* procedures - one card per row for iPhone */
-.proc-list{display:grid;gap:9px}
+/* procedures - headers reais */
+.proc-list{display:grid;gap:10px}
 .proc{
   border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden;box-shadow:var(--shadow)
 }
-.proc-top{
-  min-height:52px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px
+.proc-banner{
+  display:block;width:100%;aspect-ratio:4/1;object-fit:cover;object-position:center;
+  background:#f5f1eb;border-bottom:1px solid rgba(222,210,196,.8)
 }
-.proc-top strong{font-size:13px;line-height:1.15}
-.proc-top .status{flex:0 0 auto}
-.proc-top.sport{background:linear-gradient(135deg,#e86a48,#c54b5c);color:#fff}
-.proc-top.culture{background:linear-gradient(135deg,#d6a43d,#e5b82f);color:#fff}
-.proc-top.impulso{background:linear-gradient(135deg,#f8f1e7,#fff)}
-.proc-top.report{background:linear-gradient(135deg,#d65a7e,#b868a2);color:#fff}
-.status{padding:5px 7px;border-radius:999px;font-size:8px;font-weight:850;background:#e8f5ed;color:#18894e}
-.proc-top.sport .status,.proc-top.report .status{background:rgba(255,255,255,.9);color:#39734f}
+.proc-meta{padding:9px 12px 0;display:flex;justify-content:flex-end}
+.status{padding:5px 8px;border-radius:999px;font-size:8px;font-weight:850;background:#e8f5ed;color:#18894e}
 .status.closed{background:#ededed;color:#777}
-.proc-body{padding:10px 12px 12px}
+.proc-body{padding:8px 12px 12px}
 .proc-body p{margin:0 0 10px;font-size:10px;line-height:1.35;color:#657680}
 .proc-body a,.proc-body .disabled-btn{
   min-height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;
@@ -167,15 +162,24 @@ button{font:inherit}
 .step strong{display:block;font-size:10.5px}.step span.txt{display:block;font-size:8.8px;line-height:1.3;color:#6e7d86;margin-top:2px}
 
 /* news */
-.news-track{display:flex;gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.news-track{
+  display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 1px 6px
+}
 .news-track::-webkit-scrollbar{display:none}
 .news-card{
-  flex:0 0 88%;height:86px;border:1px solid var(--line);border-radius:13px;overflow:hidden;
-  display:grid;grid-template-columns:112px 1fr;background:#fff;scroll-snap-align:start;box-shadow:var(--shadow)
+  flex:0 0 86%;min-height:208px;border:1px solid var(--line);border-radius:15px;overflow:hidden;
+  display:flex;flex-direction:column;background:#fff;scroll-snap-align:start;box-shadow:var(--shadow)
 }
-.news-card img{width:112px;height:86px;object-fit:cover}
-.news-copy{padding:8px;display:flex;flex-direction:column}
-.news-copy time{font-size:7.5px;color:#7d8990}.news-copy strong{font-size:10px;line-height:1.18;margin-top:2px}.news-copy span{font-size:8px;color:#4b718d;font-weight:850;margin-top:auto}
+.news-card img{width:100%;height:128px;object-fit:cover;background:#ece7df}
+.news-copy{padding:10px 11px 11px;display:flex;flex-direction:column;flex:1}
+.news-copy time{font-size:8px;color:#7d8990}
+.news-copy strong{font-size:12px;line-height:1.23;margin-top:4px}
+.news-copy span{font-size:9px;color:#4b718d;font-weight:850;margin-top:auto;padding-top:8px}
+.news-loading{
+  flex:0 0 86%;min-height:190px;border:1px solid var(--line);border-radius:15px;background:#fff;
+  display:grid;place-items:center;color:#7b878f;font-size:10px
+}
 
 /* contacts */
 .contacts{display:grid;gap:9px}
@@ -262,15 +266,15 @@ button{font:inherit}
   </section>
 
   <section class="section" id="procedimentos">
-    <div class="section-head"><h3>Procedimentos disponíveis</h3><p>Acesso rápido aos principais serviços e programas de apoio.</p></div>
+    <div class="section-head"><h3>Procedimentos disponíveis</h3><p>Os mesmos headers da plataforma desktop, adaptados ao ecrã do telemóvel.</p></div>
     <div class="proc-list">
-      <article class="proc"><div class="proc-top"><strong>Registo Municipal de Associações</strong><span class="status">Disponível</span></div><div class="proc-body"><p>Inscrição e atualização dos dados da associação no Registo Municipal.</p><a href="https://forms.gle/55GqdEBhtPJYa4K36" target="_blank" rel="noopener">Aceder ao RMA</a></div></article>
-      <article class="proc"><div class="proc-top"><strong>Apoio Técnico, Material e Logístico</strong><span class="status">Disponível</span></div><div class="proc-body"><p>Pedido de meios técnicos, humanos, logísticos, equipamentos e infraestruturas municipais.</p><a href="https://forms.gle/DxUdUMWRPSMtngoY8" target="_blank" rel="noopener">Fazer pedido</a></div></article>
-      <article class="proc"><div class="proc-top"><strong>Transporte</strong><span class="status">Disponível</span></div><div class="proc-body"><p>Pedido de cedência de viatura municipal com condutor para atividades associativas.</p><a href="https://forms.gle/9DunoDnuiE4spsrXA" target="_blank" rel="noopener">Pedir transporte</a></div></article>
-      <article class="proc"><div class="proc-top sport"><strong>Plano de Atividades – Desporto</strong><span class="status">Disponível</span></div><div class="proc-body"><p>Programa de Apoio Anual ao Associativismo Desportivo.</p><a href="https://forms.gle/7maYsg8BHV6GCsTW6" target="_blank" rel="noopener">Apresentar candidatura</a></div></article>
-      <article class="proc"><div class="proc-top culture"><strong>Plano de Atividades – Cultura</strong><span class="status closed">2027</span></div><div class="proc-body"><p>Programa de Apoio Anual ao Associativismo Cultural.</p><span class="disabled-btn">Candidaturas encerradas</span></div></article>
-      <article class="proc"><div class="proc-top impulso"><strong>Programa de Impulso Associativo</strong><span class="status closed">2027</span></div><div class="proc-body"><p>Apoio a projetos, atividades, aquisições ou ações pontuais de interesse público.</p><span class="disabled-btn">Indisponível de momento</span></div></article>
-      <article class="proc"><div class="proc-top report"><strong>Relatório de Execução e Impulso</strong><span class="status">Disponível</span></div><div class="proc-body"><p>Modelo para execução e prestação de contas dos apoios atribuídos.</p><a href="relatorio-execucao-impulso-2026.pdf" target="_blank" rel="noopener">Abrir modelo PDF</a></div></article>
+      <article class="proc"><img class="proc-banner" src="assets/header-rma.webp" alt="Registo Municipal de Associações"><div class="proc-meta"><span class="status">Disponível</span></div><div class="proc-body"><p>Inscrição e atualização dos dados da associação no Registo Municipal.</p><a href="https://forms.gle/55GqdEBhtPJYa4K36" target="_blank" rel="noopener">Aceder ao RMA</a></div></article>
+      <article class="proc"><img class="proc-banner" src="assets/header-apoio.webp" alt="Apoio Técnico"><div class="proc-meta"><span class="status">Disponível</span></div><div class="proc-body"><p>Pedido de meios técnicos, humanos, logísticos, equipamentos e infraestruturas municipais.</p><a href="https://forms.gle/DxUdUMWRPSMtngoY8" target="_blank" rel="noopener">Fazer pedido</a></div></article>
+      <article class="proc"><img class="proc-banner" src="assets/header-transporte.webp" alt="Transporte"><div class="proc-meta"><span class="status">Disponível</span></div><div class="proc-body"><p>Pedido de cedência de viatura municipal com condutor para atividades associativas.</p><a href="https://forms.gle/9DunoDnuiE4spsrXA" target="_blank" rel="noopener">Pedir transporte</a></div></article>
+      <article class="proc"><img class="proc-banner" src="assets/header-desporto.webp" alt="Plano de Atividades Desporto"><div class="proc-meta"><span class="status">Disponível</span></div><div class="proc-body"><p>Programa de Apoio Anual ao Associativismo Desportivo.</p><a href="https://forms.gle/7maYsg8BHV6GCsTW6" target="_blank" rel="noopener">Apresentar candidatura</a></div></article>
+      <article class="proc"><img class="proc-banner" src="assets/header-cultura.webp" alt="Plano de Atividades Cultura"><div class="proc-meta"><span class="status closed">Disponível em 2027</span></div><div class="proc-body"><p>Programa de Apoio Anual ao Associativismo Cultural.</p><span class="disabled-btn">Candidaturas encerradas</span></div></article>
+      <article class="proc"><img class="proc-banner" src="assets/header-impulso.webp" alt="Programa de Impulso Associativo"><div class="proc-meta"><span class="status closed">Novo período em 2027</span></div><div class="proc-body"><p>Apoio a projetos, atividades, aquisições ou ações pontuais de interesse público.</p><span class="disabled-btn">Indisponível de momento</span></div></article>
+      <article class="proc"><img class="proc-banner" src="assets/header-relatorio.webp" alt="Relatório de Execução"><div class="proc-meta"><span class="status">Disponível</span></div><div class="proc-body"><p>Modelo para execução e prestação de contas dos apoios atribuídos.</p><a href="relatorio-execucao-impulso-2026.pdf" target="_blank" rel="noopener">Abrir modelo PDF</a></div></article>
     </div>
   </section>
 
@@ -284,11 +288,10 @@ button{font:inherit}
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-head"><h3>Atualidade do Município</h3><p>Deslize para acompanhar notícias e iniciativas.</p></div>
+  <section class="section" id="atualidade">
+    <div class="section-head"><h3>Atualidade do Município</h3><p>Notícias reais do Município. Deslize para ver mais.</p></div>
     <div class="news-track" id="newsTrack">
-      <a class="news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank" rel="noopener"><img src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/img/img-homepage-gva-por-do-sol.jpg" alt=""><div class="news-copy"><time>Município de Gouveia</time><strong>Últimas notícias do Município</strong><span>Ler mais →</span></div></a>
-      <a class="news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank" rel="noopener"><img src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/img/img-homepage-gva-por-do-sol.jpg" alt=""><div class="news-copy"><time>Atualidade</time><strong>Cultura e associativismo em Gouveia</strong><span>Ler mais →</span></div></a>
+      <div class="news-loading">A carregar as últimas notícias…</div>
     </div>
   </section>
 
@@ -320,21 +323,79 @@ button{font:inherit}
     menuBtn.addEventListener('click',function(){nav.classList.toggle('open');});
     nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');}});
   }
+
   var track=document.getElementById('newsTrack');
-  if(!track)return;
-  var timer;
-  function start(){
+  var fallbackImage='https://www.cm-gouveia.pt/wp-content/themes/gouveia/img/img-homepage-gva-por-do-sol.jpg';
+  var newsPage='https://www.cm-gouveia.pt/noticias/';
+  var timer=null;
+
+  function esc(s){
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function cleanHtml(s){
+    var d=document.createElement('div');d.innerHTML=s||'';return (d.textContent||d.innerText||'').trim();
+  }
+  function featured(post){
+    try{
+      var m=post._embedded&&post._embedded['wp:featuredmedia']&&post._embedded['wp:featuredmedia'][0];
+      if(!m)return '';
+      var sizes=m.media_details&&m.media_details.sizes;
+      return (sizes&&sizes.medium_large&&sizes.medium_large.source_url)||
+             (sizes&&sizes.medium&&sizes.medium.source_url)||
+             m.source_url||'';
+    }catch(e){return '';}
+  }
+  function render(posts){
+    if(!track||!posts||!posts.length)return false;
+    track.innerHTML=posts.slice(0,8).map(function(p){
+      var title=cleanHtml(p.title&&p.title.rendered)||'Notícia do Município';
+      var href=p.link||newsPage;
+      var img=featured(p)||fallbackImage;
+      var date=p.date?new Date(p.date).toLocaleDateString('pt-PT',{day:'numeric',month:'long',year:'numeric'}):'Município de Gouveia';
+      return '<a class="news-card" href="'+esc(href)+'" target="_blank" rel="noopener">'+
+        '<img src="'+esc(img)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+fallbackImage+'\'">'+
+        '<div class="news-copy"><time>'+esc(date)+'</time><strong>'+esc(title)+'</strong><span>Ler notícia →</span></div></a>';
+    }).join('');
+    return true;
+  }
+  function fallback(){
+    if(!track)return;
+    track.innerHTML='<a class="news-card" href="'+newsPage+'" target="_blank" rel="noopener">'+
+      '<img src="'+fallbackImage+'" alt="Gouveia"><div class="news-copy"><time>Município de Gouveia</time>'+
+      '<strong>Consultar as últimas notícias do Município</strong><span>Ver notícias →</span></div></a>';
+  }
+
+  async function loadNews(){
+    var urls=[
+      'https://www.cm-gouveia.pt/wp-json/wp/v2/posts?per_page=8&_embed=wp:featuredmedia',
+      'https://www.cm-gouveia.pt/wp-json/wp/v2/noticias?per_page=8&_embed=wp:featuredmedia'
+    ];
+    for(var i=0;i<urls.length;i++){
+      try{
+        var res=await fetch(urls[i],{mode:'cors',cache:'no-store'});
+        if(!res.ok)continue;
+        var data=await res.json();
+        if(render(data))return;
+      }catch(e){}
+    }
+    fallback();
+  }
+
+  function startAuto(){
+    if(!track)return;
     if(timer)clearInterval(timer);
     timer=setInterval(function(){
       var max=track.scrollWidth-track.clientWidth;
       if(max<10)return;
       if(track.scrollLeft>=max-8)track.scrollTo({left:0,behavior:'smooth'});
-      else track.scrollBy({left:Math.round(track.clientWidth*.88),behavior:'smooth'});
-    },4800);
+      else track.scrollBy({left:Math.round(track.clientWidth*.86)+10,behavior:'smooth'});
+    },5000);
   }
-  track.addEventListener('touchstart',function(){if(timer){clearInterval(timer);timer=null;}},{passive:true});
-  track.addEventListener('touchend',start,{passive:true});
-  start();
+  if(track){
+    track.addEventListener('touchstart',function(){if(timer){clearInterval(timer);timer=null;}},{passive:true});
+    track.addEventListener('touchend',startAuto,{passive:true});
+  }
+  loadNews().then(startAuto);
 })();
 </script>
 </body>
