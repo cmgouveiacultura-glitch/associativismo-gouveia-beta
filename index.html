@@ -30,6 +30,29 @@ textarea{min-height:95px;resize:vertical}input:focus,select:focus,textarea:focus
 .msg{display:none;margin:14px 0;padding:13px 15px;border-radius:12px;font-size:13px;line-height:1.45}.msg.show{display:block}.msg.ok{background:#eaf6ee;color:#2b6442}.msg.warn{background:#fff4df;color:#76551e}.msg.err{background:#fdecec;color:#8a3f3f}
 @media(max-width:720px){.rma-head{padding-left:11px;padding-right:11px}.rma-shell{padding:12px}.intro,.section{border-radius:15px;padding:16px}.progress{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:12px}.progress span{min-height:34px;padding:6px 4px;font-size:10px;border-radius:9px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.options{display:grid;grid-template-columns:1fr}.actions{margin-left:-12px;margin-right:-12px;margin-bottom:-12px;padding-left:12px;padding-right:12px}.draft,.submit{flex:1}.rma-title small{font-size:11px}}
 @media(max-width:430px){.progress{grid-template-columns:repeat(2,minmax(0,1fr))}.progress span{justify-content:flex-start;text-align:left;padding-left:10px}}
+
+/* final usability refinements */
+.cv-nav{gap:4px}
+.cv-nav-btn,.cv-nav-link{appearance:none;border:0;background:transparent;color:#0d3f76;font-size:10.8px;font-weight:800;padding:9px 10px;border-radius:9px;cursor:pointer;text-decoration:none;transition:.18s ease}
+.cv-nav-btn:hover,.cv-nav-link:hover{background:rgba(13,90,165,.08);color:#0b5aa1}
+.cv-person-copy{display:flex;flex-direction:column;justify-content:center;padding:10px 18px}
+.cv-person-copy p{margin:0 0 6px 27px;max-width:600px}
+.cv-person-copy strong,.cv-person-copy small{margin-left:27px}
+.cv-status.closed{background:#ececec;color:#6d7176}
+.cv-proc-body button.cv-disabled{background:#d7d9dc!important;color:#7a7d80!important;box-shadow:none!important;cursor:not-allowed!important;opacity:1}
+.cv-step-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#e9f4ff;color:#1b6fbc}
+.cv-step-icon.orange{background:#fff0e7;color:#f36a22}.cv-step-icon.purple{background:#f1edff;color:#7560cf}.cv-step-icon.green{background:#e9f7ef;color:#159354}
+.cv-step-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cv-contact-grid{display:grid;grid-template-columns:1.05fr 1.15fr 1.8fr;gap:10px;margin-bottom:8px}
+.cv-contact-card{min-height:92px;border:1px solid #dfd4c7;border-radius:12px;background:rgba(255,255,255,.72);display:grid;grid-template-columns:44px 1fr;gap:10px;padding:12px 14px;align-items:center}
+.cv-contact-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#e7f1fa;color:#0d5ca4;font-weight:900;font-size:18px}
+.cv-contact-card strong{display:block;font-size:10px;color:#0b4178;margin-bottom:4px}
+.cv-contact-card a{display:block;font-size:9px;color:#0c64b6;font-weight:800;text-decoration:none;margin:2px 0}
+.cv-contact-card small{display:block;font-size:8px;line-height:1.3;color:#687e91;margin-top:3px}
+.cv-social-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.cv-social-links a{display:inline-flex;padding:6px 9px;border-radius:999px;background:#0d5ca4;color:#fff;font-size:8px;font-weight:900}
+.cv-footer-links a{color:#fff;text-decoration:none;opacity:.92}.cv-footer-links a:hover{opacity:1;text-decoration:underline}
+@media(max-width:900px){.cv-contact-grid{grid-template-columns:1fr}.cv-nav-btn,.cv-nav-link{white-space:nowrap}}
 </style>
 <script src="config.js"></script>
 
@@ -438,12 +461,12 @@ html,body{background:#fff!important}
       <span class="cv-platform"><strong>Plataforma do Associativismo</strong><small>Município de Gouveia</small></span>
     </a>
     <nav class="cv-nav" aria-label="Navegação principal">
-      <a href="#cv-procedimentos">Procedimentos⌄</a>
-      <a href="#cv-como">Como funciona</a>
-      <a href="https://www.cm-gouveia.pt/wp-content/uploads/2026/06/Regulamento-Municipal-de-Apoio-ao-Associativismo.pdf" target="_blank" rel="noopener">Regulamento</a>
-      <a href="#cv-atualidade">Atualidade</a>
-      <a href="mailto:cultura@cm-gouveia.pt">Contactos</a>
-    </nav>
+  <button type="button" class="cv-nav-btn" data-cv-scroll="#cv-procedimentos">Procedimentos</button>
+  <button type="button" class="cv-nav-btn" data-cv-scroll="#cv-como">Como funciona</button>
+  <a class="cv-nav-link" href="https://www.cm-gouveia.pt/wp-content/uploads/2026/06/Regulamento-Municipal-de-Apoio-ao-Associativismo.pdf" target="_blank" rel="noopener">Regulamento</a>
+  <button type="button" class="cv-nav-btn" data-cv-scroll="#cv-atualidade">Atualidade</button>
+  <button type="button" class="cv-nav-btn" data-cv-scroll="#cv-contactos">Contactos</button>
+</nav>
   </div>
 </header>
 
@@ -461,7 +484,6 @@ html,body{background:#fff!important}
   <div class="cv-hero-photo">
     <img class="cv-city" src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/img/img-homepage-gva-por-do-sol.jpg" alt="Vista de Gouveia ao pôr do sol">
     <div class="cv-fade"></div>
-    <div class="cv-hand">Gouveia<br>onde as pessoas<br>fazem mais.</div>
   </div>
 </section>
 
@@ -508,11 +530,11 @@ html,body{background:#fff!important}
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head culture"><strong>Plano de Atividades –<br>Cultura</strong><span class="cv-loop"></span></div>
-        <div class="cv-proc-body"><span class="cv-status period">Por período</span><p>Programa de Apoio Anual ao Associativismo Cultural.</p><button data-home-service="cultura">Apresentar candidatura →</button></div>
+        <div class="cv-proc-body"><span class="cv-status closed">Disponível em 2027</span><p>Programa de Apoio Anual ao Associativismo Cultural.</p><button type="button" class="cv-disabled" disabled aria-disabled="true">Disponível em 2027</button></div>
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head impulso"><strong>Programa de Impulso<br>Associativo</strong><span class="cv-stripes"></span></div>
-        <div class="cv-proc-body"><span class="cv-status period">Disponível por período</span><p>Apoio a projetos, atividades, aquisições ou ações pontuais de interesse público.</p><button data-home-service="impulso">Consultar / preencher →</button></div>
+        <div class="cv-proc-body"><span class="cv-status closed">Disponível em 2027</span><p>Apoio a projetos, atividades, aquisições ou ações pontuais de interesse público.</p><button type="button" class="cv-disabled" disabled aria-disabled="true">Disponível em 2027</button></div>
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head report"><strong>Relatório de Execução<br>e Impulso</strong><span class="cv-loop"></span></div>
@@ -524,12 +546,36 @@ html,body{background:#fff!important}
 
 <section class="cv-section cv-how" id="cv-como">
   <div class="cv-wrap">
-    <div class="cv-section-head compact"><div><h2>Como funciona</h2></div></div>
+    <div class="cv-section-head compact"><div><h2>Como funciona</h2><p>Quatro passos simples para tratar do seu pedido.</p></div></div>
     <div class="cv-steps">
-      <div class="cv-step"><b>1</b><i>▧</i><div><strong>Escolha o procedimento</strong><span>Selecione o serviço que pretende.</span></div></div>
-      <div class="cv-step"><b>2</b><i>▱</i><div><strong>Prepare a informação</strong><span>Reúna os documentos necessários.</span></div></div>
-      <div class="cv-step"><b>3</b><i>✎</i><div><strong>Preencha por etapas</strong><span>Siga o formulário online.</span></div></div>
-      <div class="cv-step"><b>4</b><i>✓</i><div><strong>Reveja e submeta</strong><span>Confirme e envie o seu pedido.</span></div></div>
+      <div class="cv-step">
+        <b>1</b>
+        <span class="cv-step-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h5"/><path d="M15.5 14.5 19 18"/><path d="M16 18h3v-3"/></svg>
+        </span>
+        <div><strong>Escolha o procedimento</strong><span>Selecione o serviço municipal de que necessita.</span></div>
+      </div>
+      <div class="cv-step">
+        <b>2</b>
+        <span class="cv-step-icon orange">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v10H3z"/><path d="M3 7V5h7l2 2"/><path d="M8 13h8M8 16h5"/></svg>
+        </span>
+        <div><strong>Prepare a informação</strong><span>Reúna os dados e documentos necessários.</span></div>
+      </div>
+      <div class="cv-step">
+        <b>3</b>
+        <span class="cv-step-icon purple">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h6"/><path d="m16 16 3-3 1.5 1.5-3 3-2 .5z"/></svg>
+        </span>
+        <div><strong>Preencha por etapas</strong><span>Complete o formulário de forma simples e orientada.</span></div>
+      </div>
+      <div class="cv-step">
+        <b>4</b>
+        <span class="cv-step-icon green">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg>
+        </span>
+        <div><strong>Reveja e submeta</strong><span>Confirme a informação e envie o pedido.</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -549,12 +595,47 @@ html,body{background:#fff!important}
   </div>
 </section>
 
+<section class="cv-section cv-contacts" id="cv-contactos">
+  <div class="cv-wrap">
+    <div class="cv-section-head compact">
+      <div><h2>Contactos úteis</h2><p>Informação rápida para apoio às associações e contacto com o Município.</p></div>
+    </div>
+    <div class="cv-contact-grid">
+      <article class="cv-contact-card">
+        <span class="cv-contact-icon">✉</span>
+        <div><strong>Associativismo e Cultura</strong><a href="mailto:cultura@cm-gouveia.pt">cultura@cm-gouveia.pt</a><small>Questões sobre procedimentos, candidaturas e apoio associativo.</small></div>
+      </article>
+      <article class="cv-contact-card">
+        <span class="cv-contact-icon">☎</span>
+        <div><strong>Município de Gouveia</strong><a href="tel:+351238490210">238 490 210</a><a href="mailto:geral@cm-gouveia.pt">geral@cm-gouveia.pt</a><small>Av. 25 de Abril, 6290-554 Gouveia</small></div>
+      </article>
+      <article class="cv-contact-card cv-social-card">
+        <span class="cv-contact-icon">↗</span>
+        <div><strong>Canais oficiais</strong>
+          <div class="cv-social-links">
+            <a href="https://www.cm-gouveia.pt/" target="_blank" rel="noopener">Site</a>
+            <a href="https://www.facebook.com/MunicipiodeGouveia/" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.instagram.com/municipiogouveia/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.youtube.com/@municipiogouveia" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <footer class="cv-footer">
   <div class="cv-footin">
     <div class="cv-footer-muni"><img src="data:image/webp;base64,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" alt="Município de Gouveia"></div>
     <div class="cv-footer-assoc"><img src="data:image/webp;base64,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" alt="Associativismo em Gouveia"></div>
-    <div class="cv-footer-links"><span>Acessibilidade</span><span>Privacidade</span><a href="mailto:cultura@cm-gouveia.pt">Contactos</a><i>f</i><i>◎</i><i>▶</i></div>
-  </div>
+    <div class="cv-footer-links">
+  <a href="https://www.cm-gouveia.pt/" target="_blank" rel="noopener">Site</a>
+  <a href="https://www.facebook.com/MunicipiodeGouveia/" target="_blank" rel="noopener">Facebook</a>
+  <a href="https://www.instagram.com/municipiogouveia/" target="_blank" rel="noopener">Instagram</a>
+  <a href="https://www.youtube.com/@municipiogouveia" target="_blank" rel="noopener">YouTube</a>
+  <a href="mailto:cultura@cm-gouveia.pt">Contactos</a>
+</div>
+</div>
 </footer>
 </main>
 
@@ -951,5 +1032,20 @@ function mediaUrl(p){try{const m=p?._embedded?.['wp:featuredmedia']?.[0];return 
 function render(posts){const t=document.getElementById('cvNewsTrack');if(!t||!Array.isArray(posts)||!posts.length)return;t.innerHTML=posts.slice(0,8).map(p=>{const title=clean(p.title?.rendered||p.title||'Notícia do Município');const href=p.link||'https://www.cm-gouveia.pt/noticias/';const date=p.date?new Date(p.date).toLocaleDateString('pt-PT',{day:'2-digit',month:'long',year:'numeric'}):'Município de Gouveia';const img=mediaUrl(p);const style=img?' style="background-image:url(\''+img.replace(/'/g,'%27')+'\')"':'';return '<a class="cv-news-card" href="'+href+'" target="_blank"><div class="cv-news-img"'+style+'></div><div><time>'+date+'</time><strong>'+title+'</strong><span>Ler mais →</span></div></a>'}).join('')}
 document.addEventListener('DOMContentLoaded',()=>{const t=document.getElementById('cvNewsTrack');document.querySelector('[data-cv-prev]')?.addEventListener('click',()=>t?.scrollBy({left:-360,behavior:'smooth'}));document.querySelector('[data-cv-next]')?.addEventListener('click',()=>t?.scrollBy({left:360,behavior:'smooth'}));(async()=>{for(const u of ['https://www.cm-gouveia.pt/wp-json/wp/v2/posts?per_page=8&_embed=wp:featuredmedia','https://www.cm-gouveia.pt/wp-json/wp/v2/noticias?per_page=8&_embed=wp:featuredmedia']){try{const r=await fetch(u,{mode:'cors'});if(!r.ok)continue;const j=await r.json();if(Array.isArray(j)&&j.length){render(j);break}}catch(e){}}})();});
 })();</script>
+
+<script id="cv-final-nav">
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('[data-cv-scroll],[data-scroll]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      var sel=el.getAttribute('data-cv-scroll')||el.getAttribute('data-scroll');
+      var target=sel&&document.querySelector(sel);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
