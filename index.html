@@ -1433,8 +1433,8 @@ html,body{background:#fff!important}
 
 <style id="portal-modern-polish-v7">
 /* identity */
-.cv-platform-title{display:flex!important;flex-direction:column!important;gap:2px!important;font-size:19px!important;line-height:1.05!important}
-.cv-platform-title small{font-size:10px!important;font-weight:750!important;color:#657984!important;background:none!important;-webkit-text-fill-color:#657984!important}
+.cv-platform-title{display:flex!important;flex-direction:column!important;gap:3px!important;font-size:25px!important;line-height:1.02!important;font-weight:900!important;letter-spacing:-.035em!important}
+.cv-platform-title small{font-size:12px!important;font-weight:800!important;color:#687b86!important;background:none!important;-webkit-text-fill-color:#687b86!important}
 .cv-doc-btn{display:inline-flex!important;align-items:center!important;text-decoration:none!important;border:1px solid #d2dde3!important;color:#0d4c76!important;background:#fff!important;box-shadow:0 5px 14px rgba(12,62,91,.06)!important}
 .cv-doc-btn:hover{background:#f4f9fb!important}
 
@@ -1588,6 +1588,143 @@ html,body{background:#fff!important}
   .cv-steps{grid-template-columns:1fr!important}
 }
 </style>
+
+<style id="ui-tighten-v8">
+/* Título do portal */
+.cv-header-logo{min-width:430px!important;max-width:680px!important}
+.cv-platform-title{font-size:26px!important;line-height:1!important;gap:4px!important}
+.cv-platform-title small{font-size:12.5px!important;line-height:1.15!important}
+
+/* Botões do hero: mais elegantes, menos blocos */
+.cv-actions{gap:10px!important;margin-top:17px!important;align-items:stretch!important}
+.cv-btn,.cv-doc-btn{
+  min-width:0!important;
+  min-height:46px!important;
+  padding:11px 16px!important;
+  border-radius:13px!important;
+  font-size:12px!important;
+  font-weight:850!important;
+  line-height:1.15!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  text-align:center!important;
+}
+.cv-btn span,.cv-doc-btn span{font-size:14px!important;line-height:1!important}
+.cv-primary{box-shadow:0 8px 18px rgba(234,99,29,.17)!important}
+.cv-secondary,.cv-doc-btn{box-shadow:0 5px 12px rgba(12,62,91,.05)!important}
+
+/* Headers dos cartões: menos espaço morto, imagem ocupa melhor */
+.cv-proc{
+  height:198px!important;
+  min-height:198px!important;
+}
+.cv-proc-head{
+  height:50px!important;
+  min-height:50px!important;
+  background:#fff!important;
+}
+.cv-proc-head>img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  background:#fff!important;
+}
+.cv-proc-head.white>img{
+  object-fit:cover!important;
+  width:100%!important;
+  height:100%!important;
+  right:0!important;
+  top:0!important;
+}
+.cv-proc-body{padding:9px 10px 10px!important;gap:5px!important}
+.cv-proc-body p{font-size:8.6px!important;line-height:1.3!important;min-height:46px!important}
+.cv-proc-body button{min-height:34px!important;font-size:8.4px!important}
+
+/* Página oficial: impossível confundir com simples bloco informativo */
+.cv-official-docs{padding:14px 0!important;background:linear-gradient(180deg,#edf3f6,#e8f0f4)!important}
+.cv-doc-panel-clear{
+  display:grid!important;
+  grid-template-columns:210px minmax(0,1fr) auto!important;
+  gap:20px!important;
+  align-items:center!important;
+  padding:17px 19px!important;
+  border-radius:18px!important;
+  background:linear-gradient(135deg,#0e4d75 0%,#0b638d 38%,#ffffff 38.2%,#ffffff 100%)!important;
+  border:1px solid #cfdde5!important;
+  box-shadow:0 10px 24px rgba(13,62,89,.07)!important;
+  text-decoration:none!important;
+}
+.cv-doc-panel-clear:after{display:none!important}
+.cv-doc-site{position:relative!important;z-index:1!important;color:#fff!important;display:flex!important;flex-direction:column!important;gap:3px!important}
+.cv-doc-site-badge{font-size:8px!important;letter-spacing:.11em!important;font-weight:900!important;color:#d8edf7!important}
+.cv-doc-site strong{font-size:16px!important;line-height:1.05!important;color:#fff!important}
+.cv-doc-site>span:last-child{font-size:9px!important;color:#d7ebf4!important}
+.cv-doc-panel-clear .cv-doc-copy{padding-left:4px!important}
+.cv-doc-panel-clear .cv-doc-copy strong{font-size:16px!important;line-height:1.18!important;color:#153f5b!important}
+.cv-doc-panel-clear .cv-doc-copy p{font-size:10px!important;line-height:1.4!important;margin-top:4px!important;color:#6d7e88!important}
+.cv-doc-panel-clear .cv-doc-cta{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  padding:10px 13px!important;
+  border-radius:11px!important;
+  background:#eef6fa!important;
+  border:1px solid #c8dce6!important;
+  color:#0d618d!important;
+  font-size:9.5px!important;
+  font-weight:900!important;
+  white-space:nowrap!important
+}
+
+/* Como funciona mais compacto */
+.cv-how{padding:15px 0 18px!important}
+.cv-how .cv-section-head{margin-bottom:10px!important}
+.cv-how .cv-section-head h2{font-size:19px!important}
+.cv-how .cv-section-head p{font-size:10px!important}
+.cv-steps{gap:9px!important}
+.cv-step{
+  min-height:78px!important;
+  padding:11px 11px 10px 12px!important;
+  border-radius:14px!important;
+}
+.cv-step>b{
+  top:-8px!important;left:12px!important;
+  width:23px!important;height:23px!important;
+  font-size:10px!important
+}
+.cv-step-icon{
+  width:31px!important;height:31px!important;
+  margin:4px 0 6px!important;
+  border-radius:9px!important
+}
+.cv-step-icon svg{width:16px!important;height:16px!important}
+.cv-step>div:last-child strong{font-size:10px!important}
+.cv-step>div:last-child span{font-size:8.4px!important;line-height:1.3!important;margin-top:2px!important}
+
+/* Keep the news exactly as-is from v7 */
+
+@media(max-width:1100px){
+  .cv-doc-panel-clear{grid-template-columns:180px minmax(0,1fr)!important}
+  .cv-doc-panel-clear .cv-doc-cta{grid-column:2!important;justify-self:start!important}
+}
+@media(max-width:720px){
+  .cv-header-logo{min-width:0!important;max-width:none!important}
+  .cv-platform-title{font-size:20px!important}
+  .cv-platform-title small{font-size:11px!important}
+  .cv-actions{flex-direction:column!important}
+  .cv-btn,.cv-doc-btn{width:100%!important}
+  .cv-doc-panel-clear{
+    grid-template-columns:1fr!important;
+    background:linear-gradient(180deg,#0e527b 0%,#0e527b 34%,#fff 34.2%,#fff 100%)!important
+  }
+  .cv-doc-panel-clear .cv-doc-copy,.cv-doc-panel-clear .cv-doc-cta{grid-column:1!important}
+  .cv-doc-panel-clear .cv-doc-copy{padding-top:18px!important;padding-left:0!important}
+}
+</style>
 </head>
 <body>
 <iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Portal do Associativismo"></iframe>
@@ -1704,23 +1841,26 @@ html,body{background:#fff!important}
   </div>
 </section>
 
-<section class="cv-official-docs" aria-label="Documentação oficial do Associativismo">
+<section class="cv-official-docs" aria-label="Página oficial do Município">
   <div class="cv-wrap">
-    <a class="cv-doc-panel" href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">
-      <div class="cv-doc-mark" aria-hidden="true">↗</div>
-      <div class="cv-doc-copy">
-        <span>PÁGINA OFICIAL DO MUNICÍPIO</span>
-        <strong>Documentos, regulamentos e informação sobre apoios</strong>
-        <p>A página oficial de Associativismo do Município reúne o enquadramento, regulamentos, critérios e documentação institucional.</p>
+    <a class="cv-doc-panel cv-doc-panel-clear" href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">
+      <div class="cv-doc-site">
+        <span class="cv-doc-site-badge">SITE OFICIAL</span>
+        <strong>Município de Gouveia</strong>
+        <span>cm-gouveia.pt/apoios/</span>
       </div>
-      <div class="cv-doc-cta">Consultar documentação oficial →</div>
+      <div class="cv-doc-copy">
+        <strong>Consultar a página oficial de Associativismo e Apoios</strong>
+        <p>Regulamentos, critérios, documentos e informação institucional publicados pelo Município.</p>
+      </div>
+      <div class="cv-doc-cta">Abrir página oficial <span aria-hidden="true">↗</span></div>
     </a>
   </div>
 </section>
 
 <section class="cv-section cv-how" id="cv-como">
   <div class="cv-wrap">
-    <div class="cv-section-head compact"><div><h2>Como funciona</h2><p>Um percurso simples para encontrar o procedimento certo e seguir para o respetivo formulário.</p></div></div>
+    <div class="cv-section-head compact"><div><h2>Como funciona</h2><p>Quatro passos rápidos para chegar ao formulário certo.</p></div></div>
     <div class="cv-steps">
       <div class="cv-step">
         <b>1</b>
@@ -1734,21 +1874,21 @@ html,body{background:#fff!important}
         <span class="cv-step-icon orange">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v10H3z"/><path d="M3 7V5h7l2 2"/><path d="M8 13h8M8 16h5"/></svg>
         </span>
-        <div><strong>Prepare a informação</strong><span>Consulte os requisitos e tenha os documentos necessários consigo.</span></div>
+        <div><strong>Prepare a informação</strong><span>Consulte os requisitos e reúna os documentos necessários.</span></div>
       </div>
       <div class="cv-step">
         <b>3</b>
         <span class="cv-step-icon purple">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h6"/><path d="m16 16 3-3 1.5 1.5-3 3-2 .5z"/></svg>
         </span>
-        <div><strong>Preencha por etapas</strong><span>Abra o respetivo formulário e preencha a informação solicitada.</span></div>
+        <div><strong>Preencha por etapas</strong><span>Abra o formulário e preencha a informação solicitada.</span></div>
       </div>
       <div class="cv-step">
         <b>4</b>
         <span class="cv-step-icon green">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg>
         </span>
-        <div><strong>Reveja e submeta</strong><span>Confirme os dados e submeta diretamente no formulário indicado.</span></div>
+        <div><strong>Reveja e submeta</strong><span>Reveja os dados e submeta no formulário indicado.</span></div>
       </div>
     </div>
   </div>
