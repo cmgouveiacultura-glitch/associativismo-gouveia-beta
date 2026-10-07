@@ -1248,6 +1248,103 @@ html,body{background:#fff!important}
   .cv-news-card{flex-basis:86%!important}
 }
 </style>
+
+<style id="seven-cards-final-v5">
+/* Top bar: restore the previous light/cream colour */
+.cv-header{
+  background:rgba(251,247,240,.98)!important;
+  border-bottom:1px solid #e4d7c7!important;
+  box-shadow:0 3px 14px rgba(70,53,35,.06)!important;
+}
+.cv-headin{
+  max-width:1540px!important;
+  height:76px!important;
+  padding:8px 26px!important;
+}
+.cv-municipal-text small,.cv-municipal-text strong{color:#154675!important}
+.cv-nav-link{color:#0d3f76!important}
+.cv-nav-link:hover{background:rgba(13,90,165,.07)!important;color:#0b5aa1!important}
+.cv-nav-contact{background:#0d5aa5!important;color:#fff!important}
+.cv-nav-contact:hover{background:#094d91!important}
+
+/* Seven procedure cards visible at once on desktop — no horizontal scrollbar */
+.cv-procedimentos{
+  padding:25px 0 30px!important;
+  background:linear-gradient(180deg,#103f61 0%,#0d3857 100%)!important;
+}
+.cv-procedimentos .cv-wrap{
+  max-width:1740px!important;
+  padding:0 26px!important;
+}
+.cv-proc-grid{
+  display:grid!important;
+  grid-template-columns:repeat(7,minmax(0,1fr))!important;
+  gap:10px!important;
+  overflow:visible!important;
+  padding:0!important;
+}
+.cv-proc{
+  min-width:0!important;
+  width:auto!important;
+  max-width:none!important;
+  min-height:248px!important;
+  height:248px!important;
+  border-radius:15px!important;
+}
+.cv-proc-head{
+  position:relative!important;
+  height:70px!important;
+  min-height:70px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:#fff!important;
+  border-bottom:1px solid #edf1f3!important;
+}
+.cv-proc-head>strong,.cv-proc-head>.cv-loop,.cv-proc-head>.cv-stripes{
+  display:none!important;
+}
+.cv-proc-head>img{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+  z-index:2!important;
+}
+.cv-proc-body{
+  padding:10px 10px 11px!important;
+  gap:6px!important;
+}
+.cv-status{font-size:8px!important;padding:4px 6px!important}
+.cv-proc-body p{
+  font-size:8.8px!important;
+  line-height:1.34!important;
+  min-height:0!important;
+}
+.cv-proc-body button{
+  width:100%!important;
+  min-height:38px!important;
+  padding:8px 6px!important;
+  font-size:8.5px!important;
+  border-radius:9px!important;
+  margin-top:auto!important;
+}
+
+/* Keep it responsive without any sideways card strip */
+@media(max-width:1250px){
+  .cv-proc-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .cv-proc{height:244px!important;min-height:244px!important}
+}
+@media(max-width:900px){
+  .cv-proc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:560px){
+  .cv-proc-grid{grid-template-columns:1fr!important}
+}
+</style>
 </head>
 <body>
 <iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Plataforma do Associativismo"></iframe>
@@ -1330,19 +1427,19 @@ html,body{background:#fff!important}
         <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Pedido de cedência de viatura municipal com condutor para atividades associativas.</p><button data-home-service="transporte">Pedir transporte →</button></div>
       </article>
       <article class="cv-proc">
-        <div class="cv-proc-head sport"><strong>Plano de Atividades –<br>Desporto</strong><img src="assets/header-desporto.webp" alt=""><span class="cv-loop"></span></div>
+        <div class="cv-proc-head sport"><img src="assets/header-desporto.webp" alt="Plano de Atividades — Desporto"></div>
         <div class="cv-proc-body"><span class="cv-status sports">Aberto até 10 de novembro</span><p>Programa de Apoio Anual ao Associativismo Desportivo.</p><button data-home-service="desporto">Apresentar candidatura →</button></div>
       </article>
       <article class="cv-proc">
-        <div class="cv-proc-head culture"><strong>Plano de Atividades –<br>Cultura</strong><img src="assets/header-cultura.webp" alt=""><span class="cv-loop"></span></div>
+        <div class="cv-proc-head culture"><img src="assets/header-cultura.webp" alt="Plano de Atividades — Cultura"></div>
         <div class="cv-proc-body"><span class="cv-status closed">Disponível em 2027</span><p>Programa de Apoio Anual ao Associativismo Cultural.</p><button type="button" class="cv-disabled" disabled aria-disabled="true">Disponível em 2027</button></div>
       </article>
       <article class="cv-proc">
-        <div class="cv-proc-head impulso"><strong>Programa de Impulso<br>Associativo</strong><img src="assets/header-impulso.webp" alt=""><span class="cv-stripes"></span></div>
+        <div class="cv-proc-head impulso"><img src="assets/header-impulso.webp" alt="Programa de Impulso Associativo"></div>
         <div class="cv-proc-body"><span class="cv-status closed">Disponível em 2027</span><p>Apoio a projetos, atividades, aquisições ou ações pontuais de interesse público.</p><button type="button" class="cv-disabled" disabled aria-disabled="true">Disponível em 2027</button></div>
       </article>
       <article class="cv-proc">
-        <div class="cv-proc-head report"><strong>Relatório de Execução<br>e Impulso</strong><img src="assets/header-relatorio.webp" alt=""><span class="cv-loop"></span></div>
+        <div class="cv-proc-head report"><img src="https://raw.githubusercontent.com/cmgouveiacultura-glitch/formularios-associativismo/main/assets/header-relatorio-execucao.png" alt="Relatório de Execução"></div>
         <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Modelo para execução e prestação de contas dos apoios atribuídos pelo Município.</p><button data-home-href="relatorio-impulso-online.html">Entregar relatório →</button></div>
       </article>
     </div>
