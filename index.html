@@ -985,6 +985,155 @@ html,body{background:#fff!important}
   .cv-footin-final{grid-template-columns:1fr!important;padding:18px 12px!important}
 }
 </style>
+
+<style id="rebrand-compact-horizontal-v2">
+/* Cabeçalho: identidade mais leve, sem "barra" gráfica */
+.cv-headin{
+  max-width:1440px!important;
+  height:72px!important;
+  padding:8px 24px!important;
+  gap:14px!important;
+}
+.cv-brand-v5{
+  max-width:none!important;
+  min-width:0!important;
+  flex:1 1 auto!important;
+  gap:14px!important;
+}
+.cv-brand-v5 .cv-municipal-lockup{
+  min-width:150px!important;
+}
+.cv-header-identity{
+  height:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:9px!important;
+}
+.cv-header-identity img{
+  display:none!important;
+}
+.cv-header-identity:before{
+  content:"";
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  border-radius:50%;
+  background:
+    linear-gradient(145deg,rgba(239,78,45,.95) 0 24%,transparent 24% 31%,rgba(255,181,29,.95) 31% 49%,transparent 49% 56%,rgba(45,99,165,.95) 56% 75%,transparent 75% 82%,rgba(111,139,56,.95) 82%);
+  transform:rotate(-18deg);
+  box-shadow:inset 0 0 0 6px rgba(255,255,255,.6);
+}
+.cv-header-identity:after{
+  content:"Plataforma do Associativismo";
+  font-size:21px;
+  line-height:1;
+  font-weight:850;
+  letter-spacing:-.03em;
+  background:linear-gradient(90deg,#f05a2a 0%,#e94945 30%,#aa4f8d 52%,#4756a7 72%,#14819a 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  white-space:nowrap;
+}
+.cv-nav{margin-left:auto!important}
+
+/* Hero um pouco mais compacto */
+.cv-hero{min-height:320px!important}
+.cv-hero-copy{padding-top:36px!important;padding-bottom:32px!important}
+.cv-hero-photo{min-height:320px!important}
+
+/* Procedimentos: uma única linha horizontal no desktop */
+.cv-procedimentos{padding:28px 0 32px!important}
+.cv-procedimentos .cv-section-head{margin-bottom:13px!important}
+.cv-proc-grid{
+  display:grid!important;
+  grid-template-columns:repeat(7,minmax(0,1fr))!important;
+  grid-auto-rows:1fr!important;
+  gap:10px!important;
+}
+.cv-proc{
+  min-width:0!important;
+  min-height:236px!important;
+  height:100%!important;
+  border-radius:14px!important;
+}
+.cv-proc-head{
+  height:68px!important;
+  min-height:68px!important;
+  background:#fff!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+.cv-proc-head>img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#fff!important;
+  z-index:2!important;
+}
+.cv-proc-body{
+  padding:10px 10px 11px!important;
+  gap:6px!important;
+}
+.cv-status{
+  font-size:7.8px!important;
+  padding:4px 6px!important;
+}
+.cv-proc-body p{
+  font-size:8.9px!important;
+  line-height:1.35!important;
+}
+.cv-proc-body button{
+  min-height:36px!important;
+  padding:8px 7px!important;
+  font-size:8.6px!important;
+  border-radius:9px!important;
+}
+.cv-section-head h2{font-size:21px!important}
+.cv-section-head p{font-size:10.5px!important}
+
+/* Secções mais juntas */
+.cv-section{padding:24px 0!important}
+.cv-how{padding-top:24px!important;padding-bottom:26px!important}
+.cv-news{padding-top:24px!important;padding-bottom:28px!important}
+.cv-contacts{padding-top:24px!important;padding-bottom:26px!important}
+
+@media(max-width:1250px){
+  .cv-proc-grid{
+    display:flex!important;
+    overflow-x:auto!important;
+    gap:10px!important;
+    padding-bottom:7px!important;
+    scroll-snap-type:x mandatory!important;
+    scrollbar-width:thin!important;
+  }
+  .cv-proc{
+    flex:0 0 205px!important;
+    scroll-snap-align:start!important;
+  }
+}
+@media(max-width:900px){
+  .cv-header-identity:after{font-size:18px!important}
+  .cv-header-identity:before{width:30px!important;height:30px!important;flex-basis:30px!important}
+}
+@media(max-width:650px){
+  .cv-header-identity{display:flex!important}
+  .cv-header-identity:after{font-size:15px!important}
+  .cv-header-identity:before{width:26px!important;height:26px!important;flex-basis:26px!important}
+  .cv-municipal-text strong{font-size:15px!important}
+  .cv-brand-v5 .cv-municipal-lockup{min-width:125px!important}
+}
+</style>
 </head>
 <body>
 <iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Plataforma do Associativismo"></iframe>
