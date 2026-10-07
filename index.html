@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f9fa">
-<title>Plataforma do Associativismo | Município de Gouveia</title>
+<title>Portal do Associativismo | Município de Gouveia</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f4f6f7;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202b33}
 #portal{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
@@ -1031,7 +1031,7 @@ html,body{background:#fff!important}
   box-shadow:inset 0 0 0 6px rgba(255,255,255,.6);
 }
 .cv-header-identity:after{
-  content:"Plataforma do Associativismo";
+  content:"Portal do Associativismo";
   font-size:21px;
   line-height:1;
   font-weight:850;
@@ -1430,19 +1430,177 @@ html,body{background:#fff!important}
   .cv-proc{height:210px!important;min-height:210px!important}
 }
 </style>
+
+<style id="portal-modern-polish-v7">
+/* identity */
+.cv-platform-title{display:flex!important;flex-direction:column!important;gap:2px!important;font-size:19px!important;line-height:1.05!important}
+.cv-platform-title small{font-size:10px!important;font-weight:750!important;color:#657984!important;background:none!important;-webkit-text-fill-color:#657984!important}
+.cv-doc-btn{display:inline-flex!important;align-items:center!important;text-decoration:none!important;border:1px solid #d2dde3!important;color:#0d4c76!important;background:#fff!important;box-shadow:0 5px 14px rgba(12,62,91,.06)!important}
+.cv-doc-btn:hover{background:#f4f9fb!important}
+
+/* active sports application */
+.cv-active-callout{
+  padding:13px 0!important;
+  background:linear-gradient(90deg,#fff5e7 0%,#fffaf3 55%,#eef6fa 100%)!important;
+  border-top:1px solid #f3d7b7!important;
+  border-bottom:1px solid #e8d8c6!important;
+}
+.cv-active-inner{
+  display:grid!important;
+  grid-template-columns:48px minmax(0,1fr) auto!important;
+  gap:15px!important;
+  align-items:center!important;
+  max-width:1220px!important;
+  padding-top:0!important;padding-bottom:0!important
+}
+.cv-active-icon{
+  width:46px!important;height:46px!important;border-radius:14px!important;
+  display:grid!important;place-items:center!important;font-size:22px!important;
+  background:linear-gradient(135deg,#ff6a21,#f0a21a)!important;
+  box-shadow:0 8px 18px rgba(231,105,30,.18)!important
+}
+.cv-active-copy{min-width:0!important}
+.cv-active-kicker{
+  display:block!important;font-size:8.5px!important;letter-spacing:.11em!important;font-weight:900!important;color:#d05c18!important;margin-bottom:3px!important
+}
+.cv-active-copy strong{display:block!important;font-size:15px!important;color:#143f5b!important;line-height:1.12!important}
+.cv-active-copy p{margin:4px 0 0!important;font-size:10px!important;line-height:1.4!important;color:#647782!important}
+.cv-active-button{
+  border:0!important;border-radius:11px!important;padding:11px 15px!important;
+  background:#ef641f!important;color:white!important;font-size:10px!important;font-weight:900!important;cursor:pointer!important;
+  box-shadow:0 8px 18px rgba(222,90,23,.18)!important
+}
+.cv-active-button:hover{background:#d95617!important}
+
+/* official municipal documentation panel */
+.cv-official-docs{
+  padding:15px 0!important;
+  background:linear-gradient(180deg,#f3f7f9,#eef4f6)!important
+}
+.cv-doc-panel{
+  position:relative!important;display:grid!important;grid-template-columns:50px minmax(0,1fr) auto!important;
+  gap:16px!important;align-items:center!important;text-decoration:none!important;
+  padding:16px 18px!important;border-radius:17px!important;
+  border:1px solid #d4e1e7!important;background:#fff!important;
+  box-shadow:0 9px 24px rgba(15,62,89,.06)!important;overflow:hidden!important
+}
+.cv-doc-panel:after{
+  content:""!important;position:absolute!important;right:-45px!important;top:-80px!important;width:230px!important;height:230px!important;
+  border:34px solid rgba(237,103,31,.08)!important;border-radius:50%!important;pointer-events:none!important
+}
+.cv-doc-mark{
+  width:48px!important;height:48px!important;border-radius:14px!important;display:grid!important;place-items:center!important;
+  font-size:24px!important;font-weight:900!important;color:#fff!important;background:linear-gradient(135deg,#0d5a8b,#2d86ad)!important
+}
+.cv-doc-copy{position:relative!important;z-index:1!important}
+.cv-doc-copy>span{display:block!important;font-size:8px!important;letter-spacing:.11em!important;font-weight:900!important;color:#287295!important;margin-bottom:4px!important}
+.cv-doc-copy strong{display:block!important;font-size:15px!important;line-height:1.16!important;color:#123f5b!important}
+.cv-doc-copy p{margin:4px 0 0!important;font-size:9.5px!important;line-height:1.38!important;color:#71818a!important}
+.cv-doc-cta{position:relative!important;z-index:1!important;font-size:9.5px!important;font-weight:900!important;color:#0c6695!important;white-space:nowrap!important}
+
+/* how it works: modern timeline */
+.cv-how{
+  padding:24px 0 27px!important;
+  background:linear-gradient(180deg,#fff,#f8fafb)!important
+}
+.cv-steps{
+  position:relative!important;display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:12px!important
+}
+.cv-step{
+  position:relative!important;min-height:112px!important;height:auto!important;
+  display:block!important;padding:16px 14px 14px 15px!important;
+  border:1px solid #dbe5ea!important;border-radius:16px!important;background:#fff!important;
+  box-shadow:0 8px 22px rgba(16,61,87,.05)!important
+}
+.cv-step>b{
+  position:absolute!important;top:-10px!important;left:14px!important;width:28px!important;height:28px!important;
+  border:3px solid #fff!important;box-shadow:0 4px 10px rgba(15,58,83,.12)!important
+}
+.cv-step-icon{
+  width:38px!important;height:38px!important;margin:8px 0 9px!important;border-radius:11px!important;display:grid!important;place-items:center!important;
+  background:#edf6fb!important;color:#176b9b!important
+}
+.cv-step-icon svg{width:20px!important;height:20px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+.cv-step>div:last-child strong{font-size:10.8px!important;color:#173f59!important}
+.cv-step>div:last-child span{font-size:9px!important;line-height:1.38!important;color:#74838d!important;margin-top:4px!important}
+
+/* news: larger carousel cards, stronger presence */
+.cv-news{
+  padding:26px 0 30px!important;
+  background:
+    radial-gradient(circle at 92% 10%,rgba(239,105,32,.07),transparent 24%),
+    linear-gradient(180deg,#edf4f7 0%,#e7f0f4 100%)!important
+}
+.cv-news .cv-wrap{
+  max-width:1320px!important;padding:21px 22px!important;border-radius:22px!important;
+  background:rgba(255,255,255,.82)!important;border:1px solid #d7e3e8!important;
+  box-shadow:0 12px 30px rgba(14,62,88,.06)!important
+}
+.cv-news-track{gap:14px!important;padding:2px 1px 7px!important}
+.cv-news-card{
+  flex:0 0 calc(33.333% - 10px)!important;
+  height:154px!important;
+  grid-template-columns:45% 55%!important;
+  border-radius:15px!important;border:1px solid #d6e2e8!important;
+  box-shadow:0 9px 22px rgba(15,60,88,.07)!important;
+  transition:transform .18s ease,box-shadow .18s ease!important
+}
+.cv-news-card:hover{transform:translateY(-3px)!important;box-shadow:0 15px 28px rgba(15,60,88,.11)!important}
+.cv-news-img{width:100%!important;height:154px!important}
+.cv-news-card>div:last-child{padding:14px!important}
+.cv-news-card time{font-size:8.5px!important;text-transform:uppercase!important;letter-spacing:.035em!important}
+.cv-news-card strong{font-size:12.5px!important;line-height:1.24!important;margin-top:5px!important;-webkit-line-clamp:3!important}
+.cv-news-card span{font-size:9.2px!important;margin-top:auto!important}
+
+/* contacts: visually tied to the portal rather than isolated white blocks */
+.cv-contacts{
+  padding:24px 0 30px!important;
+  background:linear-gradient(180deg,#e7f0f4 0%,#dfeaf0 100%)!important
+}
+.cv-contacts .cv-wrap{
+  max-width:1320px!important;padding:21px 22px!important;border-radius:22px!important;
+  background:rgba(255,255,255,.68)!important;border:1px solid #d4e1e7!important
+}
+.cv-contact-grid{gap:13px!important}
+.cv-contact-card{
+  min-height:145px!important;border-radius:16px!important;border:1px solid #d5e2e8!important;
+  background:linear-gradient(145deg,#fff,#fbfdfe)!important;
+  box-shadow:0 8px 20px rgba(15,60,88,.05)!important
+}
+.cv-official-card{
+  background:linear-gradient(145deg,#f1f8fb,#fff7ef)!important;
+  border-color:#c9dce6!important
+}
+.cv-contact-icon.official{background:#e4f0f5!important;color:#0d668e!important}
+
+@media(max-width:1000px){
+  .cv-news-card{flex-basis:48%!important}
+  .cv-doc-panel{grid-template-columns:50px minmax(0,1fr)!important}
+  .cv-doc-cta{grid-column:2!important}
+}
+@media(max-width:720px){
+  .cv-active-inner{grid-template-columns:44px minmax(0,1fr)!important}
+  .cv-active-button{grid-column:1/-1!important;width:100%!important}
+  .cv-steps{grid-template-columns:repeat(2,1fr)!important}
+  .cv-news-card{flex-basis:86%!important}
+}
+@media(max-width:520px){
+  .cv-steps{grid-template-columns:1fr!important}
+}
+</style>
 </head>
 <body>
-<iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Plataforma do Associativismo"></iframe>
+<iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Portal do Associativismo"></iframe>
 <main id="portalHome" class="cv-home">
 <header class="cv-header">
   <div class="cv-headin">
-    <a class="cv-brand cv-brand-v5" href="#cv-topo" aria-label="Plataforma do Associativismo - Município de Gouveia">
+    <a class="cv-brand cv-brand-v5" href="#cv-topo" aria-label="Portal do Associativismo - Município de Gouveia">
       <span class="cv-municipal-lockup">
         <img src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/images/star.svg" alt="">
         <span class="cv-municipal-text"><small>MUNICÍPIO DE</small><strong>GOUVEIA</strong></span>
       </span>
-      <span class="cv-header-identity cv-header-logo" aria-label="Plataforma de Submissão de Formulários Associativos (Provisória)">
-        <span class="cv-platform-title">Plataforma de Submissão de Formulários Associativos <small>(Provisória)</small></span>
+      <span class="cv-header-identity cv-header-logo" aria-label="Portal do Associativismo do Concelho de Gouveia">
+        <span class="cv-platform-title">Portal do Associativismo <small>Concelho de Gouveia · versão provisória</small></span>
       </span>
     </a>
     <nav class="cv-nav" aria-label="Navegação principal">
@@ -1456,12 +1614,13 @@ html,body{background:#fff!important}
 
 <section class="cv-hero" id="cv-topo">
   <div class="cv-hero-copy">
-    <span class="cv-eyebrow">ASSOCIATIVISMO EM GOUVEIA</span>
-    <h1>Associativismo mais simples,<br><em>próximo e organizado.</em></h1>
-    <p>Registo, candidaturas e pedidos de apoio às associações do concelho, num único espaço digital.</p>
+    <span class="cv-eyebrow">PORTAL DO ASSOCIATIVISMO</span>
+    <h1>Informação e formulários,<br><em>num acesso mais simples.</em></h1>
+    <p>Um ponto de acesso aos principais formulários, procedimentos e documentos úteis para as associações do concelho de Gouveia.</p>
     <div class="cv-actions">
       <button type="button" class="cv-btn cv-primary" data-home-service="rma">→ &nbsp; Aceder ao RMA</button>
       <button type="button" class="cv-btn cv-secondary" data-scroll="#cv-procedimentos">Ver procedimentos</button>
+      <a class="cv-btn cv-doc-btn" href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">Documentação oficial ↗</a>
     </div>
     <div class="cv-tagline">
   <span>Associações hoje.</span>
@@ -1484,13 +1643,25 @@ html,body{background:#fff!important}
     <div class="cv-exec-grid">
       <article class="cv-person">
         <img src="https://www.cm-gouveia.pt/wp-content/uploads/2019/02/Sr.Presidente_site.jpg" alt="Jorge Abrantes Cardoso Ferreira">
-        <div class="cv-person-copy"><b>“</b><p>O associativismo é um dos grandes motores da vida comunitária em Gouveia. Com esta plataforma, queremos aproximar os serviços municipais das associações, simplificar procedimentos e valorizar o trabalho de quem dinamiza o nosso concelho todos os dias.</p><strong>Jorge Abrantes Cardoso Ferreira</strong><small>Presidente da Câmara Municipal de Gouveia</small></div>
+        <div class="cv-person-copy"><b>“</b><p>O associativismo é um dos grandes motores da vida comunitária em Gouveia. Este portal reúne, de forma simples e acessível, os principais formulários, documentos e informações úteis, facilitando a relação das associações com o Município e valorizando o trabalho de quem dinamiza o nosso concelho todos os dias.</p><strong>Jorge Abrantes Cardoso Ferreira</strong><small>Presidente da Câmara Municipal de Gouveia</small></div>
       </article>
       <article class="cv-person warm">
         <img src="https://www.cm-gouveia.pt/wp-content/uploads/2019/02/Daniela-Oliveira_site.jpg" alt="Daniela Figueiredo Gomes de Oliveira">
-        <div class="cv-person-copy"><b>“</b><p>Esta plataforma pretende facilitar o acesso à informação, aos apoios e aos procedimentos municipais na área do associativismo. O objetivo é tornar este acompanhamento mais claro, mais próximo e mais útil para as associações e coletividades do concelho.</p><strong>Daniela Figueiredo Gomes de Oliveira</strong><small>Vereadora com o Pelouro da Cultura</small></div>
+        <div class="cv-person-copy"><b>“</b><p>Este portal constitui um ponto de acesso rápido e organizado aos procedimentos mais utilizados pelas associações do concelho. O objetivo é tornar mais clara a consulta de informação, o acesso aos formulários e aos documentos de apoio, numa lógica de proximidade, simplificação e melhoria contínua.</p><strong>Daniela Figueiredo Gomes de Oliveira</strong><small>Vereadora com o Pelouro da Cultura</small></div>
       </article>
     </div>
+  </div>
+</section>
+
+<section class="cv-active-callout" aria-label="Candidatura em destaque">
+  <div class="cv-wrap cv-active-inner">
+    <div class="cv-active-icon" aria-hidden="true">🏆</div>
+    <div class="cv-active-copy">
+      <span class="cv-active-kicker">CANDIDATURA ABERTA</span>
+      <strong>Plano de Atividades – Desporto 2026/2027</strong>
+      <p>Submissão disponível até <b>1 de novembro de 2026</b>. Antes de avançar, confirme que o RMA e a documentação obrigatória da associação se encontram atualizados.</p>
+    </div>
+    <button type="button" class="cv-active-button" data-home-service="desporto">Aceder ao formulário →</button>
   </div>
 </section>
 
@@ -1515,7 +1686,7 @@ html,body{background:#fff!important}
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head sport"><img src="assets/header-desporto-final.webp" alt="Plano de Atividades — Desporto"></div>
-        <div class="cv-proc-body"><span class="cv-status sports">Aberto até 10 de novembro</span><p>Programa de Apoio Anual ao Associativismo Desportivo.</p><button data-home-service="desporto">Apresentar candidatura →</button></div>
+        <div class="cv-proc-body"><span class="cv-status sports">Aberto até 1 de novembro</span><p>Programa de Apoio Anual ao Associativismo Desportivo.</p><button data-home-service="desporto">Apresentar candidatura →</button></div>
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head culture"><img src="assets/header-cultura.webp" alt="Plano de Atividades — Cultura"></div>
@@ -1533,37 +1704,51 @@ html,body{background:#fff!important}
   </div>
 </section>
 
+<section class="cv-official-docs" aria-label="Documentação oficial do Associativismo">
+  <div class="cv-wrap">
+    <a class="cv-doc-panel" href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">
+      <div class="cv-doc-mark" aria-hidden="true">↗</div>
+      <div class="cv-doc-copy">
+        <span>PÁGINA OFICIAL DO MUNICÍPIO</span>
+        <strong>Documentos, regulamentos e informação sobre apoios</strong>
+        <p>A página oficial de Associativismo do Município reúne o enquadramento, regulamentos, critérios e documentação institucional.</p>
+      </div>
+      <div class="cv-doc-cta">Consultar documentação oficial →</div>
+    </a>
+  </div>
+</section>
+
 <section class="cv-section cv-how" id="cv-como">
   <div class="cv-wrap">
-    <div class="cv-section-head compact"><div><h2>Como funciona</h2><p>Quatro passos simples para tratar do seu pedido.</p></div></div>
+    <div class="cv-section-head compact"><div><h2>Como funciona</h2><p>Um percurso simples para encontrar o procedimento certo e seguir para o respetivo formulário.</p></div></div>
     <div class="cv-steps">
       <div class="cv-step">
         <b>1</b>
         <span class="cv-step-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h5"/><path d="M15.5 14.5 19 18"/><path d="M16 18h3v-3"/></svg>
         </span>
-        <div><strong>Escolha o procedimento</strong><span>Selecione o serviço municipal de que necessita.</span></div>
+        <div><strong>Escolha o procedimento</strong><span>Escolha o formulário ou procedimento de que necessita.</span></div>
       </div>
       <div class="cv-step">
         <b>2</b>
         <span class="cv-step-icon orange">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v10H3z"/><path d="M3 7V5h7l2 2"/><path d="M8 13h8M8 16h5"/></svg>
         </span>
-        <div><strong>Prepare a informação</strong><span>Reúna os dados e documentos necessários.</span></div>
+        <div><strong>Prepare a informação</strong><span>Consulte os requisitos e tenha os documentos necessários consigo.</span></div>
       </div>
       <div class="cv-step">
         <b>3</b>
         <span class="cv-step-icon purple">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h6"/><path d="m16 16 3-3 1.5 1.5-3 3-2 .5z"/></svg>
         </span>
-        <div><strong>Preencha por etapas</strong><span>Complete o formulário de forma simples e orientada.</span></div>
+        <div><strong>Preencha por etapas</strong><span>Abra o respetivo formulário e preencha a informação solicitada.</span></div>
       </div>
       <div class="cv-step">
         <b>4</b>
         <span class="cv-step-icon green">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg>
         </span>
-        <div><strong>Reveja e submeta</strong><span>Confirme a informação e envie o pedido.</span></div>
+        <div><strong>Reveja e submeta</strong><span>Confirme os dados e submeta diretamente no formulário indicado.</span></div>
       </div>
     </div>
   </div>
@@ -1613,27 +1798,14 @@ html,body{background:#fff!important}
         </span>
         <div class="cv-contact-copy"><strong>Morada</strong><span>Av. 25 de Abril</span><small>6290-554 Gouveia</small></div>
       </article>
-      <article class="cv-contact-card cv-social-card">
+      <article class="cv-contact-card cv-official-card">
+        <span class="cv-contact-icon official" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 11h6M9 15h6"/></svg>
+        </span>
         <div class="cv-contact-copy">
-          <strong>Canais oficiais</strong>
-          <div class="cv-social-brands">
-            <a class="cv-brand-app cv-site" href="https://www.cm-gouveia.pt/" target="_blank" rel="noopener" aria-label="Site do Município" title="Site do Município">
-              <img src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/images/star.svg" alt="">
-              <span>Site</span>
-            </a>
-            <a class="cv-brand-app cv-facebook" href="https://www.facebook.com/MunicipiodeGouveia/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
-              <span class="cv-fb-logo">f</span>
-              <span>Facebook</span>
-            </a>
-            <a class="cv-brand-app cv-instagram" href="https://www.instagram.com/municipiogouveia/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-              <span class="cv-ig-logo"><span></span><i></i></span>
-              <span>Instagram</span>
-            </a>
-            <a class="cv-brand-app cv-youtube" href="https://www.youtube.com/@municipiogouveia" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
-              <span class="cv-yt-logo"><i></i></span>
-              <span>YouTube</span>
-            </a>
-          </div>
+          <strong>Documentação oficial</strong>
+          <a href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">cm-gouveia.pt/apoios/ ↗</a>
+          <small>Regulamentos, critérios, apoios e documentos institucionais do associativismo.</small>
         </div>
       </article>
     </div>
@@ -1644,7 +1816,7 @@ html,body{background:#fff!important}
   <div class="cv-footin cv-footin-final">
     <div class="cv-footer-brand-final">
       <div class="cv-footer-muni"><img src="https://www.cm-gouveia.pt/wp-content/themes/gouveia/images/star.svg" alt=""></div>
-      <div><strong>Município de Gouveia</strong><span>Plataforma do Associativismo</span></div>
+      <div><strong>Município de Gouveia</strong><span>Portal do Associativismo</span></div>
     </div>
     <div class="cv-footer-help">
       <div class="cv-footer-help-item">
@@ -1673,7 +1845,7 @@ html,body{background:#fff!important}
 <div id="serviceLayer" role="dialog" aria-modal="true" aria-label="Formulário municipal">
   <div class="rma-head">
     <button class="rma-back" id="serviceBack" type="button">← Voltar</button>
-    <div class="rma-title"><strong id="serviceTitle">Formulário</strong><small>Preenchimento dentro da Plataforma do Associativismo</small></div>
+    <div class="rma-title"><strong id="serviceTitle">Formulário</strong><small>Preenchimento dentro da Portal do Associativismo</small></div>
   </div>
   <div class="rma-shell" id="serviceShell">
     <form class="service-form" id="serviceForm"></form>
@@ -1683,7 +1855,7 @@ html,body{background:#fff!important}
 <div id="rmaLayer" role="dialog" aria-modal="true" aria-label="Registo Municipal das Associações">
   <div class="rma-head">
     <button class="rma-back" id="rmaBack" type="button">← Voltar</button>
-    <div class="rma-title"><strong>Registo Municipal das Associações — RMA</strong><small>Formulário integrado na Plataforma do Associativismo</small></div>
+    <div class="rma-title"><strong>Registo Municipal das Associações — RMA</strong><small>Formulário integrado na Portal do Associativismo</small></div>
   </div>
   <div class="rma-shell">
     <form class="rma-form" id="rmaForm">
