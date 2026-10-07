@@ -1725,6 +1725,42 @@ html,body{background:#fff!important}
   .cv-doc-panel-clear .cv-doc-copy{padding-top:18px!important;padding-left:0!important}
 }
 </style>
+<style id="visual-refine-v9">
+.cv-actions{gap:9px!important}
+.cv-actions .cv-btn{min-height:44px!important;padding:10px 18px!important;border-radius:12px!important;font-size:11.5px!important;font-weight:850!important;letter-spacing:-.01em!important}
+.cv-actions .cv-primary{background:linear-gradient(135deg,#ef6a21,#f48a24)!important;box-shadow:0 8px 18px rgba(226,102,31,.16)!important}
+.cv-actions .cv-secondary,.cv-actions .cv-doc-btn{background:#fff!important;color:#123f5c!important;border:1px solid #cbd9e0!important;box-shadow:0 4px 12px rgba(15,60,88,.04)!important}
+.cv-actions .cv-secondary:hover,.cv-actions .cv-doc-btn:hover{background:#fff!important;border-color:#9fbcc9!important}
+
+.cv-procedimentos{padding:24px 0 28px!important;background:linear-gradient(180deg,#f5f8f9,#edf3f5)!important;border:0!important}
+.cv-procedimentos .cv-section-head h2{color:#123f5b!important}
+.cv-procedimentos .cv-section-head h2:after{background:linear-gradient(90deg,#ef6b24,#f4b32f,#7b6cc5)!important}
+.cv-procedimentos .cv-section-head p{color:#6b7e89!important}
+.cv-proc{border:1px solid #d7e2e7!important;box-shadow:0 8px 18px rgba(15,60,88,.05)!important}
+.cv-proc-body button:not(.cv-disabled){background:#153f5c!important}
+
+.cv-official-docs{background:linear-gradient(180deg,#edf3f5,#f8fafb)!important}
+.cv-doc-panel-clear{background:#fff!important;border:1px solid #d4e1e7!important;border-left:5px solid #ef7426!important;box-shadow:0 9px 22px rgba(15,60,88,.055)!important}
+.cv-doc-panel-clear:after{display:none!important}
+.cv-doc-panel-clear .cv-doc-site{color:#143f59!important}
+.cv-doc-site-badge{background:#fff0e7!important;color:#d8611c!important}
+.cv-doc-site strong{color:#143f59!important}
+.cv-doc-site>span:last-child{color:#74838c!important}
+.cv-doc-panel-clear .cv-doc-cta{background:#f4f8fa!important;color:#145c80!important;border:1px solid #d3e1e7!important}
+
+.cv-how{padding:13px 0 16px!important;background:#fff!important}
+.cv-step{min-height:70px!important;padding:9px 10px!important;box-shadow:0 4px 12px rgba(15,60,88,.035)!important}
+.cv-step-icon{width:27px!important;height:27px!important;margin:3px 0 5px!important}
+.cv-step>div:last-child strong{font-size:9.6px!important}
+.cv-step>div:last-child span{font-size:8.1px!important;line-height:1.28!important}
+
+.cv-news-card{height:126px!important;grid-template-columns:43% 57%!important}
+.cv-news-img{height:126px!important}
+.cv-news-card>div:last-child{padding:11px 12px!important}
+.cv-news-card strong{font-size:11.8px!important;line-height:1.22!important}
+.cv-news-card span{display:inline-flex!important;width:max-content!important;margin-top:8px!important;padding:5px 9px!important;border-radius:999px!important;background:#eef6fa!important;color:#0c6595!important;font-size:9.5px!important;font-weight:900!important}
+.cv-news-card:hover span{background:#e1f0f7!important}
+</style>
 </head>
 <body>
 <iframe id="portal" src="index_sem_botao_download_relatorio%20(1).html" title="Portal do Associativismo"></iframe>
@@ -1755,9 +1791,9 @@ html,body{background:#fff!important}
     <h1>Informação e formulários,<br><em>num acesso mais simples.</em></h1>
     <p>Um ponto de acesso aos principais formulários, procedimentos e documentos úteis para as associações do concelho de Gouveia.</p>
     <div class="cv-actions">
-      <button type="button" class="cv-btn cv-primary" data-home-service="rma">→ &nbsp; Aceder ao RMA</button>
+      <button type="button" class="cv-btn cv-primary" data-home-service="rma">Aceder ao RMA</button>
       <button type="button" class="cv-btn cv-secondary" data-scroll="#cv-procedimentos">Ver procedimentos</button>
-      <a class="cv-btn cv-doc-btn" href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">Documentação oficial ↗</a>
+      <a class="cv-btn cv-doc-btn" href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">Documentação oficial</a>
     </div>
     <div class="cv-tagline">
   <span>Associações hoje.</span>
@@ -1806,24 +1842,24 @@ html,body{background:#fff!important}
   <div class="cv-wrap">
     <div class="cv-section-head">
       <div><h2>Procedimentos disponíveis</h2><p>Os principais serviços e programas de apoio estão reunidos aqui, com acesso rápido aos formulários e documentos relevantes.</p></div>
-      <a href="#cv-procedimentos">Ver todos os procedimentos →</a>
+      
     </div>
     <div class="cv-proc-grid">
       <article class="cv-proc">
         <div class="cv-proc-head white"><strong>Registo Municipal<br>de Associações</strong><img src="assets/header-rma.webp" alt=""></div>
-        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Inscrição e atualização dos dados da associação no Registo Municipal.</p><button data-home-service="rma">Aceder ao RMA →</button></div>
+        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Inscrição e atualização dos dados da associação no Registo Municipal.</p><button data-home-service="rma">Aceder ao RMA</button></div>
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head white"><strong>Apoio Técnico</strong><img src="assets/header-apoio.webp" alt=""></div>
-        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Pedidos de meios técnicos, humanos, logísticos, equipamentos e infraestruturas municipais.</p><button data-home-service="apoio">Fazer pedido →</button></div>
+        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Pedidos de meios técnicos, humanos, logísticos, equipamentos e infraestruturas municipais.</p><button data-home-service="apoio">Fazer pedido</button></div>
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head white"><strong>Transporte</strong><img src="assets/header-transporte.webp" alt=""></div>
-        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Pedido de cedência de viatura municipal com condutor para atividades associativas.</p><button data-home-service="transporte">Pedir transporte →</button></div>
+        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Pedido de cedência de viatura municipal com condutor para atividades associativas.</p><button data-home-service="transporte">Pedir transporte</button></div>
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head sport"><img src="assets/header-desporto-final.webp" alt="Plano de Atividades — Desporto"></div>
-        <div class="cv-proc-body"><span class="cv-status sports">Aberto até 1 de novembro</span><p>Programa de Apoio Anual ao Associativismo Desportivo.</p><button data-home-service="desporto">Apresentar candidatura →</button></div>
+        <div class="cv-proc-body"><span class="cv-status sports">Aberto até 1 de novembro</span><p>Programa de Apoio Anual ao Associativismo Desportivo.</p><button data-home-service="desporto">Apresentar candidatura</button></div>
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head culture"><img src="assets/header-cultura.webp" alt="Plano de Atividades — Cultura"></div>
@@ -1835,7 +1871,7 @@ html,body{background:#fff!important}
       </article>
       <article class="cv-proc">
         <div class="cv-proc-head report"><img src="https://raw.githubusercontent.com/cmgouveiacultura-glitch/formularios-associativismo/main/assets/header-relatorio-execucao.png" alt="Relatório de Execução"></div>
-        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Modelo para execução e prestação de contas dos apoios atribuídos pelo Município.</p><button data-home-href="relatorio-impulso-online.html">Entregar relatório →</button></div>
+        <div class="cv-proc-body"><span class="cv-status ok">Disponível</span><p>Modelo para execução e prestação de contas dos apoios atribuídos pelo Município.</p><button data-home-href="relatorio-impulso-online.html">Entregar relatório</button></div>
       </article>
     </div>
   </div>
@@ -1853,7 +1889,7 @@ html,body{background:#fff!important}
         <strong>Consultar a página oficial de Associativismo e Apoios</strong>
         <p>Regulamentos, critérios, documentos e informação institucional publicados pelo Município.</p>
       </div>
-      <div class="cv-doc-cta">Abrir página oficial <span aria-hidden="true">↗</span></div>
+      <div class="cv-doc-cta">Abrir página oficial</div>
     </a>
   </div>
 </section>
@@ -1901,10 +1937,10 @@ html,body{background:#fff!important}
       <div class="cv-news-actions"><a href="https://www.cm-gouveia.pt/noticias/" target="_blank" rel="noopener">Ver todas as notícias →</a><button type="button" data-cv-prev>‹</button><button type="button" data-cv-next>›</button></div>
     </div>
     <div class="cv-news-track" id="cvNewsTrack">
-      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Município de Gouveia</time><strong>Últimas notícias do Município</strong><span>Ler mais →</span></div></a>
-      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Atualidade</time><strong>Cultura e associativismo em Gouveia</strong><span>Ler mais →</span></div></a>
-      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Agenda</time><strong>Eventos e iniciativas no concelho</strong><span>Ler mais →</span></div></a>
-      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Território</time><strong>Gouveia, um concelho de pessoas e oportunidades</strong><span>Ler mais →</span></div></a>
+      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Município de Gouveia</time><strong>Últimas notícias do Município</strong><span>Ler mais</span></div></a>
+      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Atualidade</time><strong>Cultura e associativismo em Gouveia</strong><span>Ler mais</span></div></a>
+      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Agenda</time><strong>Eventos e iniciativas no concelho</strong><span>Ler mais</span></div></a>
+      <a class="cv-news-card" href="https://www.cm-gouveia.pt/noticias/" target="_blank"><div class="cv-news-img"></div><div><time>Território</time><strong>Gouveia, um concelho de pessoas e oportunidades</strong><span>Ler mais</span></div></a>
     </div>
   </div>
 </section>
@@ -1944,7 +1980,7 @@ html,body{background:#fff!important}
         </span>
         <div class="cv-contact-copy">
           <strong>Documentação oficial</strong>
-          <a href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">cm-gouveia.pt/apoios/ ↗</a>
+          <a href="https://www.cm-gouveia.pt/apoios/" target="_blank" rel="noopener">cm-gouveia.pt/apoios/</a>
           <small>Regulamentos, critérios, apoios e documentos institucionais do associativismo.</small>
         </div>
       </article>
@@ -2371,7 +2407,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script id="clean-rebuild-news-v1">(function(){
 function clean(s){return String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&#8211;/g,'–').replace(/&#8217;/g,'’').replace(/&quot;/g,'“').trim()}
 function mediaUrl(p){try{const m=p?._embedded?.['wp:featuredmedia']?.[0];return m?.media_details?.sizes?.medium_large?.source_url||m?.media_details?.sizes?.medium?.source_url||m?.source_url||''}catch(e){return ''}}
-function render(posts){const t=document.getElementById('cvNewsTrack');if(!t||!Array.isArray(posts)||!posts.length)return;t.innerHTML=posts.slice(0,8).map(p=>{const title=clean(p.title?.rendered||p.title||'Notícia do Município');const href=p.link||'https://www.cm-gouveia.pt/noticias/';const date=p.date?new Date(p.date).toLocaleDateString('pt-PT',{day:'2-digit',month:'long',year:'numeric'}):'Município de Gouveia';const img=mediaUrl(p);const style=img?' style="background-image:url(\''+img.replace(/'/g,'%27')+'\')"':'';return '<a class="cv-news-card" href="'+href+'" target="_blank"><div class="cv-news-img"'+style+'></div><div><time>'+date+'</time><strong>'+title+'</strong><span>Ler mais →</span></div></a>'}).join('')}
+function render(posts){const t=document.getElementById('cvNewsTrack');if(!t||!Array.isArray(posts)||!posts.length)return;t.innerHTML=posts.slice(0,8).map(p=>{const title=clean(p.title?.rendered||p.title||'Notícia do Município');const href=p.link||'https://www.cm-gouveia.pt/noticias/';const date=p.date?new Date(p.date).toLocaleDateString('pt-PT',{day:'2-digit',month:'long',year:'numeric'}):'Município de Gouveia';const img=mediaUrl(p);const style=img?' style="background-image:url(\''+img.replace(/'/g,'%27')+'\')"':'';return '<a class="cv-news-card" href="'+href+'" target="_blank"><div class="cv-news-img"'+style+'></div><div><time>'+date+'</time><strong>'+title+'</strong><span>Ler mais</span></div></a>'}).join('')}
 document.addEventListener('DOMContentLoaded',()=>{const t=document.getElementById('cvNewsTrack');document.querySelector('[data-cv-prev]')?.addEventListener('click',()=>t?.scrollBy({left:-360,behavior:'smooth'}));document.querySelector('[data-cv-next]')?.addEventListener('click',()=>t?.scrollBy({left:360,behavior:'smooth'}));(async()=>{for(const u of ['https://www.cm-gouveia.pt/wp-json/wp/v2/posts?per_page=8&_embed=wp:featuredmedia','https://www.cm-gouveia.pt/wp-json/wp/v2/noticias?per_page=8&_embed=wp:featuredmedia']){try{const r=await fetch(u,{mode:'cors'});if(!r.ok)continue;const j=await r.json();if(Array.isArray(j)&&j.length){render(j);break}}catch(e){}}})();});
 })();</script>
 
